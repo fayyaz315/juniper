@@ -1,0 +1,906 @@
+{
+  "current": {
+    "dbat": "",
+    "appkey": "",
+    "aprovecodes": "",
+    "color_body_bg": "#ffffff",
+    "color_modal_bg": "#000000",
+    "opacity_modal_bg": 60,
+    "header_bg_color": "rgba(0,0,0,0)",
+    "header_link_color": "#3d4246",
+    "header_link_color_hover": "#3d4246",
+    "footer_bg_color": "#e25d49",
+    "footer_text_color": "#ffffff",
+    "footer_link_color": "#ffffff",
+    "footer_link_color_hover": "#ffffff",
+    "color_text": "#3d4246",
+    "color_body_text": "#788188",
+    "color_link": "#3d4246",
+    "color_link_hover": "#3d4246",
+    "color_sale_text": "#7796a8",
+    "color_button": "rgba(0,0,0,0)",
+    "color_button_text": "#0065cc",
+    "color_button_hover": "#0065cc",
+    "color_button_text_hover": "#ffffff",
+    "color_small_button": "#ffffff",
+    "color_small_button_text": "#ffffff",
+    "color_small_button_hover": "#fff",
+    "color_small_button_text_hover": "#223646",
+    "color_addtocart": "#7796a8",
+    "color_addtocart_text": "#fff",
+    "color_addtocart_hover": "#537182",
+    "color_addtocart_text_hover": "#fff",
+    "button_radius": 0,
+    "color_borders": "#e8e9eb",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 15,
+    "type_header_family": "Google_Work+Sans_600_sans",
+    "type_header_base_size": "26px",
+    "type_header_upcase": false,
+    "type_base_family": "Google_Work+Sans_400_sans",
+    "type_base_size": "16px",
+    "type_bold_product_titles": false,
+    "header_sticky": false,
+    "header_overlay": true,
+    "align_logo": "left",
+    "align_menu": "inline",
+    "align_menu_text": "right",
+    "logo": "shopify:\/\/shop_images\/header-logo.png",
+    "logo_inner_pages": "shopify:\/\/shop_images\/header-logo_190x_63d7c5b6-e727-4392-86d4-916a400da1fc.png",
+    "logo_scrolled": "",
+    "logo_max_width": "190",
+    "cartdropdown": false,
+    "enablesearch": true,
+    "searchwhat": "product",
+    "main_linklist": "main-menu",
+    "megamenu1": "",
+    "megamenu2": "",
+    "megamenu3": "",
+    "megamenu4": "",
+    "megamenu5": "",
+    "megamenu6": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "https:\/\/twitter.com\/shopify",
+    "social_facebook_link": "https:\/\/facebook.com\/shopify",
+    "social_pinterest_link": "https:\/\/pinterest.com\/shopify",
+    "social_instagram_link": "http:\/\/instagram.com\/shopify",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "newsletter_action_url": "",
+    "newsletter_poup": false,
+    "newsletter_bg": "",
+    "newsletter_color": "#222222",
+    "newsletter_popup_length": "0",
+    "newsletter_popup_title": "",
+    "newsletter_popup_content": "",
+    "enable_crossclick": false,
+    "enable_colorswatch": false,
+    "color_swatchimage": false,
+    "cartajax": false,
+    "favicon": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#000",
+    "sections": {
+      "hero": {
+        "type": "hero",
+        "disabled": true,
+        "settings": {
+          "image": "",
+          "mobile_image": "",
+          "contained": "container-fluid",
+          "overlay": true,
+          "parallax_me": false,
+          "parallax_sensitivity": "200",
+          "alignment": "center",
+          "title": "Image with text overlay",
+          "title_color": "",
+          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
+          "text_color": "",
+          "hero_size": "medium",
+          "text_size": "large",
+          "button_label": "",
+          "button_link": "",
+          "text_layout": "center",
+          "text_align": "center"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "disabled": true,
+        "blocks": {
+          "slideshow-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/banner-image1.png",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "01",
+              "heading_color": "#000000",
+              "subheading": "Human-centered design",
+              "subheading_color": "#ffffff",
+              "button": "explore JUNIPERunltd.",
+              "link": "#"
+            }
+          },
+          "1585314047973": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/banner-image1.png",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "02",
+              "heading_color": "#000000",
+              "subheading": "Human-centered design",
+              "subheading_color": "#ffffff",
+              "button": "explore JUNIPERunltd.",
+              "link": "#"
+            }
+          }
+        },
+        "block_order": [
+          "slideshow-0",
+          "1585314047973"
+        ],
+        "settings": {
+          "contained": "container-fluid",
+          "autoplay": true,
+          "autoplay_speed": "7000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
+      },
+      "featured-collections": {
+        "type": "collection",
+        "disabled": true,
+        "settings": {
+          "title": "Featured collection",
+          "collection": "frontpage",
+          "grid": "3",
+          "rows": "2",
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "feature-row": {
+        "type": "feature-row",
+        "disabled": true,
+        "settings": {
+          "image": "",
+          "layout": "left",
+          "title": "Image with text",
+          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+          "button_label": "",
+          "button_link": ""
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "logo": "",
+          "footer_socials_enable": true,
+          "socials_title": "",
+          "footer_newsletter_enable": false,
+          "footer_newsletter_alone": false,
+          "newsletter_background": "",
+          "newsletter_color": ""
+        }
+      },
+      "WAMheader": {
+        "type": "WAMheader",
+        "settings": {
+          "active": false
+        }
+      },
+      "notification": {
+        "type": "notification",
+        "settings": {
+          "message": false,
+          "message_text": "Announce something here",
+          "message_icon": "",
+          "align_message_icon": "left",
+          "message_link": "",
+          "color_bg": "#7796a8",
+          "color_text": "#fff"
+        }
+      },
+      "mobile-nav": {
+        "type": "mobile-nav",
+        "blocks": {
+          "1585747026840": {
+            "type": "simplerow",
+            "settings": {
+              "main_title": "Shop",
+              "main_icon": "",
+              "main_link": "#"
+            }
+          },
+          "1585747190668": {
+            "type": "simplerow",
+            "settings": {
+              "main_title": "Life Unltd",
+              "main_icon": "",
+              "main_link": "#"
+            }
+          },
+          "1585747220316": {
+            "type": "simplerow",
+            "settings": {
+              "main_title": "Connections",
+              "main_icon": "",
+              "main_link": "#"
+            }
+          },
+          "1585747244307": {
+            "type": "simplerow",
+            "settings": {
+              "main_title": "Brands",
+              "main_icon": "",
+              "main_link": "#"
+            }
+          },
+          "1585747286188": {
+            "type": "simplerow",
+            "settings": {
+              "main_title": "About Us",
+              "main_icon": "",
+              "main_link": "#"
+            }
+          }
+        },
+        "block_order": [
+          "1585747026840",
+          "1585747190668",
+          "1585747220316",
+          "1585747244307",
+          "1585747286188"
+        ],
+        "settings": {}
+      },
+      "1585293700695": {
+        "type": "home-collections",
+        "blocks": {
+          "1585293700695-0": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "frontpage",
+              "title": "Footwear",
+              "collectionimage": "shopify:\/\/shop_images\/footwear-small_4d2e9b7f-6864-4e8d-a08a-f20489b10986.png",
+              "link_override": "",
+              "colwidth": "4",
+              "alignment": "center"
+            }
+          },
+          "1585293700695-1": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "frontpage",
+              "title": "Apparrel",
+              "collectionimage": "shopify:\/\/shop_images\/apparel.png",
+              "link_override": "",
+              "colwidth": "4",
+              "alignment": "center"
+            }
+          },
+          "1585293700695-2": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "frontpage",
+              "title": "Wellness",
+              "collectionimage": "shopify:\/\/shop_images\/wellness_d9efedc0-a865-4e77-a1eb-bc5f32df7bfc.png",
+              "link_override": "",
+              "colwidth": "4",
+              "alignment": "center"
+            }
+          },
+          "1585293767784": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "frontpage",
+              "title": "tech \/\/ gear",
+              "collectionimage": "shopify:\/\/shop_images\/tech-gear.png",
+              "link_override": "",
+              "colwidth": "4",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1585293700695-0",
+          "1585293700695-1",
+          "1585293700695-2",
+          "1585293767784"
+        ],
+        "settings": {
+          "title": "_SHOP by CATEGORY",
+          "full_width": false,
+          "no_gutters": false,
+          "remove_top_margin": false,
+          "move_text_below": true
+        }
+      },
+      "1585305670953": {
+        "type": "top-news",
+        "settings": {
+          "title": "_TOP news",
+          "blog": "news",
+          "post_limit": "5"
+        }
+      },
+      "1585374499168": {
+        "type": "slideshow-animation",
+        "blocks": {
+          "1585374499168-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-1.png",
+              "image_mobile": "shopify:\/\/shop_images\/slide-1-mobile.jpg",
+              "image_1": "",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounce",
+              "image_2": "",
+              "image_2_delay": "0.8s",
+              "image_2_animation": "bounce",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "01",
+              "title_delay": "1s",
+              "headingAnimation": "bounceInRight",
+              "heading_color": "#000000",
+              "subheading": "Human-centered design",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounceInDown",
+              "subheading_color": "",
+              "subheading_2": "Function for EVERYONE.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "bounce",
+              "button": "explore JUNIPERunltd.",
+              "link": "#",
+              "button_delay": "1s",
+              "buttonAnimation": "zoomInRight"
+            }
+          },
+          "1585630648619": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-2-bg.jpg",
+              "image_mobile": "",
+              "image_1": "shopify:\/\/shop_images\/slide-img2_1.png",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounceInDown",
+              "image_2": "shopify:\/\/shop_images\/slide-image-2-img_1.png",
+              "image_2_delay": "0.8s",
+              "image_2_animation": "bounceInUp",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "left",
+              "text_align": "left",
+              "title": "02",
+              "title_delay": "1.6s",
+              "headingAnimation": "bounceInLeft",
+              "heading_color": "#0a0000",
+              "subheading": "Fashion for ALL.",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounceInDown",
+              "subheading_color": "#ffffff",
+              "subheading_2": "Function for EVERYONE.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "bounceInUp",
+              "button": "explore INNOVATION",
+              "link": "#",
+              "button_delay": "1s",
+              "buttonAnimation": "fadeIn"
+            }
+          },
+          "1585638041802": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-2-bg.jpg",
+              "image_mobile": "",
+              "image_1": "shopify:\/\/shop_images\/slide3-img1_1.jpg",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounceInDown",
+              "image_2": "shopify:\/\/shop_images\/slide3-img2_1.png",
+              "image_2_delay": "0.8s",
+              "image_2_animation": "bounceInUp",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "03",
+              "title_delay": "1s",
+              "headingAnimation": "bounceInRight",
+              "heading_color": "#000000",
+              "subheading": "fashion chameleon",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounceInDown",
+              "subheading_color": "#ffffff",
+              "subheading_2": "",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "bounce",
+              "button": "explore STORIES",
+              "link": "#",
+              "button_delay": "1s",
+              "buttonAnimation": "flash"
+            }
+          }
+        },
+        "block_order": [
+          "1585374499168-0",
+          "1585630648619",
+          "1585638041802"
+        ],
+        "settings": {
+          "contained": "container-fluid",
+          "autoplay": false,
+          "autoplay_speed": "9000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
+      },
+      "1585895366210": {
+        "type": "your-voice",
+        "settings": {
+          "title": "<h2>_YOUR <span>voice<\/span>\n<\/h2>",
+          "heading": "Time to connect",
+          "text": "<p>From Velcro closures to stretch laces, our round-up of easy on\/easy off, everyday shoes help you<br><strong>step out in confidence.<\/strong><\/p>",
+          "button_text": "Vote NOW",
+          "button_link": "#"
+        }
+      },
+      "1585898969382": {
+        "type": "explore-section",
+        "settings": {
+          "title": "<h2>_Explore <em>with<\/em> JUNIPER<span>unltd<\/span>\n<\/h2>",
+          "exploer_heading": "<h1>life<\/h1><br><h1>Unlimited<\/h1>",
+          "image1": "shopify:\/\/shop_images\/14471308-ce0f-45b7-9d6c-b4593317cd7c_20190429_DBaum_Still-Life_16966-1.jpg",
+          "image_1_button": "JUNIPERunltd. marketplace",
+          "image_1_button_link": "#",
+          "image2": "shopify:\/\/shop_images\/2f0cd83d-4f67-4892-a559-1049dcacf0fb_20170918_DBaum_Everlane_Editorial_-380-Edit_1.jpg",
+          "image_2_button": "explore STORIES",
+          "image_2_button_link": "#",
+          "image3": "shopify:\/\/shop_images\/shoes_1.png",
+          "image_3_button": "discover CONNECTIONS",
+          "image_3_button_link": "#"
+        }
+      },
+      "header-bg": {
+        "type": "header-bg",
+        "settings": {}
+      },
+      "slideshow-connection": {
+        "type": "slideshow-connection",
+        "blocks": {
+          "1585917804435": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-1-mobile.jpg",
+              "image_mobile": "",
+              "image_1": "",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounce",
+              "image_2": "",
+              "image_2_delay": "0.8s",
+              "image_2_animation": "bounce",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "Image slide",
+              "title_delay": "1s",
+              "headingAnimation": "bounce",
+              "heading_color": "",
+              "subheading": "Tell your brand's story through video and images",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounce",
+              "subheading_color": "",
+              "subheading_2": "Function for EVERYONE.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "bounce",
+              "button": "Shop Now",
+              "link": "",
+              "button_delay": "1s",
+              "buttonAnimation": "bounce"
+            }
+          },
+          "1585917866493": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-2-bg.jpg",
+              "image_mobile": "",
+              "image_1": "",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounce",
+              "image_2": "",
+              "image_2_delay": "0.8s",
+              "image_2_animation": "bounce",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "Image slide",
+              "title_delay": "1s",
+              "headingAnimation": "bounce",
+              "heading_color": "",
+              "subheading": "Tell your brand's story through video and images",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounce",
+              "subheading_color": "",
+              "subheading_2": "Function for EVERYONE.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "bounce",
+              "button": "Shop Now",
+              "link": "",
+              "button_delay": "1s",
+              "buttonAnimation": "bounce"
+            }
+          }
+        },
+        "block_order": [
+          "1585917804435",
+          "1585917866493"
+        ],
+        "settings": {
+          "contained": "container",
+          "autoplay": true,
+          "autoplay_speed": "7000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
+      },
+      "slideshow-shop": {
+        "type": "slideshow-shop",
+        "blocks": {
+          "1586000096038": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-1-mobile.jpg",
+              "image_2": "",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "care+wear",
+              "heading_color": "",
+              "subheading": "Care + Wear creates innovative HEALTHWEAR to offer  FUNCTIONAL, fashionable solutions to patients.",
+              "subheading_color": "",
+              "button": "shop CARE+WEAR",
+              "link": "#"
+            }
+          }
+        },
+        "block_order": [
+          "1586000096038"
+        ],
+        "settings": {
+          "contained": "container-fluid",
+          "autoplay": true,
+          "autoplay_speed": "7000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
+      },
+      "shop-collection": {
+        "type": "shop-collection",
+        "blocks": {
+          "1585997895039": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "footwear",
+              "title": "",
+              "collectionimage": "shopify:\/\/shop_images\/footwear-small_4d2e9b7f-6864-4e8d-a08a-f20489b10986.png",
+              "link_override": "",
+              "colwidth": "4",
+              "alignment": "center"
+            }
+          },
+          "1585998849188": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "apparel",
+              "title": "",
+              "collectionimage": "shopify:\/\/shop_images\/apparel.png",
+              "link_override": "",
+              "colwidth": "4",
+              "alignment": "center"
+            }
+          },
+          "1585999612020": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "wellness",
+              "title": "",
+              "collectionimage": "shopify:\/\/shop_images\/wellness.png",
+              "link_override": "",
+              "colwidth": "4",
+              "alignment": "center"
+            }
+          },
+          "1585999639963": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "tech-gear",
+              "title": "",
+              "collectionimage": "shopify:\/\/shop_images\/tech-gear.png",
+              "link_override": "",
+              "colwidth": "4",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1585997895039",
+          "1585998849188",
+          "1585999612020",
+          "1585999639963"
+        ],
+        "settings": {
+          "title": "Collection list",
+          "full_width": false,
+          "no_gutters": false,
+          "remove_top_margin": false,
+          "move_text_below": false
+        }
+      },
+      "sportlight-cards": {
+        "type": "sportlight-cards",
+        "blocks": {
+          "1586000521469": {
+            "type": "card",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/boucle-cape-cape-iz-invites-you-to-paint-the-town-290759_2.jpg",
+              "tag": "gift",
+              "title": "IZ Adaptive",
+              "copy": "Boucle cape"
+            }
+          },
+          "1586000674162": {
+            "type": "card",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/larkin_canary_lifestyle_8fb001a6-1f3d-4e92-84f6-48bbba677504_2.jpg",
+              "tag": "story",
+              "title": "Plae",
+              "copy": "The Larkin Sneakers"
+            }
+          },
+          "1586000773668": {
+            "type": "card",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Magna-Ready-Pants_2.jpg",
+              "tag": "edits",
+              "title": "MagnaReady",
+              "copy": "Grid Check Dress Shirt with Magnetic Closure"
+            }
+          }
+        },
+        "block_order": [
+          "1586000521469",
+          "1586000674162",
+          "1586000773668"
+        ],
+        "settings": {
+          "title": "_SPOTLIGHT <span>on<\/span>"
+        }
+      },
+      "shop-collection-text": {
+        "type": "shop-collection-text",
+        "blocks": {
+          "1586000953787": {
+            "type": "collection",
+            "settings": {
+              "title": "easy on \/<br>easy off",
+              "link": "#"
+            }
+          },
+          "1586000983022": {
+            "type": "collection",
+            "settings": {
+              "title": "sensory <br>solutions",
+              "link": "#"
+            }
+          },
+          "1586001037686": {
+            "type": "collection",
+            "settings": {
+              "title": "recovery <br>wear",
+              "link": "#"
+            }
+          },
+          "1586001168190": {
+            "type": "collection",
+            "settings": {
+              "title": "travel\/<br>mobility",
+              "link": "#"
+            }
+          }
+        },
+        "block_order": [
+          "1586000953787",
+          "1586000983022",
+          "1586001037686",
+          "1586001168190"
+        ],
+        "settings": {
+          "title": "_SHOP <em>by<\/em> SOLUTION"
+        }
+      },
+      "slideshow-shop-secondary": {
+        "type": "slideshow-shop-secondary",
+        "settings": {
+          "contained": "container",
+          "autoplay": true,
+          "autoplay_speed": "7000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "small",
+          "text_size": "medium"
+        }
+      },
+      "shop-brand-images": {
+        "type": "shop-brand-images",
+        "blocks": {
+          "1586001467908": {
+            "type": "collection",
+            "settings": {
+              "image": "",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1586001467908"
+        ],
+        "settings": {
+          "title": "_BRANDS <em>we<\/em> LOVE",
+          "link_text": "view all brands",
+          "link": ""
+        }
+      },
+      "filters": {
+        "type": "filters",
+        "settings": {}
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": "3",
+          "rows": "2",
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": false,
+          "tags_enable": false,
+          "filter_settings": "Off",
+          "filters": "Wood,Bedroom,Black,Leather"
+        }
+      },
+      "swatch-colors": {
+        "type": "swatch-colors",
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "1585374499168",
+      "slideshow",
+      "1585305670953",
+      "1585293700695",
+      "feature-row",
+      "hero",
+      "featured-collections",
+      "1585898969382",
+      "1585895366210"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#788188",
+      "color_sale_text": "#7796A8",
+      "color_borders": "#e8e9eb",
+      "color_button": "#7796A8",
+      "color_button_text": "#fff",
+      "color_small_button": "#fff",
+      "color_small_button_text": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": "0.25",
+      "color_body_bg": "#fff",
+      "type_header_family": "Google_Work+Sans_600_sans",
+      "type_header_base_size": "26px",
+      "type_base_family": "Google_Work+Sans_400_sans",
+      "type_base_size": "16px",
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "feature-row",
+        "slideshow"
+      ]
+    }
+  }
+}

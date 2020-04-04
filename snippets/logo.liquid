@@ -1,0 +1,25 @@
+{% capture image_size %}{{ settings.logo_max_width }}x{% endcapture %}
+{% if template == 'index' %}
+<div>
+  <img src="{{ settings.logo | img_url: image_size }}"
+       srcset="{{ settings.logo | img_url: image_size }} 1x, {{ settings.logo | img_url: image_size, scale: 2 }} 2x"
+       alt="{{ settings.logo.alt | default: shop.name }}"
+       itemprop="logo">
+</div>
+{% else %}
+<div>
+  <img src="{{ settings.logo_inner_pages | img_url: image_size }}"
+       srcset="{{ settings.logo_inner_pages | img_url: image_size }} 1x, {{ settings.logo_inner_pages | img_url: image_size, scale: 2 }} 2x"
+       alt="{{ settings.logo_inner_pages.alt | default: shop.name }}"
+       itemprop="logo">
+</div>
+{% endif %}
+{% if settings.logo_scrolled and settings.header_sticky %}
+  <div>
+    <img src="{{ settings.logo_scrolled | img_url: image_size }}"
+         srcset="{{ settings.logo_scrolled | img_url: image_size }} 1x, {{ settings.logo_scrolled | img_url: image_size, scale: 2 }} 2x"
+         alt="{{ settings.logo.logo_scrolled | default: shop.name }}"
+         itemprop="logo">
+  </div>
+{% endif %}
+<span class="visually-hidden">{{ shop.name }}</span>

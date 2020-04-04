@@ -1,0 +1,119 @@
+<div class="explore-with">
+        <div class="section-header">
+            <div class="container">
+            {% if section.settings.title != blank %}
+                <h2>{{ section.settings.title }}</h2>
+            {% endif %}
+            </div>
+        </div>
+        <div class="explore-content container-fluid">
+            <div class="row">
+                <div class="col-lg-9 d-none d-xl-block"></div>
+                <div class="col-sm-30 col-md-25 col-xl-20 pr-sm-0">
+                {% if section.settings.image1 != blank %}
+                    <div class="explore-image explore-image1" style="background-image:url('{{ section.settings.image1 | img_url: '1500x' }}')">
+                    {% if section.settings.image_1_button_link != blank and section.settings.image_1_button != blank %}
+                        <a href="{{ section.settings.image_1_button_link }}">{{ section.settings.image_1_button }}</a>
+                    {% endif %}
+                    </div>
+                {% endif %}
+                {% if section.settings.exploer_heading != blank %}
+                    <div class="explore-heading">
+                        {{ section.settings.exploer_heading }}
+                    </div>
+                {% endif %}
+                 </div>
+                {% if section.settings.image2 != blank %}
+                <div class="col-sm-30 col-md-35 col-xl-31 pr-xl-0">
+                    <div class="explore-image explore-image2" style="background-image:url('{{ section.settings.image2 | img_url: '1500x' }}')">
+                    {% if section.settings.image_2_button_link != blank and section.settings.image_2_button != blank %}
+                        <a href="{{ section.settings.image_2_button_link }}">{{ section.settings.image_2_button }}</a>
+                    {% endif %}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="col-lg-9 d-none d-xl-block">
+                </div>
+                {% if section.settings.image2 != blank %}
+                <div class="col-sm-30 col-md-30 col-xl-26">
+                    <div class="explore-image explore-image3" style="background-image:url('{{ section.settings.image3 | img_url: '1500x' }}')">
+                    </div>
+                </div>
+                {% endif %}
+                <div class="col-sm-30 col-md-30 col-xl-25">
+                    <div class="discover">
+                    {% if section.settings.image_3_button_link != blank and section.settings.image_3_button != blank %}
+                        <a href="{{ section.settings.image_3_button_link }}">{{ section.settings.image_3_button }}</a>
+                    {% endif %}
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Explore Juniper",
+    "class": "index-section explore-section",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section Title"
+      },
+      {
+        "type": "html",
+        "id": "exploer_heading",
+        "label": "Explore Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image 1"
+      },
+      {
+        "type": "text",
+        "id": "image_1_button",
+        "label": "Image 1 Button"
+      },
+      {
+        "type": "url",
+        "id": "image_1_button_link",
+        "label": "Image 1 Button Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Image 2"
+      },
+      {
+        "type": "text",
+        "id": "image_2_button",
+        "label": "Image 2 Button"
+      },
+      {
+        "type": "url",
+        "id": "image_2_button_link",
+        "label": "Image 2 Button Link"
+      },
+      {
+        "type": "image_picker",
+        "id": "image3",
+        "label": "Image 3"
+      },
+      {
+        "type": "text",
+        "id": "image_3_button",
+        "label": "Image 3 Button"
+      },
+      {
+        "type": "url",
+        "id": "image_3_button_link",
+        "label": "Image 3 Button Link"
+      }
+    ],
+    "presets": [{
+      "name": "Explore Juniper",
+      "category": "Image"
+    }]
+  }
+{% endschema %}

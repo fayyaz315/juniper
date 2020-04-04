@@ -1,0 +1,29 @@
+{% if grid_image_width %}
+  {%- assign grid_image_width_2 = grid_image_width | split:'x' -%}
+  {%- assign grid_image_width_2 = grid_image_width_2[0] | times:  2 | append: 'x' -%}
+{% else %}
+  {%- assign grid_image_width_2 = '1100x' -%}
+{% endif %}
+
+<a href="{{ product.url }}">
+  <div class="product-img" style="background-image:url('{{ product.featured_image.src | img_url: grid_image_width_2 }}');">
+  {% if product.price < product.compare_at_price %}
+    <span class="sale">sale</span>
+  {% endif %}
+    {% if product.tags contains 'new' %}
+      <span class="nproduct">new</span>
+    {% endif %}
+  </div>
+  <div class="product-detail">
+    <h3>{{ product.title }}</h3>
+    {% if section.settings.show_vendor %}
+    <h4>{{ product.vendor }}</h4>
+    {% endif %}
+    {% if product.price < product.compare_at_price %}
+      <h5 class="product-price__price">{{ product.price | money}}</h5>
+      <h5 class="product-price__price"><s>{{ product.compoare_at_price | money }}</s></h5>
+      {% else %}
+        <h5 class="product-price__price">{{ product.price | money }}</h5>
+    {% endif %}
+  </div>
+</a>

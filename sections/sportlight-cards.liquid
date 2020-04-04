@@ -1,0 +1,109 @@
+{% if section.settings.title != blank %}
+	<div class="section-header">
+		<div class="container">
+			<h2>{{ section.settings.title }}</h2>
+		</div>
+	</div>
+{% endif %}
+{% if section.blocks.size > 1 %}
+	<div class="spotlight-images">
+   {% for block in section.blocks %}
+      <div class="mask selected" data-i="{{ forloop.index }}">
+      {% if block.settings.image != blank %}
+         {{ block.settings.image | img_url: '1500x' | img_tag }}
+      {% endif %}
+		</div>
+   {% endfor %}
+	</div>
+	<div class="container-fluid no-padding">
+		<div class="spotlight-blocks">
+      {% for block in section.blocks %}
+      <div class="spotify-block gift-bg border-right-5 active" data-i="{{ forloop.index }}">
+         <a href="" class="spotify-text">
+            {% if block.settings.tag != blank %}
+               <h4>{{ block.settings.tag }}</h4>
+            {% endif %}
+            {% if block.settings.title != blank %}
+            <h2>{{ block.settings.title }}</h2>
+            {% endif %}
+            {% if block.settings.copy != blank %}
+            <h3>{{ block.settings.copy }}</h3>
+            {% endif %}
+         </a>
+      </div>
+      {% endfor %}
+		</div>
+	</div>
+<script>
+$(document).ready(function () {
+	$(".spotify-block").hover(function () {
+		var dataAtr = $(this).attr("data-i");
+		var match = $(".spotlight-images .mask[data-i='" + dataAtr + "']");
+		$(".spotlight-images .mask").each(function () {
+			$(this).removeClass("selected");
+		});
+		$(".spotify-block").each(function () {
+			$(this).removeClass("active");
+		})
+		$(this).addClass("active")
+		match.addClass("selected");
+		// $(".s")
+	})
+
+	$('.spotlight-blocks').slick({
+		slidesToShow: 3,
+		slidesToScroll: 1,
+		responsive: [{
+			breakpoint: 768,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true
+			}
+		}]
+	});
+})
+</script>
+{% endif %}
+{% schema %}
+   {
+      "name":"Spotlight",
+      "class":"spotlight",
+      "settings":[
+         {
+            "type":"text",
+            "id":"title",
+            "label":"Title",
+            "default":"_SPOTLIGHT <span>on</span>"
+         }
+      ],
+      "blocks":[
+         {
+            "type":"card",
+            "name":"Card",
+            "settings":[
+               {
+                  "type":"image_picker",
+                  "id":"image",
+                  "label":"Image"
+               },
+               {
+                  "type":"text",
+                  "id":"tag",
+                  "label":"Tag"
+               },
+               {
+                  "type":"text",
+                  "id":"title",
+                  "label":"Title"
+               },
+               {
+                  "type":"text",
+                  "id":"copy",
+                  "label":"Copy"
+               }
+            ]
+         }
+      ]
+   }
+{% endschema %}

@@ -1,0 +1,37 @@
+<div class="{% if section.settings.full_width %}container-fluid{% else %}container{% endif %}{% if section.settings.remove_top_margin %} index-section--flush{% endif %}">
+  {% if section.settings.title != blank %}
+    <div class="section-header">
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+  {% endif %}
+
+  <div class="row{% if section.settings.no_gutters %} no-gutters{% endif %}">
+    {% for block in section.blocks %}
+      {% case block.settings.colwidth %}
+        {% when '1' %}
+          {%- assign grid_item_width = 'col-60' -%}
+          {%- assign collection_image_size = '1400x' -%}
+        {% when '2' %}
+          {%- assign grid_item_width = 'col-lg-30 col-md-30' -%}
+          {%- assign collection_image_size = '750x' -%}
+        {% when '3' %}
+          {%- assign grid_item_width = 'col-lg-20 col-md-30' -%}
+          {%- assign collection_image_size = '500x' -%}
+        {% when '3-2' %}
+          {%- assign grid_item_width = 'col-lg-40 col-md-30' -%}
+          {%- assign collection_image_size = '300x' -%}
+        {% when '4' %}
+          {%- assign grid_item_width = 'col-lg-15 col-sm-30 col-30' -%}
+          {%- assign collection_image_size = '450x' -%}
+        {% when '4-3' %}
+          {%- assign grid_item_width = 'col-lg-45 col-md-30' -%}
+          {%- assign collection_image_size = '1000x' -%}
+      {% endcase %}
+      {%- assign col_handle = block.settings.collection -%}
+      {%- assign collection = collections[col_handle] -%}
+      <div class="{{ grid_item_width }} collection-grid-main">
+        {% include 'collection-grid-home' %}
+      </div>
+    {% endfor %}
+  </div>
+</div>

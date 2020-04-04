@@ -1,0 +1,592 @@
+{% paginate blog.articles by 12 %}
+
+<div class="container">
+  <header class="section-header text-center">
+    <h1>{{ page_title }}</h1>
+  </header>
+</div>
+
+<div class="{% if section.settings.layout == 'list' %}blog--list-view{% endif %}">
+  {% if section.settings.layout == 'grid' %}
+    <div class="container">
+      <div class="row grid--blog">
+
+        {% if section.settings.enable_sidebar %}
+          <div class="col-md-40">
+            <div class="row">
+        {% endif %}
+
+          {% for article in blog.articles %}
+          <div class="{% if section.settings.enable_sidebar %}col-xl-20 col-lg-30{% else %}col-xl-15 col-lg-20 col-md-30{% endif %}">
+            {% if article.image %}
+              <a href="{{ article.url }}" class="article__list-image" style="background-image:url({{ article.image.src | img_url: '345x' }})"></a>
+            {% endif %}
+
+            <div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+              <h2 class="article__title h3">
+                <a href="{{ article.url }}">{{ article.title }}</a>
+              </h2>
+
+              {% if section.settings.blog_show_author %}
+                <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+              {% endif %}
+
+              {% if section.settings.blog_show_date %}
+                <span class="article__date">
+                  {{ article.published_at | time_tag: format: 'month_day_year' }}
+                </span>
+              {% endif %}
+
+              <div class="rte article__grid-excerpt">
+                {% if article.excerpt.size > 0 %}
+                  {{ article.excerpt }}
+                {% else %}
+                  {{ article.content | strip_html | truncate: 150 }}
+                {% endif %}
+              </div>
+
+              {% if article.tags.size > 0 %}
+                <div class="article__tags rte">
+                  {% for tag in article.tags %}
+                    <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag">{{ tag }}</a>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <ul class="list--inline">
+                <li>
+                  <a href="{{ article.url }}" class="btn btn--small">
+                    {{ 'blogs.article.read_more' | t }}
+                  </a>
+                </li>
+
+                {% if blog.comments_enabled? and article.comments_count > 0 %}
+                  <li>
+                    <a href="{{ article.url }}#comments" class="btn btn--secondary btn--small btn--link">
+                      {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                    </a>
+                  </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        {% endfor %}
+        {% if section.settings.enable_sidebar %}
+            </div>
+          </div>
+          <aside class="col-md-20">
+            <div class="sidebar__item">
+              <h4>Filter Articles</h4>
+              {% if blog.tags.size > 0 %}
+                <select id="BlogTagFilter">
+                  <option value="/blogs/{{ blog.handle }}">{{ 'blogs.article.all_topics' | t }}</option>
+                  {% for tag in blog.all_tags %}
+                    <option value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
+                  {% endfor %}
+                </select>
+              {% endif %}
+            </div>
+
+            {% include 'sidebar' %}
+
+          </aside>
+        {% endif %}
+          
+      </div>
+    </div>
+  {% else %}
+    <div class="border-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-40">
+            {% for article in blog.articles %}
+              <div class="article--listing">
+                <h2 class="article__title h3"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+                {% if section.settings.blog_show_author %}
+                  <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                {% endif %}
+
+                {% if section.settings.blog_show_date %}
+                  <span class="article__date">
+                    {{ article.published_at | time_tag: format: 'month_day_year' }}
+                  </span>
+                {% endif %}
+
+                {% if article.image %}
+                  <style>
+                    .article__list-image {
+                      background-image: url({{ article.image.src | img_url: '1600x' }});
+                    }
+
+                    @media only screen and (max-width: 1200px) {
+                      .article__list-image {
+                        background-image:url('{{ article.image.src | img_url: '1280x' }}'); 
+                      }
+                    }
+                    @media only screen and (max-width: 992px) {
+                      .article__list-image {
+                        background-image:url('{{ article.image.src | img_url: '992x' }}'); 
+                      }
+                    }
+                    @media only screen and (max-width: 768px) {
+                      .article__list-image {
+                        background-image:url('{{ article.image.src | img_url: '768x' }}'); 
+                      }
+                    }
+                    @media only screen and (max-width: 576px) {
+                      .article__list-image {
+                        background-image:url('{{ article.image.src| img_url: '576x' }}'); 
+                      }
+                    }
+                  </style>                
+                  <a href="{{ article.url }}" class="article__list-image"></a>
+                {% endif %}
+
+                <div class="rte">
+                  {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt }}
+                  {% else %}
+                    {{ article.content | strip_html | truncate: 150 }}
+                  {% endif %}
+                </div>
+
+                {% if article.tags.size > 0 %}
+                  <div class="article__tags article__tags--list rte">
+                    {{ 'blogs.article.posted_in' | t }}
+                    {% for tag in article.tags %}
+                      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                <ul class="list--inline article__meta-buttons">
+                  <li>
+                    <a href="{{ article.url }}" class="btn btn--small">
+                      {{ 'blogs.article.read_more' | t }}
+                    </a>
+                  </li>
+
+                  {% if blog.comments_enabled? and article.comments_count == 0 %}
+                    <li>
+                      <a href="{{ article.url }}#comment_form" class="btn btn--secondary btn--small">
+                        {{ 'blogs.comments.title' | t }}
+                      </a>
+                    </li>
+                  {% endif %}
+
+                  {% if blog.comments_enabled? and article.comments_count > 0 %}
+                    <li>
+                      <a href="{{ article.url }}#comments" class="btn btn--secondary btn--small">
+                        {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                      </a>
+                    </li>
+                  {% endif %}
+                </ul>
+              </div>
+            {% endfor %}
+
+          </div>
+
+          {% if section.settings.enable_sidebar %}
+            <aside class="col-md-20">
+              <div class="sidebar__item">
+                <h4>Filter Articles</h4>
+                {% if blog.tags.size > 0 %}
+                  <select id="BlogTagFilter">
+                    <option value="/blogs/{{ blog.handle }}">{{ 'blogs.article.all_topics' | t }}</option>
+                    {% for tag in blog.all_tags %}
+                      <option value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
+                    {% endfor %}
+                  </select>
+                {% endif %}
+              </div>
+
+              {% include 'sidebar' %}
+
+            </aside>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+</div>
+{% endpaginate %}
+
+<div class="custom-blog-template">
+  <div class="blog-template-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-45 blog-template-ls">
+          <div class="section-title">_#EverybodyFits</div>
+          <div class="blog-featured-img" style="background-image: url({{ 'blog-featured-image.jpg' | asset_url }});"></div>
+          <div class="blog-template-details">
+            <div class="row">
+              <div class="col-md-22">
+                <div class="details-left-side">
+                <h3>#EverybodyFits </h3><br>
+                <span>People who inspire us,</span><br>
+                <span>by redefining beauty and style.</span>
+              </div>
+              </div>
+              <div class="col-md-38 details-right-side">
+                <p>In memory of <a href="#">Mama Cax,</a> model and disabled rights activist.
+                  With her prosthetic right leg, Cax was a proudly unconventional
+                  figure who changed the face of modern modeling. </p>
+              </div>
+            </div>
+            
+          </div>
+          <div class="blog-grids-container">
+            <div class="row">
+              <div class="col-md-20">
+                <div class="blog-grid">
+                  <div class="blog-grid-img" style="background-image:url({{ 'blog-grid1.jpg' | asset_url }})"></div>
+                  <div class="blog-grid-details">
+                    <h3>gear that goes everywhere</h3>
+                    <p>Cool gear that makes traveling seem
+                      effortless and manageable, from
+                      scooter luggage to RFID travel bags. </p>
+                    <a href="#">READ MORE ABOUT THIS GEAR HERE</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-20">
+                <div class="blog-grid">
+                  <div class="blog-grid-img" style="background-image:url({{ 'blog-grid2.jpg' | asset_url }})"></div>
+                  <div class="blog-grid-details">
+                    <h3>clothing that grows</h3>
+                    <p>Clothing that grows with children up to
+                      seven sizes. Innovative pattern made
+                      from pleated lightweight fabric which is
+                      machine-washable and recyclable</p>
+                    <a href="#">READ MORE ABOUT LAB HERE</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-20">
+                <div class="blog-grid">
+                  <div class="blog-grid-img" style="background-image:url({{ 'blog-grid3.jpg' | asset_url }})"></div>
+                  <div class="blog-grid-details">
+                    <h3>JUNIPER DAILY BOOST</h3>
+                    <p>Quotes | Memes | Stories that inspire
+                      and empowe</p>
+                    <a href="#">READ ABOUT DAILY BOOST HERE</a>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-15 blog-template-rs">
+          <div class="section-title">_NEW + NOW</div>
+          <div class="latest-list-container">
+            <div class="latest-list">
+              <span class="list-tag">R+D</span>
+              <div class="list-detail">
+                <h3>SMART MATERIALS</h3>
+                <p>Imagine running shoes which
+                  morph and dynamically
+                  adapt to your particular
+                  anatomy and style, as well as
+                  the day’s weather conditions,
+                  and which continuously
+                  collect data to feed back into
+                  the design process.</p>
+                  <a href="#">DISCOVER THE FUTURE <br class="d-none d-lg-block">OF SMART MATERIALS HERE</a>
+              </div>
+
+            </div>
+            <div class="latest-list">
+              <span class="list-tag">charity of the month</span>
+              <div class="list-image" style="background-image: url({{ 'wide-3wx.jpg' | asset_url }});"></div>
+              <div class="list-detail">
+                <h3>THE HEROES PROJECT</h3>
+                <p>The Heroes Project makes
+                  the impossible a reality by
+                  empowering injured military vets
+                  through physical and emotional
+                  training to explore the farthest
+                  reaches of themselves and the
+                  world they live in. </p>
+                  <a href="#">LEARN MORE ABOUT <br class="d-none d-lg-block">THE HEROES PROJECT HERE.</a>
+              </div>
+
+            </div>
+            <div class="latest-list">
+              <span class="list-tag">event</span>
+              <div class="list-detail">
+                <h3>GET YOUR MOVE ON
+                  FOR PARKINSON’S</h3>
+                <p>Moving Day is a walk in support
+                  of Parkinson’s. The cause has
+                  brought together over 130,000
+                  people across the country and
+                  raised nearly $22 Million. </p>
+                  <a href="#">FOR MORE INFORMATION ABOUT <br class="d-none d-lg-block">EVENTS, CLICK HERE.</a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="archive-container container-fluid">
+        <div class="row">
+          <div class="col-lg-50 offset-lg-5">
+            <h2>
+              _JUNIPER<span>unltd</span> ARCHIVE <p>FIND ALL PAST CONTENT HERE </p>
+              </h2>
+              <div class="archive-content row">
+                  <div class="col-md-20 archive-content-img" style="background-image: url({{ 'Aerie-Models-Thumb.jpg' | asset_url }});">
+                  </div>
+                  <div class="col-md-40 archive-content-text">
+                    <h3>_THE <em>latest</em> NEWS</h3>
+                    <p>
+                      <span>Aerie</span> added a whole new intersection of diversity to its roster. The company is
+                      now featuring women with visible disabilities and illnesses, ranging from those with
+                      Down’s Syndrome, vitiligo, insulin pumps or an ostomy pouch.
+                    </p>                    
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+  <div class="explore-with explore-with-blogpage">
+    <div class="section-header">
+        <div class="container">
+            <h2>
+            _Explore <em>with</em> JUNIPER<span>unltd</span>
+            </h2>
+        </div>
+    </div>
+    <div class="explore-content container-fluid">
+        <div class="row">
+            <div class="col-lg-9 d-none d-xl-block"></div>
+            <div class="col-sm-30 col-md-25 col-xl-20 pr-sm-0 text-center">
+                <div class="explore-image explore-image1" style="background-image:url({{'Umur-Ozcan-Sveta.jpg' | asset_url }})"></div>
+                <a href="#" class="explore-left-btn">explore<br>
+                  THE FUTURE OF FASHION</a>
+             </div>
+            <div class="col-sm-30 col-md-35 col-xl-31 pr-xl-0">
+                <div class="explore-image explore-image2" style="background-image:url({{ 'TeenVogue.jpg' | asset_url }})">
+                    <a href="">their STORY</a>
+                </div>
+            </div>
+            <div class="col-lg-9 d-none d-xl-block">
+         
+            </div>
+            <div class="col-sm-30 col-md-30 col-xl-26">
+                <div class="explore-image explore-image3" style="background-image:url({{'blogpage-graph.jpg' | asset_url }})">
+                </div>
+            </div>         
+            <div class="col-sm-30 col-md-30 col-xl-25">
+                <div class="discover">
+                    <a href="">JUNIPER<sub>unltd.</sub> EVENTS</a>
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+<div class="bottom-content container-fluid">
+  <div class="row">
+    <div class="col-lg-40 offset-lg-15 text-right">
+      <div class="bottom-content-text">
+<p><em>With a goal of making the world easier and more inclusive for all people,<br>
+<strong>JUNIPER</strong><sub>unltd.</sub> <strong>LAB</strong> constantly collaborates with partners to develop cutting-edge<br>
+technologies and human-centered designs with a focus on everyday use and function.</em></p>
+<h3>Learn about our latest collaborations and partnerships with Untuckit and Spyder. </h3>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+</div>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-40 mx-auto">
+      <h2>archive_</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-60 text-center">
+      <div class="blog-links font-italic">
+        <a href="#">THEME of MONTH</a> / <a href="#">by CONDITION</a> / <a href="#" >LATEST</a> / <a href="#" >ALL</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-30">
+      <p>_ARCHIVE/ <a href="#">ALL</a></p>
+    </div>
+    <div class="col-md-30 text-right">
+      <p>SEARCH // <input type="text" ></p>
+    </div>
+  </div>
+
+
+</div>
+<div class="container">
+  <div class="row">
+    {% for i in (1..16) %}
+    <div class="col-md-15">
+      <div class="article-wrap">
+        <a href="#"><div class="article-image" style="background-image:url('https://cdn.shopify.com/s/files/1/0363/6704/0647/files/slide-image-2-img_1.png')"></div></a>
+          <div class="article-meta">
+            <p><a href="#"><strong>THEME of Month</strong></a> / <a href="#" class="font-italic">PARAKINSON</a> / <a href="#" class="font-italic">GEAR</a></p>
+          </div>
+          <div class="article-content">
+            <h2>gear that goes everywhere</h2>
+            <p>Cool gear that makes traveling seem effortless and manageable</p>
+            <a href="#">Read more about this gear here</a>
+          </div>
+      </div>
+    </div>
+    {% endfor%}
+
+  </div>
+
+</div>
+{% schema %}
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "list",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid"
+          },
+          {
+            "value": "list",
+            "label": "List"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sidebar",
+        "label": "Enable sidebar?"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection_sidebar",
+        "name": "Featured Collection",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection to use"
+          },
+          {
+            "type": "select",
+            "id": "collection_qty",
+            "options": [
+              { "value": "2", "label": "2" },
+              { "value": "3", "label": "3" },
+              { "value": "4", "label": "4" },
+              { "value": "5", "label": "5" },
+              { "value": "6", "label": "6" }
+            ],
+            "label": "Number of products to show"
+          }
+        ]
+      },
+      {
+        "type": "menu_sidebar",
+        "name": "Quick Links",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "link_list",
+            "id": "quick_links",
+            "label": "Linklist to use"
+          }
+        ]
+      },
+      {
+        "type": "image_sidebar",
+        "name": "Advertisement",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Ad image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Ad link"
+          }
+        ]
+      },
+      {
+        "type": "blog_sidebar",
+        "name": "Most Recent Blog Post",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Latest Article"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

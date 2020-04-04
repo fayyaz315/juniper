@@ -1,0 +1,71 @@
+<div class="container">
+{% if section.settings.title != blank %}
+   <div class="section-header">
+      <h2>{{ section.settings.title }}</h2>
+   </div>
+{% endif %}
+{% if section.blocks.size > 0 %}
+   <div class="row">
+   {% for block in section.blocks %}
+      <div class="col-lg-15 col-sm-30 col-60 collection-grid-main">
+         <a href="{{ block.settings.link }}">
+            <div class="collection-grid-item">
+               <div class="collection-grid-item__link">
+                  <div class="collection-grid-item__overlay">
+                     dsfasdfs
+                  </div>
+               </div>
+            </div>
+            <div class="collection-grid__text collection-grid__text-below text-center">
+            {% if block.settings.title contains '<br>' %}
+            {%- assign title_parts = block.settings.title | split: '<br>' -%}
+            {% for title_part in title_parts %}
+               {% unless forloop.index == 1 %}
+                  <br>
+               {% endunless %}
+               <h3>{{ title_parts }}</h3>
+            {% endfor %}
+               {% else %}
+                  <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+            </div>
+         </a>
+      </div>
+   {% endfor %}
+   </div>
+   {% endif %}
+</div>
+{% schema %}
+   {
+      "name":"Collection Circle Text",
+      "class":"shop-by index-section home-collection-list",
+      "settings":[
+         {
+            "type":"text",
+            "id":"title",
+            "label":"Title",
+            "default":"_SHOP <em>by</em> SOLUTION"
+         }
+      ],
+      "blocks":[
+         {
+            "type":"collection",
+            "name":"collection",
+            "settings":[
+               {
+                  "type":"text",
+                  "id":"title",
+                  "label":"Title",
+                  "info":"add <br> tag for line break",
+                  "default":"easy on /<br>easy off"
+               },
+               {
+                  "type":"url",
+                  "id":"link",
+                  "label":"Link"
+               }
+            ]
+         }
+      ]
+   }
+{% endschema %}

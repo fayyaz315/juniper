@@ -1,0 +1,63 @@
+<div class="time-connect">
+    <div class="container">
+        {% if section.settings.title != blank %}
+            <div class="section-header">
+                {{ section.settings.title }}
+            </div>
+        {% endif %}
+        <div class="time-content">
+            <div class="row align-items-center">
+                <div class="col-md-30 order-md-2 time-content-right">
+                {% if section.settings.heading != blank %}
+                    <h3>{{ section.settings.heading }}</h3>
+                {% endif %}
+                {% if section.settings.text != blank %}
+                    {{ section.settings.text }}
+                {% endif %}
+                </div>
+                {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+                    <div class="col-md-30 order-md-1 time-content-left">
+                        <a href="{{ section.settings.button_link }}">{{ section.settings.button_text }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Your Voice",
+    "class": "index-section voice-section",
+    "settings": [
+      {
+        "type": "html",
+        "id": "title",
+        "label": "Section Title"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Time Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      }
+    ],
+    "presets": [{
+      "name": "Your Voice",
+      "category": "Text"
+    }]
+  }
+{% endschema %}

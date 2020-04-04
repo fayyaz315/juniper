@@ -1,0 +1,129 @@
+<div class="home-topnews">
+    <div class="container">
+    {% if section.settings.title != blank %}
+          <div class="section-header">
+            <h2>{{ section.settings.title | escape }}</h2>
+        </div>
+    {% endif %}
+    </div>
+    <div class="row">
+      <div class="col-lg-15 d-none d-md-block"></div>
+      <div class="col-lg-45 col-60">
+              <div class="top-news-content topnews-slider">
+        {%- assign blog = blogs[section.settings.blog] -%}
+        {% unless blog.articles_count < 1 %}
+        {% for article in blog.articles limit: section.settings.post_limit %}
+        <div class="home-news-section">
+          <div class="row">
+          {% if article.image %}
+            <div class="col-sm-14">
+              <div class="news-image" style="background-image:url('{{article.image | img_url: '500x'}}');"></div>
+            </div>
+          {% endif %}
+            <div class="col-sm-46">
+              <div class="news-content">
+              {% if article.tags.size > 0 %}
+                {% for tag in article.tags %}
+                <h2>{{ tag }}</h2>
+                {% endfor %}
+            {% endif %}
+                <p>on <em>Today Show</em> with Kathy Lee and Hoda.</p>
+                <a href="{{ article.url }}">READ MORE ABOUT {{ article.title | escape }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endunless %}
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $('.topnews-slider').slick({
+  infinite: false,
+  centerMode: true,
+  centerPadding: '700px',
+  slidesToShow: 1,
+  arrows:false,
+  focusOnSelect: true,
+  responsive: [
+    {
+      breakpoint: 1651,
+      settings: {
+        centerPadding: '450px'
+      }
+    },
+    {
+      breakpoint: 1500,
+      settings: {
+        centerPadding: '350px'
+      }
+    },    {
+      breakpoint: 1330,
+      settings: {
+        centerPadding: '200px'
+      }
+    },
+    {
+      breakpoint: 992,
+      settings: {
+        centerPadding:'100'
+      }
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        centerPadding:'0',
+        dots: true
+      }
+    }
+  ]
+});
+</script>
+{% schema %}
+  {
+    "name": "Top News",
+    "class": "index-section home-top-news",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "_TOP news"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "select",
+        "id": "post_limit",
+        "label": "Posts",
+        "default": "5",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Top News",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}

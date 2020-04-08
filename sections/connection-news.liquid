@@ -1,0 +1,85 @@
+<div class="shopify-section index-section home-top-news">
+    <div class="container no-padding">
+        <div class="connection-news home-topnews">
+            <div class="section-header">
+                {% if section.settings.title != blank %}
+                <h2>{{ section.settings.title }}</h2>
+                {% endif %}
+            </div>
+            <div class="row">
+                <div class="col-lg-6 d-none d-md-block"></div>
+                <div class="col-lg-54 col-60">
+                    <div class="row">
+                    {% if section.settings.blog != blank %}
+                    {%- assign blog = blogs[section.settings.blog] -%}
+                    {% unless blog.articles_count < 1 %}
+                    {% for article in blog.articles limit: section.settings.post_limit %}
+                        <div class="col-md-20">
+                            <div class="top-news-content home-news-section topnews-slider">
+                                <div class="row">
+                                    <div class="col-sm-30">
+                                        <div class="news-image" style="background-image:url('{{ article.image.src | img_url: '1000x' }}');"></div>
+                                    </div>
+                                    <div class="col-sm-30">
+                                        <div class="news-content">
+                                        {% for tag in article.tags %}
+                                            <h2>{{ tag }}</h2><br>
+                                        {% endfor %}
+                                            <p>on <em>Today Show</em> with Kathy Lee and Hoda.</p>
+                                            <a href="{{ article.url }}" tabindex="-1">READ MORE ABOUT {{ article.title }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% endunless %}
+                    {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "Connection News",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Events Heading"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Event Blog"
+      },
+    {
+        "type": "select",
+        "id": "post_limit",
+        "label": "Posts",
+        "default": "3",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

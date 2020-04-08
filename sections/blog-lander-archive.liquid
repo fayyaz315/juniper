@@ -1,36 +1,42 @@
-<div class="section-header">
-   <div class="container">
-   {% if section.settings.title != blank %}
-      <h2>{{ section.settings.title }}</h2>
-   {% endif %}
-   </div>
-</div>
-{% if section.blocks.size > 0 %}
 <div class="row">
-{% for block in section.blocks %}
-   <div class="col-md-30 no-padding">
-   {% if block.settings.link != blank %}
-         <a href="{{ block.settings.link }}" class="brands-love-block" style="background-image:url({{ block.settings.image | img_url: '1200x'}});"></a>
-      {% else %}
-         <div class="brands-love-block" style="background-image:url({{ block.settings.image | img_url: '1200x'}});"></div>
+   <div class="col-lg-50 offset-lg-5">
+   {% if section.settings.title != blank %}
+      <h2 data-aos="{{ section.settings.animation_title }}">{{ section.settings.title }}
+      {% if section.settings.subtitle != blank %}
+         <p>{{ section.settings.subtitle }}</p>
+      {% endif %}
+      </h2>
    {% endif %}
+   {% if section.settings.article !=blank %}
+   {% assign article = articles[section.settings.article] %}
+      <div class="archive-content row" data-aos="{{ section.settings.animation_article }}">
+         <div class="col-md-20 archive-content-img" style="background-image: url({{ article.image.src | img_url: '600x' }});">
+         </div>
+         <div class="col-md-40 archive-content-text">
+            <h3>{{ article.title }}</h3>
+            {%- assign excerpt = false -%}
+            {% if article.excerpt != blank %}
+               {%- assign excerpt = article.excerpt -%}
+               {% else %}
+                  {%- assign articleContent = article.content | split: '<p>' -%}
+                  {%- assign excerpt = articleContent[0] -%}
+            {% endif %}
+           {{ excerpt }}
+         </div>
+      </div>
+      {% endif %}
    </div>
-{% endfor %}
 </div>
-{% endif %}
-{% if section.settings.link_text != blank and section.settings.link != blank %}
-   <a href="{{ section.settings.link }}" class="btn btn-primary view-brands">{{ section.settings.link_text }}</a>
-{% endif %}
 {% schema %}
    {
-      "name":"collection image blocks",
-      "class":"brands-love",
+      "name":"Article Archives",
+      "class":"archive-container container-fluid",
       "settings":[
          {
             "type":"text",
             "id":"title",
             "label":"Title",
-            "default":"_BRANDS <em>we</em> LOVE"
+            "default":"_JUNIPER<span>unltd</span> ARCHIVE"
          },
          {
             "type": "select",
@@ -152,18 +158,18 @@
             },
          {
             "type":"text",
-            "id":"link_text",
-            "label":"Link Text",
-            "default":"view all brands"
+            "id":"subtitle",
+            "label":"subtitle",
+            "default":"FIND ALL PAST CONTENT HERE"
          },
          {
-            "type":"url",
-            "id":"link",
-            "label":"Link"
+            "type":"article",
+            "id":"article",
+            "label":"Article"
          },
          {
             "type": "select",
-            "id": "animation_button",
+            "id": "animation_article",
             "label": "Animation",
             "options": [
                 {
@@ -279,142 +285,6 @@
             ],
             "default": "flip-down"
             }
-      ],
-      "blocks":[
-         {
-            "type":"collection",
-            "name":"collection",
-            "settings":[
-               {
-                  "type":"image_picker",
-                  "id":"image",
-                  "label":"Image"
-               },
-               {
-                  "type":"url",
-                  "id":"link",
-                  "label":"Link"
-               },
-               {
-                  "type": "select",
-                  "id": "animation_block",
-                  "label": "Animation",
-                  "options": [
-                      {
-                      "group": "FADE",
-                      "value": "fade-up",
-                      "label": "fade up"
-                      },
-                      {
-                      "group": "FADE",
-                      "value": "fade-down",
-                      "label": "fade down"
-                      },
-                      {
-                      "group": "FADE",
-                      "value": "fade-right",
-                      "label": "fade right"
-                      },
-                      {
-                      "group": "FADE",
-                      "value": "fade-left",
-                      "label": "fade left"
-                      },
-                      {
-                      "group": "FADE",
-                      "value": "fade-up-right",
-                      "label": "fade up right"
-                      },
-                      {
-                      "group": "FADE",
-                      "value": "fade-up-left",
-                      "label": "fade up left"
-                      },
-                      {
-                      "group": "FADE",
-                      "value": "fade-down-right",
-                      "label": "fade down right"
-                      },
-                      {
-                      "group": "FADE",
-                      "value": "fade-down-left",
-                      "label": "fade down left"
-                      },
-                      {
-                      "group": "FLIP",
-                      "value": "flip-left",
-                      "label": "flip left"
-                      },
-                      {
-                      "group": "FLIP",
-                      "value": "flip-right",
-                      "label": "flip right"
-                      },
-                      {
-                      "group": "FLIP",
-                      "value": "flip-up",
-                      "label": "flip up"
-                      },
-                      {
-                      "group": "FLIP",
-                      "value": "flip-down",
-                      "label": "flip down"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-in",
-                      "label": "zoom in"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-in-up",
-                      "label": "zoom in up"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-in-down",
-                      "label": "zoom in down"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-in-left",
-                      "label": "zoom in left"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-in-right",
-                      "label": "zoom in right"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-out",
-                      "label": "zoom out"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-out-up",
-                      "label": "zoom out up"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-out-down",
-                      "label": "zoom out down"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-out-right",
-                      "label": "zoom out right"
-                      },
-                      {
-                      "group": "ZOOM",
-                      "value": "zoom-out-left",
-                      "label": "zoom out left"
-                      }
-                  ],
-                  "default": "flip-down"
-                  }
-            ]
-         }
       ]
    }
 {% endschema %}

@@ -1,0 +1,88 @@
+{%- assign current_month = "now" | date: "%B" -%}
+  <div class="connection-events">
+    <div class="section-header">
+        <div class="container">
+                {% if section.settings.title != blank %}
+                <h2>{{ section.settings.title }}</h2>
+                {% endif %}
+        </div>
+    </div>
+    <div class="connection-events-detial">
+            <div class="month">{{ current_month }}</div>
+            <div class="row">
+                <div class="col-xl-2"></div>
+                <div class="col-xl-56">
+                <div class="row">
+                {% if section.settings.blog != blank %}
+                    {%- assign blog = blogs[section.settings.blog] -%}
+                    {% unless blog.articles_count < 1 %}
+                    {% for article in blog.articles limit: section.settings.post_limit %}
+                    {% assign article_date = article.published_at | date: "%B" %}
+                    {% if article_date == current_month %}
+                    <div class="col-md-30 col-lg-30 col-xl-20 no-padding">
+                        <div class="connect-grid" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/bg-1.png?v=1586157888);">
+                            <div class="connect-grid-img" style="background-image: url({{ article.image.src | img_url: '1000x' }});"></div>
+                            <div class="connect-grid-txt">
+                                {% for tag in article.tags %}
+                                        <h3>{{ tag }}</h3><br>
+                                {% endfor %}
+                            </div>
+                            <div class="connect-grid-date">{{ article.published_at | date: "%d" }}</div>
+                            <div class="connect-grid-detail">
+                                <h2><a href="{{ article.url }}">{{ article.title }}</a>
+                                </h2>
+                                <p>{{ article.content | strip_html | truncate: 150 }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endunless %}
+                    {% endif %}
+                </div>
+                <div class="col-xl-2"></div>
+            </div>
+        </div>
+    </div>
+  </div>
+  {% schema %} 
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Events Heading"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Event Blog"
+      },
+    {
+        "type": "select",
+        "id": "post_limit",
+        "label": "Posts",
+        "default": "6",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

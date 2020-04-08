@@ -1,7 +1,9 @@
 <div class="{% if section.settings.full_width %}container-fluid{% else %}container{% endif %}{% if section.settings.remove_top_margin %} index-section--flush{% endif %}">
   {% if section.settings.title != blank %}
     <div class="section-header">
-      <h2>{{ section.settings.title | escape }}</h2>
+      <!-- <h2 data-aos="{{ section.settings.animation_title }}">{{ section.settings.title }}</h2> -->
+      <h2 >{{ section.settings.title }}</h2>
+      
     </div>
   {% endif %}
 
@@ -29,7 +31,7 @@
       {% endcase %}
       {%- assign col_handle = block.settings.collection -%}
       {%- assign collection = collections[col_handle] -%}
-      <div class="{{ grid_item_width }} collection-grid-main">
+      <div class="{{ grid_item_width }} collection-grid-main" >
         {% include 'collection-grid-home' %}
       </div>
     {% endfor %}

@@ -1,19 +1,16 @@
 
 {% if section.settings.related_featured or section.settings.related_tag or section.settings.related_recent  %}
   <div class="container">
-    <div class="row">
-      <div class="col-60 text-center">
-        <h3>{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}Related Products{% endif %}</h3>
-      </div>
-    </div>
+    <h3 class="pdp-section-heading">{% if section.settings.title != blank %}{{ section.settings.title }}{% else %}_YOU<em>may</em> ALSO LIKE{% endif %}</h3>
+
     <div class="row products-related">
 
       {% if section.settings.related_featured %}
         <div class="related-single__row col" data-tabtype="Suggested">
           <div class="row justify-content-center">
             {%- assign collection_related = collections[section.settings.related_collection] -%}
-            {% for product in collection_related.products limit:4 %}
-              <div class="col-md-15">
+            {% for product in collection_related.products limit:3 %}
+              <div class="col-md-20">
                 {% include 'product-card-grid', grid_image_width: '250x' %}
               </div>
             {% endfor %}
@@ -22,7 +19,7 @@
       {% endif %}
 
       {% if section.settings.related_tag %}
-        {%- assign number_of_products = 4 -%}
+        {%- assign number_of_products = 3 -%}
         {%- assign number_of_products_to_fetch = number_of_products | plus: 1 -%}
 
         {% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
@@ -48,7 +45,7 @@
                   {%- assign current_product_found = true -%}
                 {% else %}
                   {% unless current_product_found == false and forloop.last %}
-                    <div class="col-md-15">
+                    <div class="col-md-20 product-section">
                       {% include 'product-card-grid', grid_image_width: '250x' %}
                     </div>
                   {% endunless %}
@@ -72,7 +69,7 @@
       {{ 'jquery.products.min.js' | asset_url | script_tag }}
       <script id="recently-viewed-product-template"  type="text/x-jquery-tmpl">
         {% raw %}
-          <div class="col-md-15">
+          <div class="col-md-20">
             <div class="grid-view-item{{if !available}} product-price--sold-out grid-view-item--sold-out{{/if}}">
               <a class="grid-view-item__link animsition-link" href="${url}">
                 <div class="grid-view-item__image" style="background-image:url(${Shopify.Products.resizeImage(images[1], "600x")})" alt="${title}"></div>

@@ -1,74 +1,8 @@
 {% comment %}
   The contents of the product.liquid template can be found in /sections/product-template.liquid
 {% endcomment %}
-<div class="product-template__container container" id="ProductSection-{{ product.id }}" data-section-id="{{ product.id }}" data-section-type="product" data-enable-history-state="true" data-crossclick="{% if settings.enable_crossclick %}allow{% endif %}" data-comingsoon="{% if product.tags contains 'coming soon' %}true{% else %}false{% endif %}">
 
-  {% include 'richcards' %}
-  {%- assign current_variant = product.selected_or_first_available_variant -%}
-
-  <div class="row product-single">
-
-    {% section 'product-images' %}
-
-    {% section 'product-template' %}
-
-  </div>
-</div>
-
-{% if settings.enable_crossclick %}
-  {% if cross_need and product.images.size != prod_image_size %}
-    <div id="description">
-      <div class="container">
-        <div class="row product-single">
-          <div class="col-md-60">
-            <div class="row">
-
-                <div class="col-md-28 offset-md-2 col-60">
-                  <div class="thumbnails-wrapper--secondary">
-                    {% for image in product.images %}
-                      {% unless image.attached_to_variant? %}
-                        <a href="{{ image.src | img_url: 'original' }}" alt="{{ image.alt }}" class="mp-image image-rect" style="background-image:url({{ image.src | img_url: product_image_size }});">
-                    <img src="{{ image.src | img_url: '1024x' }}">
-                    </a>
-                      {% endunless %}
-                    {% endfor %}
-                  </div>
-                </div>
-
-              <div class="{% if cross_need %}col-md-28 offset-md-2 col-60{% else %}col{% endif %}">
-                <div class="product-single__description rte" style="margin-top:0px; margin-bottom:30px;">
-                  <h3>Details</h3>
-                  {{ product.description }}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-      $(window).load(function(){
-        $('.thumbnails-wrapper--secondary').slick({
-          infinite: true,
-          autoplay: true,
-          autoplaySpeed: 5000,
-          speed: 350,
-          fade: true,
-          arrows:true,
-          cssEase: 'ease'
-        });
-
-        $('.thumbnails-wrapper--secondary .slick-track').magnificPopup({
-          delegate: 'a',
-          type: 'image',
-          gallery: {
-            enabled:true
-          }
-        });
-      });
-    </script>
-  {% endif %}
-{% endif %}
+{% section 'product-template' %}
 
 {% section 'product-related' %}
 
@@ -86,8 +20,6 @@
     {{ product | json }}
   </script>
 {% endunless %}
-
-{% section 'product-sizing' %}
 
 <script>
   // Override default values of shop.strings for each template.

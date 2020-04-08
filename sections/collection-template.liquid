@@ -111,7 +111,7 @@
 
     {% if section.settings.tags_enable or section.settings.sort_enable %}
       <div class="filters-toolbar-wrapper">
-        <div class="container">
+        <div class="container-fluid">
           <div class="row filters-toolbar">
             {% if section.settings.tags_enable %}
               <div class="col">
@@ -191,7 +191,7 @@
     {% endif %}
   </header>
 
-  <div class="container" id="Collection">
+  <div class="container-fluid" id="Collection">
   {% if section.settings.filter_settings == "top" %}
     <div class="collection--filter-top">
       <strong>{{ collection.title }}</strong>

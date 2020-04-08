@@ -124,9 +124,9 @@
 
   <div class="page-container" id="PageContainer">
 
-    {% if template contains 'page' or template contains 'article' or template contains 'collection' %}
+    <!-- {% if template template contains 'article' %}
       {% section 'header-bg' %}
-    {% endif %}
+    {% endif %} -->
 
     <main class="main-content" id="MainContent" role="main">
       {{ content_for_layout }}
@@ -140,7 +140,11 @@
         AOS.refresh();
       });
       $(function () {
-        AOS.init();
+        AOS.init({
+          offset: 120,
+          delay: 200,
+          duration: 1000
+        });
       })
   </script>
 </body>

@@ -15,14 +15,7 @@
           </button>
   
           <div id="hero-slider" class="slideshow-animation slideshow--{{ section.settings.slideshow_height }}" id="Slideshow-{{ section.id }}" data-speed="{{ section.settings.autoplay_speed }}" data-dots="{{ section.settings.dots }}" data-arrows="{{ section.settings.arrows }}">
-            {% for block in section.blocks %}
-              {%- assign is_background_video = false -%}
-              {% if block.type == 'video' %}
-                {% if block.settings.video_type == 'background' or block.settings.video_type =='background-chrome' %}
-                  {%- assign is_background_video = true -%}
-                {% endif %}
-              {% endif %}
-  
+            {% for block in section.blocks %}  
               <div data-animation="heartBeat" class=" hero-slide slideshow__slide slideshow__slide--{{ block.id }}{% if is_background_video %} slideshow__slide--background-video{% endif %}" {{ block.shopify_attributes }}>
                 {% if block.settings.link != blank %}
                   <a href="{{ block.settings.link }}" class="slideshow__link">
@@ -99,11 +92,11 @@
                     }
                   {% endif %}
                 </style>
-                {% comment %} Slide 2 settings {% endcomment %}
+                                {% comment %} Slide 2 settings {% endcomment %}
                   {% if forloop.index == 2 %}
                     <div class="slide-2-main">
                       <div class="row">
-                        <div class="col-30">
+                        <div class="col-md-30">
                           <div class="slide2-btn">
                               {% if block.settings.link != blank and block.settings.button != blank %}
                                 <span class="btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
@@ -112,7 +105,7 @@
                               <div class="slide2-img2" data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')">
                             </div>
                         </div>
-                        <div class="col-30">
+                        <div class="col-md-30">
                           <div class="slide2-img1" data-animation="{{block.settings.image_2_animation}}" data-delay="{{block.settings.image_2_delay}}" style="background-image:url('{{block.settings.image_2 | img_url: '1500x'}}')">
                           </div>
                           <div class="slideshow__text-wrap slideshow__text--{{ block.id }} row{% if block.settings.overlay %} slideshow__overlay{% endif %}">
@@ -126,7 +119,6 @@
                                 {% unless block.settings.title == blank and block.settings.subheading == blank %}
               
                                 {% endunless %}
-                                <div class="d-none d-md-block">
                                 {% unless block.settings.subheading == blank %}
                                   <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="mega-subtitle slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
                                     {{ block.settings.subheading | escape }}
@@ -138,7 +130,6 @@
                                   {{ block.settings.subheading_2 }}
                                 </span>
                                 {% endif %}
-                              </div>
                                 <br/>
                                 {% if block.type == 'video' %}
                                   {% unless block.settings.video_type == 'background' %}
@@ -159,19 +150,6 @@
                           </div>
                         </div>
                       </div>
-                      <div class="d-block d-md-none">
-                        {% unless block.settings.subheading == blank %}
-                          <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="mega-subtitle slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
-                            {{ block.settings.subheading | escape }}
-                          </span>
-                        {% endunless %}
-                        <br/>
-                        {% if block.settings.subheading_2 != blank %}
-                        <span data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}" class="mega-subtitle slideshow__subtitle mega-subtitle-secondary">
-                          {{ block.settings.subheading_2 }}
-                        </span>
-                        {% endif %}
-                      </div>
                     </div>
                   {% endif%}
                 {% comment %} sllide 2 settings ends {% endcomment %}
@@ -180,11 +158,11 @@
                   {% if forloop.index == 3 %}
                     <div class="slide-3-main">
                       <div class="row">
-                        <div class="col-30 slide-3-leftside">
+                        <div class="col-md-30">
                               <div data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" class="slide3-img1" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')">
                             </div>
                         </div>
-                        <div class="col-30">
+                        <div class="col-md-30">
                           <div class="slide2-btn">
                               {% if block.settings.link != blank and block.settings.button != blank %}
                                 <span class="btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
@@ -464,3 +442,266 @@
         }
     });
     </script>
+{% comment %} <div class="{{ section.settings.contained }} px-0">
+  <div class="row slideshow-main" data-section-id="{{ section.id }}" data-section-type="slideshow-section">
+
+    {% if section.blocks.size > 0 %}
+      <div class="col-60 slideshow-wrapper">
+        <button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
+          <span class="slideshow__pause-stop">
+            {% include 'icon-pause' %}
+            <span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span>
+          </span>
+          <span class="slideshow__pause-play">
+            {% include 'icon-play' %}
+            <span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span>
+          </span>
+        </button>
+
+        <div class="slideshow slideshow--{{ section.settings.slideshow_height }}" id="Slideshow-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed }}" data-dots="{{ section.settings.dots }}" data-arrows="{{ section.settings.arrows }}">
+          {% for block in section.blocks %}
+     
+
+            <div class="slideshow__slide slideshow__slide--{{ block.id }}{% if is_background_video %} slideshow__slide--background-video{% endif %}" {{ block.shopify_attributes }}>
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" class="slideshow__link">
+              {% endif %}
+
+              <style>
+                {% if block.settings.image != blank %}
+                  .slideshow__image--{{ block.id }} {
+                    background-position: {{ block.settings.alignment }};
+                  }
+
+                  @media screen and (max-width: 576px) {
+                    {% if block.settings.image_for_mobile %}
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image_for_mobile | img_url: '800x' }}');
+                    }
+                    {% else %}
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '800x' }}');
+                    }
+                    {% endif %}
+                  }
+
+                  @media screen and (min-width: 577px) and (max-width: 768px) {
+                    {% if block.settings.image_for_mobile %}
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image_for_mobile | img_url: '1000x' }}');
+                    }
+                    {% else %}
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '1000x' }}');
+                    }
+                    {% endif %}
+                  }
+                  
+                  @media screen and (min-width: 769px) and (max-width: 992px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '1200x' }}');
+                    }
+                  }
+
+                  @media screen and (min-width: 993px) and (max-width: 1200px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '1600x' }}');
+                    }
+                  }
+
+                  @media screen and (min-width: 1201px) {
+                    .slideshow__image--{{ block.id }} {
+                      background-image: url('{{ block.settings.image | img_url: '2000x' }}');
+                    }
+                  }
+
+                {% endif %}
+
+                {% if block.settings.heading_color != blank %}
+                  .slideshow__text--{{ block.id }} h2.h1 {
+                    color: {{ block.settings.heading_color }};
+                  }
+                {% endif %}
+
+                {% if block.settings.subheading_color != blank %}
+                  .slideshow__text--{{ block.id }} span.mega-subtitle {
+                    color: {{ block.settings.subheading_color }};
+                  }
+                  .slideshow__text--{{ block.id }} hr {
+                    border-top-color: {{ block.settings.subheading_color }};
+                  }
+                {% endif %}
+
+                {% if block.settings.textunderlay %}
+                  .slideshow__text--{{ block.id }} .slideshow__text-content .page-width:before {
+                    opacity: 1;
+                  }
+                {% endif %}
+              </style>
+              <div class="slideshow__image slideshow__image--{{ block.id }}">
+                {% if block.settings.image == blank %}
+                  <div class="placeholder-background">
+                    {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                    {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="slideshow__text-wrap slideshow__text--{{ block.id }} {% if block.settings.overlay %} slideshow__overlay{% endif %}">  
+                <div class="row">
+                <div class="col-md-35 order-md-2">
+                  <div data-animation="bounceInRight" data-delay="1.0s" class="slider-image2" style="background-image: url({{ 'shop-slider-image2.jpg' | asset_url }});"></div>
+                  <div class="slider-right-side">
+                    <div class="slider-content" data-animation="bounceInRight" data-delay="1.0s">
+                    <div>
+                    <h2 class="slideshow-title">care+wear</h2>
+                    <br>
+                    <span class="slideshow-text">Care + Wear creates innovative HEALTHWEAR to offer</span>
+                    <br>
+                    <span class="slideshow-text">FUNCTIONAL, fashionable solutions to patients. </span>
+                    <br>
+                    <span class="slideshow-simple-btn">read more about CARE+WEAR</span>
+                    </div>  
+                  </div>
+                  <span data-animation="fadeIn" data-delay="1s" class="slideshow-btn">shop CARE+WEAR</span>
+                </div>
+                </div>
+                <div data-animation="bounceInLeft" data-delay="0.8s" class="col-md-25 order-md-1 slider-image1" style="background-image: url({{ 'shop-slider-image1.jpg' | asset_url }});"></div>
+              </div>              
+              </div>
+             
+
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="slider-progress">
+          <div class="progress"></div>
+        </div>  
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size == 0 %}
+      <div class="placeholder-noblocks">
+        {{ 'homepage.onboarding.no_content' | t }}
+      </div>
+    {% endif %}
+    <div class="social-icons-main">
+      <ul class="list--inline site-footer__social-icons social-icons">
+          <li>
+            <a class="social-icons__link" href="https://facebook.com/shopify" title="juniperunltd on Facebook">
+              <em class="fab fa-facebook-f"></em>
+              <span class="icon__fallback-text">Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-icons__link" href="https://instagram.com/shopify" title="juniperunltd on Twitter">
+              <em class="fab fa-instagram"></em>
+              <span class="icon__fallback-text">Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-icons__link" href="#" title="juniperunltd on Pinterest">
+              <em class="fab fa-google-plus-g"></em>
+              <span class="icon__fallback-text">Google Plus</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-icons__link" href="http://twitter.com/shopify" title="juniperunltd on Instagram">
+              <em class="fab fa-twitter"></em>
+              <span class="icon__fallback-text">Twitter</span>
+            </a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% if section.settings.slideshow_height == 'maintain_ratio' %}
+  <style type="text/css">
+    #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio {
+      height: auto;
+    }
+    #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio .slideshow__slide {
+      height: auto;
+    }
+    #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio .slideshow__slide:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0px;
+      {% capture img_width %}{{ section.blocks[0].settings.image.width }}{% endcapture %}
+      {% capture img_height %}{{ section.blocks[0].settings.image.height | times: 100 }}{% endcapture %}
+      {% capture rounddown %}{{ img_height | divided_by: img_width }}{% endcapture %}
+      padding-top: {{ rounddown | plus: 1 }}%;
+    }
+    @media screen and (max-width:767px){
+      #shopify-section-{{ section.id }} .slideshow.slideshow--maintain_ratio .slideshow__slide:before {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 0px;
+      {% capture img_width %}{{ section.blocks[0].settings.image.width }}{% endcapture %}
+      {% capture img_height %}{{ section.blocks[0].settings.image.height | times: 100 }}{% endcapture %}
+      {% capture rounddown %}{{ img_height | divided_by: img_width }}{% endcapture %}
+      padding-top: 100%;
+    }
+    }
+  </style>
+{% endif %}
+<script>
+$(document).ready(function(){
+  var time = 7;
+  var $bar,
+      $slick,
+      isPause,
+      tick,
+      percentTime;
+  
+  $slick = $('.slideshow');
+  
+  $bar = $('.slider-progress .progress');
+  
+  $('.slider-wrapper').on({
+    mouseenter: function() {
+      isPause = true;
+    },
+    mouseleave: function() {
+      isPause = false;
+    }
+  })
+  
+  function startProgressbar() {
+    resetProgressbar();
+    percentTime = 0;
+    isPause = false;
+    tick = setInterval(interval, 10);
+  }
+  
+  function interval() {
+    if(isPause === false) {
+      percentTime += 1 / (time+0.1);
+      $bar.css({
+        width: percentTime+"%"
+      });
+      if(percentTime >= 100)
+        {
+          $slick.slick('slickNext');
+          startProgressbar();
+        }
+    }
+  }
+  
+  
+  function resetProgressbar() {
+    $bar.css({
+     width: 0+'%' 
+    });
+    clearTimeout(tick);
+  }
+  
+  startProgressbar();
+  
+});
+</script> {% endcomment %}

@@ -1,0 +1,229 @@
+<div class="connection-explore explore-with">
+    <div class="section-header">
+        <div class="container">
+        {% if section.settings.title != blank %}
+          <h2>
+          {{ section.settings.title }}
+          </h2>
+        {% endif %}
+        </div>
+    </div>
+    <div class="explore-content container-fluid">
+        <div class="row">
+            <div class="col-lg-8 d-none d-xl-block"></div>
+            <div class="col-sm-60 col-md-60 col-xl-21 pr-sm-0">
+                <div class="connect-image">
+                    <div class="row">
+                    {% if section.settings.image1 != blank %}
+                        <div class="col-md-40">
+                            <div class="img1" style="background-image: url({{ section.settings.image1 | img_url: '1000x'}});">
+                            </div>
+                        </div>
+                    {% endif %}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-30">
+                            <div class="img1-text">
+                            {% if section.settings.image1_title != blank %}
+                                <h4>{{ section.settings.image1_title }}</h4>
+                            {% endif %}
+                            {% if section.settings.image1_text != blank %}
+                                {{ section.settings.image1_text }}
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if section.settings.image2 != blank %}
+                    <div class="coach-img" style="background-image: url({{ section.settings.image2 | img_url: '1000x'}});">
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-45">
+                            <div class="coach-img-detail">
+                            {% if section.settings.image2_title != blank %}
+                                <h2>{{ section.settings.image2_title }}</h2>
+                            {% endif %}
+                            {% if section.settings.image2_text != blank %}
+                                {{ section.settings.image2_text }}
+                            {% endif %}
+                            {% if section.settings.link_url2 != blank and section.settings.image2_button_text != blank %}
+                                <a href="{{ section.settings.link_url2 }}" class=""> {{ section.settings.image2_button_text }}</a>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="explore-heading">
+                {% if section.settings.middle_title != blank %}
+                    {{ section.settings.middle_title }}
+                {% endif %}
+                </div>
+            </div>
+            {% if section.settings.right_image != blank %}
+            <div class="col-sm-60 col-md-60 col-xl-31 pr-xl-0">
+                <div class="explore-image explore-image2" style="background-image:url('{{ section.settings.right_image | img_url: '2000x' }}')">
+                </div>
+            </div>
+            {% endif %}
+            <div class="col-md-60">
+                <div class="row">
+                {% for block in section.blocks %}
+                {% if block.settings.featured_image != blank %}
+                    <div class="col-md-20 col-xs-60">
+                        <div class="product-img" style="background-image: url({{ block.settings.featured_image | img_url: '1000x' }});"></div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                    <div class="col-60 col-xl-13"></div>
+                    {% if section.settings.shop_button_text != blank %}
+                    <div class="col-60 col-xl-34">
+                        <div class="quote">
+                            {{ section.settings.featured_text }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="col-60 col-xl-13"></div>
+                    <div class="col-md-9"></div>
+                    {% if section.settings.shop_url != blank and section.settings.shop_button_text %}
+                    <div class="col-sm-60 col-md-21">
+                        <div class="discover">
+                            <a href="{{ section.settings.shop_url }}">{{ section.settings.shop_button_text }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if section.settings.shop_button_text != blank %}
+                    <div class="col-sm-60 col-md-21">
+                        <div class="explore-image explore-image3">
+                            <a class="video" href="http://www.youtube.com/watch{{ section.settings.video_id }}">
+                                <div class="video-sec" style="background-image: url({{ section.settings.video_image | img_url: '500x' }});">
+                                    <span></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="col-md-9"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ {% schema %}
+  {
+    "name": "Featured Brands",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Featured Heading"
+      },
+        {
+            "type": "header",
+            "content": "Left Section"
+        },
+        {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image 1"
+        },
+        {
+            "type": "richtext",
+            "id": "image1_title",
+            "label": "Image 1 Title"
+        },
+        {
+            "type": "richtext",
+            "id": "image1_text",
+            "label": "Image 1 Text"
+        },
+        {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Image 2"
+        },
+        {
+            "type": "richtext",
+            "id": "image2_title",
+            "label": "Image 2 Title"
+        },
+        {
+            "type": "richtext",
+            "id": "image2_text",
+            "label": "Image 2 Text"
+        },
+        {
+            "type": "text",
+            "id": "image2_button_text",
+            "label": "Image 2 Button Text"
+        },
+        {
+            "type": "url",
+            "id": "link_url2",
+            "label": "Image 2 Button Url"
+        },
+        {
+            "type": "html",
+            "id": "middle_title",
+            "label": "Main Title (Middle)"
+        },
+        {
+            "type": "header",
+            "content": "Right Section"
+        },
+        {
+            "type": "image_picker",
+            "id": "right_image",
+            "label": "Right Image"
+        },
+        {
+            "type": "header",
+            "content": "Featured Images"
+        },
+        {
+            "type": "html",
+            "id": "featured_text",
+            "label": "Featured Text"
+        },
+        {
+            "type": "header",
+            "content": "Video Section"
+        },
+        {
+            "type": "text",
+            "id": "video_id",
+            "label": "Video ID",
+            "info": "Follow the pattern ?v=0O2aH4XLbto"
+        },
+        {
+            "type": "image_picker",
+            "id": "video_image",
+            "label": "Video Image"
+        },
+        {
+            "type": "text",
+            "id": "shop_button_text",
+            "label": "Shop Button Text"
+        },
+        {
+            "type": "url",
+            "id": "shop_url",
+            "label": "Shop Url"
+        }
+    ],
+    "blocks": [
+      {
+        "type": "featured_images",
+        "name": "Featured Images",
+        "limit": 3,
+        "settings": [
+        {
+            "type": "image_picker",
+            "id": "featured_image",
+            "label": "Featured Image"
+        }
+        ]
+      }
+    ]
+  }
+{% endschema %}

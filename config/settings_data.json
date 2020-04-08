@@ -54,7 +54,7 @@
     "enablesearch": true,
     "searchwhat": "product",
     "main_linklist": "main-menu",
-    "megamenu1": "",
+    "megamenu1": "Shop",
     "megamenu2": "",
     "megamenu3": "",
     "megamenu4": "",
@@ -289,45 +289,49 @@
           "1585293700695-0": {
             "type": "featured_collection",
             "settings": {
-              "collection": "frontpage",
+              "collection": "footwear",
               "title": "Footwear",
               "collectionimage": "shopify:\/\/shop_images\/footwear-small_4d2e9b7f-6864-4e8d-a08a-f20489b10986.png",
-              "link_override": "",
+              "link_override": "shopify:\/\/collections\/footwear",
               "colwidth": "4",
-              "alignment": "center"
+              "alignment": "center",
+              "animation_block": "flip-down"
             }
           },
           "1585293700695-1": {
             "type": "featured_collection",
             "settings": {
-              "collection": "frontpage",
+              "collection": "apparel",
               "title": "Apparrel",
               "collectionimage": "shopify:\/\/shop_images\/apparel.png",
-              "link_override": "",
+              "link_override": "shopify:\/\/collections\/apparel",
               "colwidth": "4",
-              "alignment": "center"
+              "alignment": "center",
+              "animation_block": "flip-down"
             }
           },
           "1585293700695-2": {
             "type": "featured_collection",
             "settings": {
-              "collection": "frontpage",
+              "collection": "wellness",
               "title": "Wellness",
               "collectionimage": "shopify:\/\/shop_images\/wellness_d9efedc0-a865-4e77-a1eb-bc5f32df7bfc.png",
-              "link_override": "",
+              "link_override": "shopify:\/\/collections\/wellness",
               "colwidth": "4",
-              "alignment": "center"
+              "alignment": "center",
+              "animation_block": "flip-down"
             }
           },
           "1585293767784": {
             "type": "featured_collection",
             "settings": {
-              "collection": "frontpage",
+              "collection": "tech-gear",
               "title": "tech \/\/ gear",
               "collectionimage": "shopify:\/\/shop_images\/tech-gear.png",
-              "link_override": "",
+              "link_override": "shopify:\/\/collections\/tech-gear",
               "colwidth": "4",
-              "alignment": "center"
+              "alignment": "center",
+              "animation_block": "flip-down"
             }
           }
         },
@@ -338,7 +342,8 @@
           "1585293767784"
         ],
         "settings": {
-          "title": "_SHOP by CATEGORY",
+          "title": "_SHOP <em>by<\/em> CATEGORY",
+          "animation_title": "flip-down",
           "full_width": false,
           "no_gutters": false,
           "remove_top_margin": false,
@@ -349,136 +354,24 @@
         "type": "top-news",
         "settings": {
           "title": "_TOP news",
+          "animation_title": "flip-down",
           "blog": "news",
-          "post_limit": "5"
-        }
-      },
-      "1585374499168": {
-        "type": "slideshow-animation",
-        "blocks": {
-          "1585374499168-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/slide-1.png",
-              "image_mobile": "shopify:\/\/shop_images\/slide-1-mobile.jpg",
-              "image_1": "",
-              "image_1_delay": "0.5s",
-              "image_1_animation": "bounce",
-              "image_2": "",
-              "image_2_delay": "0.8s",
-              "image_2_animation": "bounce",
-              "overlay": false,
-              "textunderlay": false,
-              "alignment": "top",
-              "text_layout": "center",
-              "text_align": "center",
-              "title": "01",
-              "title_delay": "1s",
-              "headingAnimation": "bounceInRight",
-              "heading_color": "#000000",
-              "subheading": "Human-centered design",
-              "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounceInDown",
-              "subheading_color": "",
-              "subheading_2": "Function for EVERYONE.",
-              "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "bounce",
-              "button": "explore JUNIPERunltd.",
-              "link": "#",
-              "button_delay": "1s",
-              "buttonAnimation": "zoomInRight"
-            }
-          },
-          "1585630648619": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/slide-2-bg.jpg",
-              "image_mobile": "",
-              "image_1": "shopify:\/\/shop_images\/slide-img2_1.png",
-              "image_1_delay": "0.5s",
-              "image_1_animation": "bounceInDown",
-              "image_2": "shopify:\/\/shop_images\/slide-image-2-img_1.png",
-              "image_2_delay": "0.8s",
-              "image_2_animation": "bounceInUp",
-              "overlay": false,
-              "textunderlay": false,
-              "alignment": "top",
-              "text_layout": "left",
-              "text_align": "left",
-              "title": "02",
-              "title_delay": "1.6s",
-              "headingAnimation": "bounceInLeft",
-              "heading_color": "#0a0000",
-              "subheading": "Fashion for ALL.",
-              "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounceInDown",
-              "subheading_color": "#ffffff",
-              "subheading_2": "Function for EVERYONE.",
-              "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "bounceInUp",
-              "button": "explore INNOVATION",
-              "link": "#",
-              "button_delay": "1s",
-              "buttonAnimation": "fadeIn"
-            }
-          },
-          "1585638041802": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/slide-2-bg.jpg",
-              "image_mobile": "",
-              "image_1": "shopify:\/\/shop_images\/slide3-img1_1.jpg",
-              "image_1_delay": "0.5s",
-              "image_1_animation": "bounceInDown",
-              "image_2": "shopify:\/\/shop_images\/slide3-img2_1.png",
-              "image_2_delay": "0.8s",
-              "image_2_animation": "bounceInUp",
-              "overlay": false,
-              "textunderlay": false,
-              "alignment": "top",
-              "text_layout": "center",
-              "text_align": "center",
-              "title": "03",
-              "title_delay": "1s",
-              "headingAnimation": "bounceInRight",
-              "heading_color": "#000000",
-              "subheading": "fashion chameleon",
-              "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounceInDown",
-              "subheading_color": "#ffffff",
-              "subheading_2": "",
-              "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "bounce",
-              "button": "explore STORIES",
-              "link": "#",
-              "button_delay": "1s",
-              "buttonAnimation": "flash"
-            }
-          }
-        },
-        "block_order": [
-          "1585374499168-0",
-          "1585630648619",
-          "1585638041802"
-        ],
-        "settings": {
-          "contained": "container-fluid",
-          "autoplay": false,
-          "autoplay_speed": "9000",
-          "dots": false,
-          "arrows": true,
-          "slideshow_height": "maintain_ratio",
-          "text_size": "medium"
+          "post_limit": "5",
+          "animation_blog": "flip-down"
         }
       },
       "1585895366210": {
         "type": "your-voice",
         "settings": {
           "title": "<h2>_YOUR <span>voice<\/span>\n<\/h2>",
+          "animation_title": "flip-down",
           "heading": "Time to connect",
+          "animation_heading": "flip-down",
           "text": "<p>From Velcro closures to stretch laces, our round-up of easy on\/easy off, everyday shoes help you<br><strong>step out in confidence.<\/strong><\/p>",
+          "animation_text": "flip-down",
           "button_text": "Vote NOW",
-          "button_link": "#"
+          "button_link": "shopify:\/\/pages\/life-unltd",
+          "animation_button": "flip-down"
         }
       },
       "1585898969382": {
@@ -488,98 +381,72 @@
           "exploer_heading": "<h1>life<\/h1><br><h1>Unlimited<\/h1>",
           "image1": "shopify:\/\/shop_images\/14471308-ce0f-45b7-9d6c-b4593317cd7c_20190429_DBaum_Still-Life_16966-1.jpg",
           "image_1_button": "JUNIPERunltd. marketplace",
-          "image_1_button_link": "#",
+          "image_1_button_link": "shopify:\/\/pages\/shop",
           "image2": "shopify:\/\/shop_images\/2f0cd83d-4f67-4892-a559-1049dcacf0fb_20170918_DBaum_Everlane_Editorial_-380-Edit_1.jpg",
           "image_2_button": "explore STORIES",
-          "image_2_button_link": "#",
+          "image_2_button_link": "shopify:\/\/blogs\/news",
           "image3": "shopify:\/\/shop_images\/shoes_1.png",
           "image_3_button": "discover CONNECTIONS",
-          "image_3_button_link": "#"
+          "image_3_button_link": "shopify:\/\/pages\/connections"
         }
       },
       "header-bg": {
         "type": "header-bg",
+        "blocks": {
+          "1586165863993": {
+            "type": "page_header",
+            "settings": {
+              "title": "",
+              "page": "",
+              "image": ""
+            }
+          }
+        },
+        "block_order": [
+          "1586165863993"
+        ],
         "settings": {}
       },
       "slideshow-connection": {
         "type": "slideshow-connection",
         "blocks": {
-          "1585917804435": {
-            "type": "image",
+          "1586338896136": {
+            "type": "style6",
             "settings": {
-              "image": "shopify:\/\/shop_images\/slide-1-mobile.jpg",
+              "image": "shopify:\/\/shop_images\/slider-bg.jpg",
               "image_mobile": "",
-              "image_1": "",
-              "image_1_delay": "0.5s",
-              "image_1_animation": "bounce",
-              "image_2": "",
+              "image_1": "shopify:\/\/shop_images\/product-img1_1000x_3e603c7e-cac2-4655-80b8-0d9d7811508d.png",
+              "image_1_delay": "0.8s",
+              "image_1_animation": "bounceInDown",
+              "image_2": "shopify:\/\/shop_images\/1140-magna-ready-adaptive-clothing-caregiving.imgcache.jpg",
               "image_2_delay": "0.8s",
-              "image_2_animation": "bounce",
-              "overlay": false,
-              "textunderlay": false,
-              "alignment": "top",
-              "text_layout": "center",
-              "text_align": "center",
-              "title": "Image slide",
+              "image_2_animation": "bounceInUp",
+              "title": "M",
               "title_delay": "1s",
               "headingAnimation": "bounce",
-              "heading_color": "",
-              "subheading": "Tell your brand's story through video and images",
+              "heading_color": "#000000",
+              "subheading": "powered by MagnaReady",
               "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounce",
+              "subHeadingAnimation": "bounceInUp",
               "subheading_color": "",
-              "subheading_2": "Function for EVERYONE.",
-              "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "bounce",
-              "button": "Shop Now",
-              "link": "",
+              "subheading_2": "Patented technology at the forefront of <br> Adaptive Fashion.",
+              "sub_heading_2_delay": "0.9s",
+              "subHeading_2_Animation": "bounceInDown",
+              "button": "shop MagnaReady",
+              "link": "shopify:\/\/pages\/shop",
               "button_delay": "1s",
-              "buttonAnimation": "bounce"
-            }
-          },
-          "1585917866493": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/slide-2-bg.jpg",
-              "image_mobile": "",
-              "image_1": "",
-              "image_1_delay": "0.5s",
-              "image_1_animation": "bounce",
-              "image_2": "",
-              "image_2_delay": "0.8s",
-              "image_2_animation": "bounce",
-              "overlay": false,
-              "textunderlay": false,
-              "alignment": "top",
-              "text_layout": "center",
-              "text_align": "center",
-              "title": "Image slide",
-              "title_delay": "1s",
-              "headingAnimation": "bounce",
-              "heading_color": "",
-              "subheading": "Tell your brand's story through video and images",
-              "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounce",
-              "subheading_color": "",
-              "subheading_2": "Function for EVERYONE.",
-              "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "bounce",
-              "button": "Shop Now",
-              "link": "",
-              "button_delay": "1s",
-              "buttonAnimation": "bounce"
+              "buttonAnimation": "fadeIn"
             }
           }
         },
         "block_order": [
-          "1585917804435",
-          "1585917866493"
+          "1586338896136"
         ],
         "settings": {
-          "contained": "container",
-          "autoplay": true,
-          "autoplay_speed": "7000",
-          "dots": false,
+          "contained": "container-fluid",
+          "autoplay": false,
+          "autoplay_speed": "9000",
+          "dots": true,
           "arrows": true,
           "slideshow_height": "maintain_ratio",
           "text_size": "medium"
@@ -588,33 +455,78 @@
       "slideshow-shop": {
         "type": "slideshow-shop",
         "blocks": {
-          "1586000096038": {
-            "type": "image",
+          "1586272949935": {
+            "type": "style4",
             "settings": {
-              "image": "shopify:\/\/shop_images\/slide-1-mobile.jpg",
-              "image_2": "",
-              "overlay": false,
-              "textunderlay": false,
-              "alignment": "top",
-              "text_layout": "center",
-              "text_align": "center",
+              "image": "shopify:\/\/shop_images\/full-bg.png",
+              "image_mobile": "",
+              "image_1": "shopify:\/\/shop_images\/shop-slider-image1.jpg",
+              "image_1_delay": "1s",
+              "image_1_animation": "bounceInUp",
+              "image_2": "shopify:\/\/shop_images\/shop-slider-image2.jpg",
+              "image_2_delay": "1s",
+              "image_2_animation": "fadeInRightBig",
               "title": "care+wear",
+              "title_delay": "1s",
+              "headingAnimation": "zoomInUp",
               "heading_color": "",
-              "subheading": "Care + Wear creates innovative HEALTHWEAR to offer  FUNCTIONAL, fashionable solutions to patients.",
+              "subheading": "Care + Wear creates innovative HEALTHWEAR to offer",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "rotateIn",
               "subheading_color": "",
+              "subheading_2": "FUNCTIONAL, fashionable solutions to patients.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "zoomIn",
+              "subheading_3": "read more about CARE+WEAR",
+              "sub_heading_3_delay": "1s",
+              "subHeading_3_Animation": "bounce",
               "button": "shop CARE+WEAR",
-              "link": "#"
+              "link": "shopify:\/\/collections\/all",
+              "button_delay": "1s",
+              "buttonAnimation": "bounce"
+            }
+          },
+          "1586273466375": {
+            "type": "style4",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/full-bg.png",
+              "image_mobile": "",
+              "image_1": "shopify:\/\/shop_images\/67080550_07_D5_ac0611f1-bee9-4ef9-a2b5-3b46264def7d.jpg",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounce",
+              "image_2": "shopify:\/\/shop_images\/67080589_36_D4.jpg",
+              "image_2_delay": "0.8s",
+              "image_2_animation": "bounce",
+              "title": "Image slide",
+              "title_delay": "1s",
+              "headingAnimation": "bounce",
+              "heading_color": "",
+              "subheading": "Tell your brand's story through video and images",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounce",
+              "subheading_color": "",
+              "subheading_2": "Function for EVERYONE.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "bounce",
+              "subheading_3": "Function for EVERYONE.",
+              "sub_heading_3_delay": "1s",
+              "subHeading_3_Animation": "bounce",
+              "button": "Shop Now",
+              "link": "shopify:\/\/collections\/all",
+              "button_delay": "1s",
+              "buttonAnimation": "bounce"
             }
           }
         },
         "block_order": [
-          "1586000096038"
+          "1586272949935",
+          "1586273466375"
         ],
         "settings": {
           "contained": "container-fluid",
-          "autoplay": true,
-          "autoplay_speed": "7000",
-          "dots": false,
+          "autoplay": false,
+          "autoplay_speed": "9000",
+          "dots": true,
           "arrows": true,
           "slideshow_height": "maintain_ratio",
           "text_size": "medium"
@@ -629,9 +541,10 @@
               "collection": "footwear",
               "title": "",
               "collectionimage": "shopify:\/\/shop_images\/footwear-small_4d2e9b7f-6864-4e8d-a08a-f20489b10986.png",
-              "link_override": "",
+              "link_override": "shopify:\/\/collections\/footwear",
               "colwidth": "4",
-              "alignment": "center"
+              "alignment": "center",
+              "animation_block": "flip-down"
             }
           },
           "1585998849188": {
@@ -642,7 +555,8 @@
               "collectionimage": "shopify:\/\/shop_images\/apparel.png",
               "link_override": "",
               "colwidth": "4",
-              "alignment": "center"
+              "alignment": "center",
+              "animation_block": "flip-down"
             }
           },
           "1585999612020": {
@@ -653,7 +567,8 @@
               "collectionimage": "shopify:\/\/shop_images\/wellness.png",
               "link_override": "",
               "colwidth": "4",
-              "alignment": "center"
+              "alignment": "center",
+              "animation_block": "flip-down"
             }
           },
           "1585999639963": {
@@ -664,7 +579,8 @@
               "collectionimage": "shopify:\/\/shop_images\/tech-gear.png",
               "link_override": "",
               "colwidth": "4",
-              "alignment": "center"
+              "alignment": "center",
+              "animation_block": "flip-down"
             }
           }
         },
@@ -676,10 +592,11 @@
         ],
         "settings": {
           "title": "Collection list",
+          "animation_title": "flip-down",
           "full_width": false,
           "no_gutters": false,
           "remove_top_margin": false,
-          "move_text_below": false
+          "move_text_below": true
         }
       },
       "sportlight-cards": {
@@ -689,27 +606,33 @@
             "type": "card",
             "settings": {
               "image": "shopify:\/\/shop_images\/boucle-cape-cape-iz-invites-you-to-paint-the-town-290759_2.jpg",
+              "animation_block": "flip-down",
               "tag": "gift",
               "title": "IZ Adaptive",
-              "copy": "Boucle cape"
+              "copy": "Boucle cape",
+              "link": ""
             }
           },
           "1586000674162": {
             "type": "card",
             "settings": {
               "image": "shopify:\/\/shop_images\/larkin_canary_lifestyle_8fb001a6-1f3d-4e92-84f6-48bbba677504_2.jpg",
+              "animation_block": "flip-down",
               "tag": "story",
               "title": "Plae",
-              "copy": "The Larkin Sneakers"
+              "copy": "The Larkin Sneakers",
+              "link": ""
             }
           },
           "1586000773668": {
             "type": "card",
             "settings": {
               "image": "shopify:\/\/shop_images\/Magna-Ready-Pants_2.jpg",
+              "animation_block": "flip-down",
               "tag": "edits",
               "title": "MagnaReady",
-              "copy": "Grid Check Dress Shirt with Magnetic Closure"
+              "copy": "Grid Check Dress Shirt with Magnetic Closure",
+              "link": ""
             }
           }
         },
@@ -719,7 +642,8 @@
           "1586000773668"
         ],
         "settings": {
-          "title": "_SPOTLIGHT <span>on<\/span>"
+          "title": "_SPOTLIGHT <span>on<\/span>",
+          "animation_title": "flip-down"
         }
       },
       "shop-collection-text": {
@@ -729,28 +653,32 @@
             "type": "collection",
             "settings": {
               "title": "easy on \/<br>easy off",
-              "link": "#"
+              "link": "shopify:\/\/collections\/all",
+              "animation": "zoom-in-down"
             }
           },
           "1586000983022": {
             "type": "collection",
             "settings": {
               "title": "sensory <br>solutions",
-              "link": "#"
+              "link": "shopify:\/\/blogs\/events",
+              "animation": "zoom-in-down"
             }
           },
           "1586001037686": {
             "type": "collection",
             "settings": {
               "title": "recovery <br>wear",
-              "link": "#"
+              "link": "shopify:\/\/blogs\/news",
+              "animation": "zoom-in-down"
             }
           },
           "1586001168190": {
             "type": "collection",
             "settings": {
-              "title": "travel\/<br>mobility",
-              "link": "#"
+              "title": "travel\/ <br>mobility",
+              "link": "shopify:\/\/pages\/connections",
+              "animation": "zoom-in-down"
             }
           }
         },
@@ -766,13 +694,49 @@
       },
       "slideshow-shop-secondary": {
         "type": "slideshow-shop-secondary",
+        "blocks": {
+          "1586341013879": {
+            "type": "style5",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slider-bg.jpg",
+              "image_mobile": "",
+              "image_1": "shopify:\/\/shop_images\/product-img1_1000x_73de64a6-ea1a-4807-ad8c-d71eb9943abb.png",
+              "image_1_delay": "1s",
+              "image_1_animation": "bounceInRight",
+              "image_2": "shopify:\/\/shop_images\/D-Converse-HP-1.jpg",
+              "image_2_delay": "1s",
+              "image_2_animation": "fadeInUpBig",
+              "image_3": "shopify:\/\/shop_images\/67080550_07_D5_4e98f2d2-821f-46bf-a793-790606124b1f.jpg",
+              "image_3_delay": "1s",
+              "image_3_animation": "fadeInUp",
+              "title": "Comfort first",
+              "title_delay": "0.8s",
+              "headingAnimation": "bounceIn",
+              "heading_color": "#000000",
+              "subheading": "From Velcro closures to stretch laces, our round-up of easy on\/easy off, everyday shoes help you",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounce",
+              "subheading_color": "#000000",
+              "subheading_2": "step out in confidence.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "flipInX",
+              "button": "read more",
+              "link": "shopify:\/\/pages\/life-unltd",
+              "button_delay": "1s",
+              "buttonAnimation": "zoomIn"
+            }
+          }
+        },
+        "block_order": [
+          "1586341013879"
+        ],
         "settings": {
           "contained": "container",
           "autoplay": true,
           "autoplay_speed": "7000",
           "dots": false,
           "arrows": true,
-          "slideshow_height": "small",
+          "slideshow_height": "medium",
           "text_size": "medium"
         }
       },
@@ -782,18 +746,30 @@
           "1586001467908": {
             "type": "collection",
             "settings": {
-              "image": "",
-              "link": ""
+              "image": "shopify:\/\/shop_images\/davidwilliambaum_2016.12.09_coming-soon_flats37130_b3abca6d-a8bf-490c-b812-858ccfb77dfa.jpg",
+              "link": "#",
+              "animation_block": "flip-down"
+            }
+          },
+          "1586152669403": {
+            "type": "collection",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/https___hypebeast.com_image_2019_06_stylish-adaptive-fashion-for-people-with-disabilities-9_5caa8f3b-a4d6-4b24-99a2-dbe3209386f5.jpg",
+              "link": "#",
+              "animation_block": "flip-down"
             }
           }
         },
         "block_order": [
-          "1586001467908"
+          "1586001467908",
+          "1586152669403"
         ],
         "settings": {
           "title": "_BRANDS <em>we<\/em> LOVE",
+          "animation_title": "flip-down",
           "link_text": "view all brands",
-          "link": ""
+          "link": "shopify:\/\/pages\/life-unltd",
+          "animation_button": "flip-down"
         }
       },
       "filters": {
@@ -817,10 +793,367 @@
       "swatch-colors": {
         "type": "swatch-colors",
         "settings": {}
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "image_size": "medium",
+          "vertical": true,
+          "show_quantity_selector": false,
+          "show_variant_labels": true,
+          "show_vendor": true,
+          "enable_zoom": true,
+          "show_share_buttons": false
+        }
+      },
+      "product-related": {
+        "type": "product-related",
+        "settings": {
+          "title": "",
+          "related_featured": false,
+          "related_collection": "",
+          "related_tag": true,
+          "related_recent": false
+        }
+      },
+      "slideshow-blog": {
+        "type": "slideshow-blog",
+        "blocks": {
+          "1586176745505": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Untitled-1.png",
+              "image_2": "shopify:\/\/shop_images\/The-Unseen-acessories_Selfridges-Oxford-Street_dezeen_936_9.jpg",
+              "overlay": false,
+              "textunderlay": false,
+              "alignment": "top",
+              "text_layout": "center",
+              "text_align": "center",
+              "title": "Image slide",
+              "heading_color": "",
+              "subheading": "Tell your brand's story through video and images",
+              "subheading_color": "",
+              "button": "Shop Now",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1586176745505"
+        ],
+        "settings": {
+          "contained": "container-fluid",
+          "autoplay": true,
+          "autoplay_speed": "7000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "small",
+          "text_size": "medium"
+        }
+      },
+      "blog-landing-articler": {
+        "type": "blog-landing-articler",
+        "settings": {
+          "title": "_#EverybodyFits",
+          "animation_title": "flip-down",
+          "blog": "news",
+          "animation_blog": "flip-down",
+          "num_articles": 4,
+          "sidebar_title": "_NEW + NOW",
+          "animation_sidebar_title": "flip-down",
+          "animation_sidebar_articles": "flip-down"
+        }
+      },
+      "blog-lander-archive": {
+        "type": "blog-lander-archive",
+        "settings": {
+          "title": "_JUNIPER<span>unltd<\/span> ARCHIVE",
+          "animation_title": "flip-down",
+          "subtitle": "FIND ALL PAST CONTENT HERE",
+          "article": "news\/megna",
+          "animation_article": "flip-down"
+        }
+      },
+      "blog-lader-explore": {
+        "type": "blog-lader-explore",
+        "settings": {
+          "title": "_Explore <em>with<\/em> JUNIPER<span>unltd.<\/span>",
+          "animation_title": "flip-down",
+          "image1": "shopify:\/\/shop_images\/Umur-Ozcan-Sveta-Potomski-14.jpg",
+          "animation_image1": "flip-down",
+          "button_text_1": "explore<br> THE FUTURE OF FASHION",
+          "link_1": "shopify:\/\/pages\/shop",
+          "animation_button1": "flip-down",
+          "image2": "shopify:\/\/shop_images\/TeenVogue_99270001.jpg",
+          "animation_image2": "flip-down",
+          "button_text_2": "their STORY",
+          "link_2": "shopify:\/\/pages\/connections",
+          "animation_button2": "flip-down",
+          "image3": "shopify:\/\/shop_images\/blogpage-graph.jpg",
+          "animation_image3": "flip-down",
+          "button_text_3": "JUNIPER<sub>unltd.<\/sub> EVENTS",
+          "link_3": "shopify:\/\/pages\/life-unltd",
+          "animation_button3": "flip-down",
+          "foot_note": "<p><em>With a goal of making the world easier and more inclusive for all people,<br><strong>JUNIPER<\/strong><sub>unltd.<\/sub> <strong>LAB<\/strong> constantly collaborates with partners to develop cutting-edge<br>technologies and human-centered designs with a focus on everyday use and function.<\/em><\/p><h3>Learn about our latest collaborations and partnerships with Untuckit and Spyder. <\/h3>",
+          "animation_footer": "flip-down"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "layout": "list",
+          "title": "archive_",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "tags": "Magna,Ready",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "enable_sidebar": false
+        }
+      },
+      "connection-events": {
+        "type": "connection-events",
+        "settings": {
+          "title": "<p>_JUNIPER<em>unltd.<\/em>&nbsp;EVENTS<\/p>",
+          "blog": "events",
+          "post_limit": "6"
+        }
+      },
+      "connection-brands": {
+        "type": "connection-brands",
+        "settings": {
+          "title": "<p>_BRANDS we LOVE<\/p>",
+          "button_text": "view all brands",
+          "link_url": "shopify:\/\/collections",
+          "collection1": "",
+          "image1": "shopify:\/\/shop_images\/b_1200x_17cf0cbb-7746-4a5b-a1cc-2cc80da38e17.jpg",
+          "link_url1": "",
+          "collection2": "",
+          "image2": "shopify:\/\/shop_images\/https___hypebeast.com_image_2019_06_stylish-adaptive-fashion-for-people-with-disabilities-9_9b1d72bb-1229-4415-91d6-e21a4f5c7867.jpg",
+          "link_url2": ""
+        }
+      },
+      "megamenu1": {
+        "type": "megamenu1",
+        "blocks": {
+          "1586267782563": {
+            "type": "megamenu_menu",
+            "settings": {
+              "title": "Food",
+              "linklist": "food",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1586272112538": {
+            "type": "megamenu_menu",
+            "settings": {
+              "title": "Home",
+              "linklist": "home",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1586273266854": {
+            "type": "megamenu_menu",
+            "settings": {
+              "title": "Wellness",
+              "linklist": "wellness",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1586272120688": {
+            "type": "megamenu_menu",
+            "settings": {
+              "title": "Style",
+              "linklist": "style",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1586272140950": {
+            "type": "megamenu_menu",
+            "settings": {
+              "title": "Tech",
+              "linklist": "tech",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          },
+          "1586272148254": {
+            "type": "megamenu_menu",
+            "settings": {
+              "title": "Care",
+              "linklist": "care",
+              "title_2": "",
+              "linklist_2": "",
+              "column_width": "col"
+            }
+          }
+        },
+        "block_order": [
+          "1586267782563",
+          "1586272112538",
+          "1586273266854",
+          "1586272120688",
+          "1586272140950",
+          "1586272148254"
+        ],
+        "settings": {}
+      },
+      "featured-brands": {
+        "type": "featured-brands",
+        "blocks": {
+          "1586320418218": {
+            "type": "featured_images",
+            "settings": {
+              "featured_image": "shopify:\/\/shop_images\/product-img1.png"
+            }
+          },
+          "1586320421165": {
+            "type": "featured_images",
+            "settings": {
+              "featured_image": "shopify:\/\/shop_images\/product-img-2.png"
+            }
+          },
+          "1586320423367": {
+            "type": "featured_images",
+            "settings": {
+              "featured_image": "shopify:\/\/shop_images\/product-img2.png"
+            }
+          }
+        },
+        "block_order": [
+          "1586320418218",
+          "1586320421165",
+          "1586320423367"
+        ],
+        "settings": {
+          "title": "<p>_FEATURED&nbsp;<em>brand<\/em>&nbsp;MagnaReady<\/p>",
+          "image1": "shopify:\/\/shop_images\/00horton3-superJumbo_915a2733-8033-41b6-8558-4bcbfe756edb.jpg",
+          "image1_title": "<p>Joe Horton<\/p>",
+          "image1_text": "<p>North Caroline State University coach<\/p>",
+          "image2": "shopify:\/\/shop_images\/00horton6-jumbo_ef2ab450-16b7-4f5b-b98f-c5bdc0c9a99c.png",
+          "image2_title": "<p>Meet Maura Horton, founder of MagnaReady<\/p>",
+          "image2_text": "<p>Inspired by her husband&rsquo;s struggle to button his shirt as a result of Parkinson&rsquo;s, Maura Horton came up with the brilliant idea to magnetically infuse the buttons on his shirts, creating a product that could restore order to his daily routine and confidence.<\/p>",
+          "image2_button_text": "Explore the brand now",
+          "link_url2": "shopify:\/\/collections",
+          "middle_title": "<h1>technology<\/h1><br><h1>unlimited<\/h1>",
+          "right_image": "shopify:\/\/shop_images\/MauraHorton.png",
+          "featured_text": "<h1 class=\"text-left\">“<\/h1>\n                            <h2 class=\"text-right\">Honoring him (her husband) is the best thing<\/h2>\n                            <h2 class=\"text-right\">I can do in this world” <span>maura horton<\/span>\n<\/h2>               <h1 class=\"text-right\">“<\/h1>",
+          "video_id": "?v=0O2aH4XLbto",
+          "video_image": "shopify:\/\/shop_images\/Screen_Shot_2020-01-23_at_8.52.52_PM.png",
+          "shop_button_text": "shop MagnaReady",
+          "shop_url": "shopify:\/\/pages\/shop"
+        }
+      },
+      "connection-news": {
+        "type": "connection-news",
+        "settings": {
+          "title": "<p>_NEW&nbsp;<em>+<\/em>&nbsp;NOW<\/p>",
+          "blog": "news",
+          "post_limit": "3"
+        }
+      },
+      "1586327689000": {
+        "type": "slideshow-animation",
+        "blocks": {
+          "1586327689000-0": {
+            "type": "style1",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-1.png",
+              "image_mobile": "shopify:\/\/shop_images\/slide-1-mobile_240x240_8372034d-2a48-4d2c-867f-950e6f44d2ed.png",
+              "title": "01",
+              "title_delay": "1s",
+              "headingAnimation": "bounceInRight",
+              "heading_color": "#000000",
+              "subheading": "Human-centered design",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounceInDown",
+              "subheading_color": "",
+              "button": "explore JUNIPERunltd.",
+              "link": "shopify:\/\/pages\/life-unltd",
+              "button_delay": "1s",
+              "buttonAnimation": "zoomInRight"
+            }
+          },
+          "1586328538259": {
+            "type": "style2",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-2-bg_240x240_942d9133-2a48-4496-b2ab-f5b71e38da03.png",
+              "image_mobile": "",
+              "image_1": "shopify:\/\/shop_images\/slide-img2_1.png",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounceInDown",
+              "image_2": "shopify:\/\/shop_images\/slide-image-2-img_1.png",
+              "image_2_delay": "0.8s",
+              "image_2_animation": "bounceInUp",
+              "title": "02",
+              "title_delay": "1.6s",
+              "headingAnimation": "bounceInLeft",
+              "heading_color": "#000000",
+              "subheading": "Fashion for ALL.",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounceInDown",
+              "subheading_color": "#ffffff",
+              "subheading_2": "Function for EVERYONE.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "bounceInDown",
+              "button": "explore INNOVATION",
+              "link": "shopify:\/\/pages\/shop",
+              "button_delay": "1s",
+              "buttonAnimation": "fadeIn"
+            }
+          },
+          "1586328984696": {
+            "type": "style3",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-2-bg_240x240_c232b919-f857-4614-8b88-978d2435c324.png",
+              "image_mobile": "",
+              "image_1": "shopify:\/\/shop_images\/slide3-img1_1.jpg",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounceInDown",
+              "image_2": "shopify:\/\/shop_images\/slide3-img2_1.png",
+              "image_2_delay": "0.8s",
+              "image_2_animation": "bounceInUp",
+              "title": "03",
+              "title_delay": "1s",
+              "headingAnimation": "bounceInRight",
+              "heading_color": "#000000",
+              "subheading": "fashion chameleon",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounceInDown",
+              "subheading_color": "#ffffff",
+              "button": "explore STORIES",
+              "link": "shopify:\/\/blogs\/news",
+              "button_delay": "1s",
+              "buttonAnimation": "flash"
+            }
+          }
+        },
+        "block_order": [
+          "1586327689000-0",
+          "1586328538259",
+          "1586328984696"
+        ],
+        "settings": {
+          "contained": "container-fluid",
+          "autoplay": false,
+          "autoplay_speed": "9000",
+          "dots": true,
+          "arrows": true,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
       }
     },
     "content_for_index": [
-      "1585374499168",
+      "1586327689000",
       "slideshow",
       "1585305670953",
       "1585293700695",

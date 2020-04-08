@@ -1,0 +1,608 @@
+{%- assign blog = blogs[section.settings.blog] -%}
+<div class="blog-template-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-lg-45 blog-template-ls">
+         {% if section.settings.title != blank %}
+            <div class="section-title" data-aos="{{ section.settings.animation_title }}">{{ section.settings.title  }}</div>
+         {% endif %}
+         {%- assign featuredArticle = blog.articles[0] -%}
+         {% if section.settings.blog != blank %}
+            <div class="blog-featured-img" data-aos="{{ section.settings.animation_blog }}" style="background-image: url({{ featuredArticle.image.src | img_url: '1600x' }});"></div>
+            <div class="blog-template-details" data-aos="{{ section.settings.animation_blog }}">
+               <div class="row">
+                  <div class="col-md-22">
+                     <div class="details-left-side">
+                        <h3>{{ featuredArticle.title }}</h3>
+                        <br>
+                        <span>{{ featuredArticle.excerpt }}</span>
+                     </div>
+                  </div>
+                  <div class="col-md-38 details-right-side">
+                  {%- assign featuredExceprt = featuredArticle.content | split: '<p>' -%}
+                     {{ featuredExceprt[0] }}
+                  </div>
+               </div>
+            </div>
+         {% endif %}
+            <div class="blog-grids-container">
+               <div class="row">
+               {% for article in blog.articles %}
+               {% if forloop.index == 1 %}
+                  {% continue %}
+                  {% elsif forloop.index > 4 %}
+                  {% break %}
+               {% endif %}
+                  <div class="col-md-20">
+                     <div class="blog-grid" data-aos="{{ section.settings.animation_blog }}">
+                        <div class="blog-grid-img" style="background-image:url({{ article.image.src | img_url: '800x' }})"></div>
+                        <div class="blog-grid-details">
+                           <h3>{{ article.title }}</h3>
+                           {%- assign articleExceprt = article.content | split: '.' -%}
+                              <p>{{ articleExceprt[0] }}</p>
+                           <a href="{{article.url }}">READ MORE ABOUT THIS GEAR HERE</a>
+                        </div>
+                     </div>
+                  </div>
+               {% endfor %}
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-15 blog-template-rs">
+         {% if section.settings.sidebar_title != blank %}
+            <div class="section-title" data-aos="{{ section.settings.animation_sidebar_title }}">{{ section.settings.sidebar_title }}</div>
+         {% endif %}
+            <div class="latest-list-container">
+               <div class="latest-list" data-aos="{{ section.settings.animation_sidebar_articles }}">
+                  <span class="list-tag">R+D</span>
+                  <div class="list-detail">
+                     <h3>SMART MATERIALS</h3>
+                     <p>Imagine running shoes which
+                        morph and dynamically
+                        adapt to your particular
+                        anatomy and style, as well as
+                        the day’s weather conditions,
+                        and which continuously
+                        collect data to feed back into
+                        the design process.
+                     </p>
+                     <a href="#">DISCOVER THE FUTURE <br class="d-none d-lg-block">OF SMART MATERIALS HERE</a>
+                  </div>
+               </div>
+               <div class="latest-list" data-aos="{{ section.settings.animation_sidebar_articles }}">
+                  <span class="list-tag">charity of the month</span>
+                  <div class="list-image" style="background-image: url({{ 'wide-3wx.jpg' | asset_url }});"></div>
+                  <div class="list-detail">
+                     <h3>THE HEROES PROJECT</h3>
+                     <p>The Heroes Project makes
+                        the impossible a reality by
+                        empowering injured military vets
+                        through physical and emotional
+                        training to explore the farthest
+                        reaches of themselves and the
+                        world they live in. 
+                     </p>
+                     <a href="#">LEARN MORE ABOUT <br class="d-none d-lg-block">THE HEROES PROJECT HERE.</a>
+                  </div>
+               </div>
+               <div class="latest-list" data-aos="{{ section.settings.animation_sidebar_articles }}">
+                  <span class="list-tag">event</span>
+                  <div class="list-detail">
+                     <h3>GET YOUR MOVE ON
+                        FOR PARKINSON’S
+                     </h3>
+                     <p>Moving Day is a walk in support
+                        of Parkinson’s. The cause has
+                        brought together over 130,000
+                        people across the country and
+                        raised nearly $22 Million. 
+                     </p>
+                     <a href="#">FOR MORE INFORMATION ABOUT <br class="d-none d-lg-block">EVENTS, CLICK HERE.</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% schema %}
+   {
+      "name":"Blog Articles",
+      "class":"blog-template-section",
+      "settings":[
+         {
+            "type":"text",
+            "id":"title",
+            "label":"title",
+            "default":"_#EverybodyFits"
+         },
+         {
+            "type": "select",
+            "id": "animation_title",
+            "label": "Animation",
+            "options": [
+                {
+                "group": "FADE",
+                "value": "fade-up",
+                "label": "fade up"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down",
+                "label": "fade down"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-right",
+                "label": "fade right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-left",
+                "label": "fade left"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-up-right",
+                "label": "fade up right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-up-left",
+                "label": "fade up left"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down-right",
+                "label": "fade down right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down-left",
+                "label": "fade down left"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-left",
+                "label": "flip left"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-right",
+                "label": "flip right"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-up",
+                "label": "flip up"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-down",
+                "label": "flip down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in",
+                "label": "zoom in"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-up",
+                "label": "zoom in up"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-down",
+                "label": "zoom in down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-left",
+                "label": "zoom in left"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-right",
+                "label": "zoom in right"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out",
+                "label": "zoom out"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-up",
+                "label": "zoom out up"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-down",
+                "label": "zoom out down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-right",
+                "label": "zoom out right"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-left",
+                "label": "zoom out left"
+                }
+            ],
+            "default": "flip-down"
+            },
+         {
+            "type":"blog",
+            "id":"blog",
+            "label":"Blog"
+         },
+         {
+            "type": "select",
+            "id": "animation_blog",
+            "label": "Animation",
+            "options": [
+                {
+                "group": "FADE",
+                "value": "fade-up",
+                "label": "fade up"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down",
+                "label": "fade down"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-right",
+                "label": "fade right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-left",
+                "label": "fade left"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-up-right",
+                "label": "fade up right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-up-left",
+                "label": "fade up left"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down-right",
+                "label": "fade down right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down-left",
+                "label": "fade down left"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-left",
+                "label": "flip left"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-right",
+                "label": "flip right"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-up",
+                "label": "flip up"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-down",
+                "label": "flip down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in",
+                "label": "zoom in"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-up",
+                "label": "zoom in up"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-down",
+                "label": "zoom in down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-left",
+                "label": "zoom in left"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-right",
+                "label": "zoom in right"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out",
+                "label": "zoom out"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-up",
+                "label": "zoom out up"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-down",
+                "label": "zoom out down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-right",
+                "label": "zoom out right"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-left",
+                "label": "zoom out left"
+                }
+            ],
+            "default": "flip-down"
+            },
+         {
+            "type":"number",
+            "id":"num_articles",
+            "label":"Number of articles to show"
+         },
+         {
+            "type":"text",
+            "id":"sidebar_title",
+            "label":"Sidebar Title"
+         },
+         {
+            "type": "select",
+            "id": "animation_sidebar_title",
+            "label": "Animation",
+            "options": [
+                {
+                "group": "FADE",
+                "value": "fade-up",
+                "label": "fade up"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down",
+                "label": "fade down"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-right",
+                "label": "fade right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-left",
+                "label": "fade left"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-up-right",
+                "label": "fade up right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-up-left",
+                "label": "fade up left"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down-right",
+                "label": "fade down right"
+                },
+                {
+                "group": "FADE",
+                "value": "fade-down-left",
+                "label": "fade down left"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-left",
+                "label": "flip left"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-right",
+                "label": "flip right"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-up",
+                "label": "flip up"
+                },
+                {
+                "group": "FLIP",
+                "value": "flip-down",
+                "label": "flip down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in",
+                "label": "zoom in"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-up",
+                "label": "zoom in up"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-down",
+                "label": "zoom in down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-left",
+                "label": "zoom in left"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-in-right",
+                "label": "zoom in right"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out",
+                "label": "zoom out"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-up",
+                "label": "zoom out up"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-down",
+                "label": "zoom out down"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-right",
+                "label": "zoom out right"
+                },
+                {
+                "group": "ZOOM",
+                "value": "zoom-out-left",
+                "label": "zoom out left"
+                }
+            ],
+            "default": "flip-down"
+            },
+            {
+               "type": "select",
+               "id": "animation_sidebar_articles",
+               "label": "Animation",
+               "options": [
+                   {
+                   "group": "FADE",
+                   "value": "fade-up",
+                   "label": "fade up"
+                   },
+                   {
+                   "group": "FADE",
+                   "value": "fade-down",
+                   "label": "fade down"
+                   },
+                   {
+                   "group": "FADE",
+                   "value": "fade-right",
+                   "label": "fade right"
+                   },
+                   {
+                   "group": "FADE",
+                   "value": "fade-left",
+                   "label": "fade left"
+                   },
+                   {
+                   "group": "FADE",
+                   "value": "fade-up-right",
+                   "label": "fade up right"
+                   },
+                   {
+                   "group": "FADE",
+                   "value": "fade-up-left",
+                   "label": "fade up left"
+                   },
+                   {
+                   "group": "FADE",
+                   "value": "fade-down-right",
+                   "label": "fade down right"
+                   },
+                   {
+                   "group": "FADE",
+                   "value": "fade-down-left",
+                   "label": "fade down left"
+                   },
+                   {
+                   "group": "FLIP",
+                   "value": "flip-left",
+                   "label": "flip left"
+                   },
+                   {
+                   "group": "FLIP",
+                   "value": "flip-right",
+                   "label": "flip right"
+                   },
+                   {
+                   "group": "FLIP",
+                   "value": "flip-up",
+                   "label": "flip up"
+                   },
+                   {
+                   "group": "FLIP",
+                   "value": "flip-down",
+                   "label": "flip down"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-in",
+                   "label": "zoom in"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-in-up",
+                   "label": "zoom in up"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-in-down",
+                   "label": "zoom in down"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-in-left",
+                   "label": "zoom in left"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-in-right",
+                   "label": "zoom in right"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-out",
+                   "label": "zoom out"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-out-up",
+                   "label": "zoom out up"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-out-down",
+                   "label": "zoom out down"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-out-right",
+                   "label": "zoom out right"
+                   },
+                   {
+                   "group": "ZOOM",
+                   "value": "zoom-out-left",
+                   "label": "zoom out left"
+                   }
+               ],
+               "default": "flip-down"
+               }
+      ]
+   }
+{% endschema %}

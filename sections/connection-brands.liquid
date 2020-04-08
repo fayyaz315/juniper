@@ -1,0 +1,107 @@
+{%- assign col_handle1 = section.settings.collection1 -%}
+{%- assign collection_1 = collections[col_handle1] -%}
+{%- assign col_handle2 = section.settings.collection2 -%}
+{%- assign collection_2 = collections[col_handle2] -%}
+{% if section.settings.image1 != blank %}
+    {% assign image_1 = section.settings.image1 | img_url: '1000x' %}
+{% else %}
+    {% assign image_1 = collection_1.image | img_url: '1000x' %}
+{% endif %}
+{% if section.settings.link_url1 != blank %}
+{% assign link1 = section.settings.link_url1 %}
+{% else %}
+{% assign link1 = collection_1.url %}
+{% endif %}
+{% if section.settings.link_url2 != blank %}
+{% assign link2 = section.settings.link_url2 %}
+{% else %}
+{% assign link2 = collection_2.url %}
+{% endif %}
+{% if section.settings.image2 != blank %}
+    {% assign image_2 = section.settings.image2 | img_url: '2000x' %}
+{% else %}
+    {% assign image_2 = collection_2.image | img_url: '1000x' %}
+{% endif %}
+<div class="connect-brand brands-love">
+    <div class="section-header">
+      <div class="container">
+          {% if section.settings.title != blank %}
+          <h2>
+          {{ section.settings.title }}
+          </h2>
+          {% endif %}
+      </div>
+    </div>
+    <div class="row">
+    {% if image_1 != blank %}
+      <div class="col-md-30 no-padding">
+        <a href="{{link1}}" class="brands-love-block block-1" style="background-image: url('{{image_1 }}')"></a>
+      </div>
+      {% endif %}
+    {% if image_2 != blank %}
+      <div class="col-md-30 no-padding">
+        <a href="{{link2}}" class="brands-love-block block-2" style="background-image: url('{{image_2 }}')"></a>
+      </div>
+      {% endif %}
+    </div>
+    {% if section.settings.link_url != blank and section.settings.button_text != blank %}
+    <a href="{{section.settings.link_url}}" class="btn btn-primary view-brands">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+  {% schema %}
+  {
+    "name": "Brands",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "title",
+        "label": "Brands Heading"
+      },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button Text"
+          },
+          {
+            "type": "url",
+            "id": "link_url",
+            "label": "Collection link",
+            "info": "Leave this field empty to show collection link"
+          },
+        {
+            "type": "header",
+            "content": "Collection"
+        },
+        {
+            "type": "collection",
+            "id": "collection1",
+            "label": "Collection 1"
+        },
+        {
+            "type": "image_picker",
+            "id": "image1",
+            "label": "Image 1 Override"
+        },
+        {
+            "type": "url",
+            "id": "link_url1",
+            "label": "Collection 1 link Override"
+        },
+        {
+            "type": "collection",
+            "id": "collection2",
+            "label": "Collection 2"
+        },
+        {
+            "type": "image_picker",
+            "id": "image2",
+            "label": "Image 2 Override"
+        },
+        {
+            "type": "url",
+            "id": "link_url2",
+            "label": "Collection 2 link Override"
+        }
+    ]
+  }
+{% endschema %}

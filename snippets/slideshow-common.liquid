@@ -16,7 +16,7 @@
 
         <div id="hero-slider" class="slideshow-animation slideshow--{{ section.settings.slideshow_height }}" id="Slideshow-{{ section.id }}" data-speed="{{ section.settings.autoplay_speed }}" data-dots="{{ section.settings.dots }}" data-arrows="{{ section.settings.arrows }}">
           {% for block in section.blocks %}
-            <div data-animation="heartBeat" class="hero-slide slideshow__slide slideshow__slide--{{ block.id }}{% if is_background_video %} slideshow__slide--background-video{% endif %}" {{ block.shopify_attributes }}>
+            <div data-animation="heartBeat" class="{{ block.type }}-container hero-slide slideshow__slide slideshow__slide--{{ block.id }}{% if is_background_video %} slideshow__slide--background-video{% endif %}" {{ block.shopify_attributes }}>
               {% if block.settings.link != blank %}
                 <a href="{{ block.settings.link }}" class="slideshow__link">
               {% endif %}
@@ -106,7 +106,7 @@
               {% if block.type == "style1" %}
               <div class="style1">
                 <div class="slideshow__text-wrap slideshow__text--{{ block.id }} row{% if block.settings.overlay %} slideshow__overlay{% endif %}">
-                  <div class="col-md-47{% if block.settings.text_layout == 'center' %} offset-md-8 offset-lg-5 {% elsif block.settings.text_layout == 'right' %} offset-md-30{% endif %} text-{{ block.settings.text_align }} slideshow__text-content">
+                  <div class="col-md-47 offset-md-8 offset-lg-5 text-{{ block.settings.text_align }} slideshow__text-content">
                     <div class="page-width">
                 
                       {% unless block.settings.title == blank %}
@@ -287,7 +287,7 @@
               <div class="slideshow__text-wrap slideshow__text--{{ block.id }} {% if block.settings.overlay %} slideshow__overlay{% endif %}">  
                 <div class="row">
                 <div data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')" class="col-25 slider-image1"></div>
-                <div class="col-35">
+                <div class="col-35 pr-0 pl-0">
                   <div data-animation="{{block.settings.image_2_animation}}" data-delay="{{block.settings.image_2_delay}}" style="background-image:url('{{block.settings.image_2 | img_url: '1500x'}}')" class="slider-image2"></div>
                   <div class="slider-right-side">
                     <div class="slider-content">
@@ -309,8 +309,12 @@
                                   {{ block.settings.subheading_2 }}
                                 </span>
                                 {% endif %}
-                    <!-- <br>
-                    <span class="slideshow-simple-btn">read more about CARE+WEAR</span> -->
+                    <br>
+                    {% if block.settings.subheading_3 != blank %}
+                                <span data-animation="{{block.settings.subHeading_3_Animation}}" data-delay="{{block.settings.sub_heading_3_delay}}" class="slideshow-simple-btn">
+                                  {{ block.settings.subheading_3 }}
+                                </span>
+                                {% endif %}
                     </div>  
                   </div>
                   {% if block.settings.link != blank and block.settings.button != blank %}
@@ -321,8 +325,184 @@
               </div>              
               </div>
               </div>
+              {% endif%}
+              {% comment %} sllide 4 settings ends {% endcomment %}
+
+              {% comment %} Slide 5 settings {% endcomment %}
+              {% if block.type == "style5" %}
+              <div class="style5">
+                <div class="slider-content">
+                  <div class="row">
+                      <div class="col-lg-25 col-35">
+                          <div class="slider-left-content">
+                            {% unless block.settings.title == blank %}
+                                  <h1 data-animation="{{block.settings.headingAnimation}}" data-delay="{{block.settings.title_delay}}">
+                                    {{ block.settings.title | escape }}
+                                  </h1>
+                                {% endunless %}
+                                {% unless block.settings.subheading == blank %}
+                                  <h2 data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}">
+                                    {{ block.settings.subheading | escape }}
+                                  </h2>
+                                {% endunless %}
+                                {% if block.settings.subheading_2 != blank %}
+                                <h3 data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}">{{ block.settings.subheading_2 }}</h3>                                  
+                                </h3>
+                                {% endif %}
+                                {% if block.settings.link != blank and block.settings.button != blank %}
+                                <span class="btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+                                {% endif %}
+                          </div>
+                      </div>
+                      <div class="col-lg-35 col-25">
+                          <div class="slider-right-content">
+                            {% if block.settings.image_1 %}  
+                            <div class="slide slide-active" data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')">                                  
+                              </div>
+                              {% endif %}
+                              {% if block.settings.image_2 %}
+                              <div class="slide slide-inactive-1" data-animation="{{block.settings.image_2_animation}}" data-delay="{{block.settings.image_2_delay}}" style="background-image:url('{{block.settings.image_2 | img_url: '1500x'}}')">                                  
+                              </div>
+                              {% endif %}
+                              {% if block.settings.image_3 %}
+                              <div class="slide slide-inactive-2" data-animation="{{block.settings.image_3_animation}}" data-delay="{{block.settings.image_3_delay}}" style="background-image:url('{{block.settings.image_3 | img_url: '1500x'}}')">                                  
+                              </div>
+                              {% endif %}
+                          </div>
+                      </div>
+                      <div class="col-xl-5"></div>
+                  </div>
+              </div>
+              </div>
+              {% endif%}
+              {% comment %} sllide 5 settings ends {% endcomment %}
+
+            {% comment %} Slide 6 settings {% endcomment %}
+            {% if block.type == "style6" %}
+                  <div class="style6">
+                    <div class="slide-2-main">
+                      <div class="row">
+                        <div class="col-30">
+                          <div class="slide2-btn">
+                              {% if block.settings.link != blank and block.settings.button != blank %}
+                                <span class="btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+                              {% endif %}
+                          </div>
+                              <div class="slide2-img2" data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')">
+                            </div>
+                        </div>
+                        <div class="col-30">
+                          <div class="slide2-img1" data-animation="{{block.settings.image_2_animation}}" data-delay="{{block.settings.image_2_delay}}" style="background-image:url('{{block.settings.image_2 | img_url: '1500x'}}')">
+                          </div>
+                          <div class="slideshow__text-wrap slideshow__text--{{ block.id }} row{% if block.settings.overlay %} slideshow__overlay{% endif %}">
+                            <div class="col-md-60{% if block.settings.text_layout == 'center' %} {% elsif block.settings.text_layout == 'right' %} offset-md-30{% endif %} text-{{ block.settings.text_align }} slideshow__text-content">                     
+                              <div class="page-width">
+                                {% unless block.settings.title == blank %}
+                                  <h2 data-animation="{{block.settings.headingAnimation}}" data-delay="{{block.settings.title_delay}}" class="h1 mega-title slideshow__title{% if settings.link != blank %} slideshow__title--has-link{% endif %}{% if section.settings.text_size == 'large' %} mega-title--large{% endif %}">
+                                    {{ block.settings.title | escape }}
+                                  </h2>
+                                {% endunless %}
+                                {% unless block.settings.title == blank and block.settings.subheading == blank %}
+              
+                                {% endunless %}
+                                <div class="d-none d-md-block">
+                                {% unless block.settings.subheading == blank %}
+                                  <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="mega-subtitle slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
+                                    {{ block.settings.subheading | escape }}
+                                  </span>
+                                {% endunless %}
+                                <br/>
+                                {% if block.settings.subheading_2 != blank %}
+                                <span data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}" class="mega-subtitle slideshow__subtitle mega-subtitle-secondary">
+                                  {{ block.settings.subheading_2 }}
+                                </span>
+                                {% endif %}
+                              </div>
+                                <br/>
+                                {% if block.type == 'video' %}
+                                  {% unless block.settings.video_type == 'background' %}
+                                    <div class="slideshow__video-control--play-wrapper{% if block.settings.title != blank or block.settings.subheading != blank %} slideshow__video-control--play-wrapper--push{% endif %}">
+                                      <button type="button" class="text-link slideshow__video-control slideshow__video-control--play" data-controls="SlideshowVideo-{{ block.id }}">
+                                        {% include 'icon-play-video' %}
+                                        <span class="icon__fallback-text">{{ 'sections.slideshow.play_video' | t }}</span>
+                                      </button>
+                                    </div>
+                                  {% endunless %}
+                                {% else %}
+                                  {% if block.settings.link != blank and block.settings.button != blank %}
+                                    <span class="btn d-none" data-animation="fadeInLeft" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+                                  {% endif %}
+                                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-block d-md-none">
+                        {% unless block.settings.subheading == blank %}
+                          <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="mega-subtitle slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
+                            {{ block.settings.subheading | escape }}
+                          </span>
+                        {% endunless %}
+                        <br/>
+                        {% if block.settings.subheading_2 != blank %}
+                        <span data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}" class="mega-subtitle slideshow__subtitle mega-subtitle-secondary">
+                          {{ block.settings.subheading_2 }}
+                        </span>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+              {% endif %}
+            {% comment %} sllide 6 settings ends {% endcomment %}
+
+            {% comment %} Slide 7 settings {% endcomment %}
+            {% if block.type == "style7" %}
+            <div class="style7">
+            <div class="slideshow__text-wrap slideshow__text--{{ block.id }} {% if block.settings.overlay %} slideshow__overlay{% endif %}">  
+              <div class="row">
+              <div data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')" class="col-25 slider-image1"></div>
+              <div class="col-35 pr-0 pl-0">
+                <div data-animation="{{block.settings.image_2_animation}}" data-delay="{{block.settings.image_2_delay}}" style="background-image:url('{{block.settings.image_2 | img_url: '1500x'}}')" class="slider-image2"></div>
+                <div class="slider-right-side">
+                  <div class="slider-content">
+                  <div>
+                    {% unless block.settings.title == blank %}
+                                <h2 data-animation="{{block.settings.headingAnimation}}" data-delay="{{block.settings.title_delay}}" class="slideshow-title">
+                                  {{ block.settings.title | escape }}
+                                </h2>
+                              {% endunless %}
+                  <br>
+                  {% unless block.settings.subheading == blank %}
+                                <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="slideshow-text">
+                                  {{ block.settings.subheading | escape }}
+                                </span>
+                              {% endunless %}
+                  <br>
+                  {% if block.settings.subheading_2 != blank %}
+                              <span data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}" class="slideshow-text">
+                                {{ block.settings.subheading_2 }}
+                              </span>
+                              {% endif %}
+                  <br>
+                  {% if block.settings.subheading_3 != blank %}
+                              <span data-animation="{{block.settings.subHeading_3_Animation}}" data-delay="{{block.settings.sub_heading_3_delay}}" class="slideshow-simple-btn">
+                                {{ block.settings.subheading_3 }}
+                              </span>
+                              {% endif %}
+                  </div>  
+                </div>
+                {% if block.settings.link != blank and block.settings.button != blank %}
+                              <span class="slideshow-btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+                {% endif %}
+              </div>
+              </div>
+            </div>              
+            </div>
+            </div>
             {% endif%}
-            {% comment %} sllide 4 settings ends {% endcomment %}
+            {% comment %} sllide 7 settings ends {% endcomment %}
+
 
               {% if block.settings.link != blank %}
                 </a>

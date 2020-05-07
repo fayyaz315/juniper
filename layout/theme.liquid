@@ -89,9 +89,9 @@
 </head>
 
 <body class="template-{{ template | split: '.' | first }}{% if template != 'index'%} inner-pages-header{% endif %}">
-
+  {% include 'page-loader' %}
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
-
+{% include 'cart-sidebar' %}
   <div id="SearchDrawer" class="search-bar drawer drawer--top">
     <div class="search-bar__table">
       <div class="search-bar__table-cell search-bar__form-wrapper">
@@ -114,14 +114,12 @@
 
   {% section 'notification' %}
 
-  <div id="sticky-anchor"></div>
   <div id="container-header">
     {% section 'mobile-nav' %}
     <div id="shopify-section-header">
       {% include 'header' %}
     </div>
   </div>
-
   <div class="page-container" id="PageContainer">
 
     <!-- {% if template template contains 'article' %}

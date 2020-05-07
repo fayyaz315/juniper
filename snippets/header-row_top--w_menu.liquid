@@ -3,14 +3,14 @@
   <div class="header-topbar d-none d-md-block">
     <ul>  
       <li>
-        <form>
+        <form action="/search" method="get" role="search">
           <button type="submit"><span>search</span> {% include 'icon-search' %}</button>
-          <input type="text">
+          <input type="search" name="q" value="{{ search.terms | escape }}" aria-label="{{ 'general.search.placeholder' | t }}">
         </form>
       </li>
-      <li><a href="#">account</a></li>
-      <li><a href="#">favorites</a></li>
-      <li><a href="#">cart <span>{% include 'icon-cart' %} 00</span></a></li>
+      <li><a href="/account">account</a></li>
+      <li><a href="/pages/wishlist">favorites</a></li>
+      <li><a class="site-header__cart" href="/cart">cart <span id="CartCount">{% include 'icon-cart' %} {% if cart.item_count > 0 %}<span>{{ cart.item_count }}</span>{% endif %}</span></a></li>
     </ul>
   </div>
   {% endif %}
@@ -19,7 +19,6 @@
     <div class="logo-bg {% if template == 'index'%}col-25 col-lg-16 col-md-15 pr-md-0{% else %}col-25 col-lg-14 col-md-13 {% endif %} order-{% if settings.align_logo == 'center' %}3{% else %}1{% endif %}">
       {% include 'header-logo' %}
     </div>
-
     <div class="col d-none d-md-block order-2 pl-0 pr-0">
       <nav class="d-none d-md-block {% if template == 'index'%}text-{{ settings.align_menu_text }}{% endif %}" id="AccessibleNav" role="navigation">
         {% include 'site-nav' %}

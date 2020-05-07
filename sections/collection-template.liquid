@@ -53,166 +53,166 @@
 {% paginate collection.products by limit %}
 
 <div data-section-id="{{ section.id }}" data-section-type="collection-template">
-  <header class="collection-header">
+  <div class="container-fluid Collection-page-container" id="Collection">
+    <header class="collection-header">
 
-    {% if section.settings.show_collection_image and collection.image %}
-      <style>
-      </style>
-      <div class="collection-hero">
+      {% if section.settings.show_collection_image and collection.image %}
         <style>
-          .collection-hero__image {
-            background-image: url({{ collection.image | img_url: '1600x' }});
-          }
-
-          @media only screen and (max-width: 1200px) {
-            .collection-hero__image {
-              background-image:url('{{ collection.image | img_url: '1280x' }}'); 
-            }
-          }
-          @media only screen and (max-width: 992px) {
-            .collection-hero__image {
-              background-image:url('{{ collection.image | img_url: '992x' }}'); 
-            }
-          }
-          @media only screen and (max-width: 768px) {
-            .collection-hero__image {
-              background-image:url('{{ collection.image | img_url: '768x' }}'); 
-            }
-          }
-          @media only screen and (max-width: 576px) {
-            .collection-hero__image {
-              background-image:url('{{ collection.image| img_url: '576x' }}'); 
-            }
-          }
         </style>
-        <div class="collection-hero__image"></div>
-        <div class="collection-hero__title-wrapper">
-          <h1 class="collection-hero__title page-width">{{ collection.title }}</h1>
+        <div class="collection-hero">
+          <style>
+            .collection-hero__image {
+              background-image: url({{ collection.image | img_url: '1600x' }});
+            }
+  
+            @media only screen and (max-width: 1200px) {
+              .collection-hero__image {
+                background-image:url('{{ collection.image | img_url: '1280x' }}'); 
+              }
+            }
+            @media only screen and (max-width: 992px) {
+              .collection-hero__image {
+                background-image:url('{{ collection.image | img_url: '992x' }}'); 
+              }
+            }
+            @media only screen and (max-width: 768px) {
+              .collection-hero__image {
+                background-image:url('{{ collection.image | img_url: '768x' }}'); 
+              }
+            }
+            @media only screen and (max-width: 576px) {
+              .collection-hero__image {
+                background-image:url('{{ collection.image| img_url: '576x' }}'); 
+              }
+            }
+          </style>
+          <div class="collection-hero__image"></div>
+          <div class="collection-hero__title-wrapper">
+            <h1 class="collection-hero__title page-width" data-aos="{{ section.settings.animation_title }}">{{ collection.title }}</h1>
+          </div>
         </div>
-      </div>
-
-      {% if collection.description != blank %}
-        <div class="rte collection-description container">
-          {{ collection.description }}
-        </div>
-      {% endif %}
-    {% else %}
-      <div class="container">
-        <div class="section-header text-center">
-          <h1>{{ collection.title }}</h1>
-          {% if collection.description != blank %}
-            <div class="rte">
-              {{ collection.description }}
-            </div>
-          {% endif %}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if section.settings.tags_enable or section.settings.sort_enable %}
-      <div class="filters-toolbar-wrapper">
-        <div class="container-fluid">
-          <div class="row filters-toolbar">
-            {% if section.settings.tags_enable %}
-              <div class="col">
-                <label for="SortTags" class="label--hidden">{{ 'collections.filters.title_tags' | t }}</label>
-                <select class="filters-toolbar__input filters-toolbar__input--filter" name="SortTags" id="SortTags">
-									{% if current_tags %}
-		                {% if collection.handle %}
-		                  <option value="/collections/{{ collection.handle }}">{{ 'collections.filters.all_tags' | t }}</option>
-		                {% elsif collection.current_type %}
-		                  <option value="{{ collection.current_type | url_for_type }}">{{ 'collections.filters.all_tags' | t }}</option>
-		                {% elsif collection.current_vendor %}
-		                  <option value="{{ collection.current_vendor | url_for_vendor }}">{{ 'collections.filters.all_tags' | t }}</option>
-		                {% endif %}
-		              {% else %}
-		                {% if current_tags contains tag %}
-		                  <option value="">{{ 'collections.filters.all_tags' | t }}</option>{% endif %}
-		              {% endif %}
-		              {% for tag in collection.all_tags %}
-										<option value="{{ tag | handleize }}">{{ tag }}</option>
-		              {% endfor %}
-                </select>
-              </div>
-            {% endif %}
-
-            <div class="col filters-toolbar__item--count{% if section.settings.tags_enable == false and section.settings.sort_enable %} text-left{% endif %}{% if section.settings.tags_enable and section.settings.sort_enable == false %} text-right{% endif %}">
-              <span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</span>
-            </div>
-
-            {% if section.settings.sort_enable %}
-              <div class="col text-right">
-                {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-                <label for="SortBy" class="label--hidden">{{ 'collections.sorting.title' | t }}</label>
-                <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort hidden">
-                  {% if sort_by == collection.default_sort_by %}
-                    <option value="title-ascending" selected="selected">{{ 'collections.sorting.title' | t }}</option>
-                    {% if collection.default_sort_by != 'manual' %}
-                      <option value="manual"{% if sort_by == "manual" %} selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
-                    {% endif %}
-                    {% if collection.default_sort_by != 'best-selling' %}
-                      <option value="best-selling"{% if sort_by == "best-selling" %} selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
-                    {% endif %}
-                    {% if collection.default_sort_by != 'title-ascending' %}
-                      <option value="title-ascending"{% if sort_by == "title-ascending"  %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
-                    {% endif %}
-                    {% if collection.default_sort_by != 'title-descending' %}
-                      <option value="title-descending"{% if sort_by == "title-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
-                    {% endif %}
-                    {% if collection.default_sort_by != 'price-ascending' %}
-                      <option value="price-ascending"{% if sort_by == "price-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
-                    {% endif %}
-                    {% if collection.default_sort_by != 'price-descending' %}
-                      <option value="price-descending"{% if sort_by == "price-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
-                    {% endif %}
-                    {% if collection.default_sort_by != 'created-descending' %}
-                      <option value="created-descending"{% if sort_by == "created-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
-                    {% endif %}
-                    {% if collection.default_sort_by != 'created-ascending' %}
-                      <option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
-                    {% endif %}
-                  {% else %}
-                    <option value="manual"{% if sort_by == "manual" %} selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
-                    <option value="best-selling"{% if sort_by == "best-selling" %} selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
-                    <option value="title-ascending"{% if sort_by == "title-ascending"  %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
-                    <option value="title-descending"{% if sort_by == "title-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
-                    <option value="price-ascending"{% if sort_by == "price-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
-                    <option value="price-descending"{% if sort_by == "price-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
-                    <option value="created-descending"{% if sort_by == "created-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
-                    <option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
-                  {% endif %}
-                </select>
-                <input class="collection-header__default-sort" type="hidden" value="{{ collection.default_sort_by }}">
+  
+        {% if collection.description != blank %}
+          <div class="rte collection-description container" data-aos="{{ section.settings.animation_description }}">
+            {{ collection.description }}
+          </div>
+        {% endif %}
+      {% else %}
+          <div class="custom-page-heading">
+          <div class="section-header collection-page-header text-left">
+            <h1 data-aos="{{ section.settings.animation_title }}">{{ collection.title }}</h1>
+            {% if collection.description != blank %}
+              <div class="rte" data-aos="{{ section.settings.animation_description }}">
+                {{ collection.description }}
               </div>
             {% endif %}
           </div>
+  
+          {% if section.settings.filter_settings == "top" %}
+            <ul class="pdp-top-links" data-aos="{{ section.settings.animation_filters }}">
+            <li><span>{{ collection.title }}</span></li>
+              {%- assign filters = section.settings.filters | split: ',' -%}
+              {% for filter in filters %}
+              {% if collection.all_tags contains filter %}
+              {% if current_tags contains filter %}
+              <li><a href="javascript:void(0);" class="active">{{ filter }}</a></li>
+                {% else %}
+              <li><a href="{{ collection.url }}/{{ filter | handleize }}">{{ filter }}</a></li>
+              {% endif %}
+              {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+          </div>
+      {% endif %}
+  
+      {% if section.settings.tags_enable or section.settings.sort_enable %}
+        <div class="filters-toolbar-wrapper">
+          <div class="container-fluid">
+            <div class="row filters-toolbar">
+              {% if section.settings.tags_enable %}
+                <div class="col">
+                  <label for="SortTags" class="label--hidden">{{ 'collections.filters.title_tags' | t }}</label>
+                  <select class="filters-toolbar__input filters-toolbar__input--filter" name="SortTags" id="SortTags">
+                    {% if current_tags %}
+                      {% if collection.handle %}
+                        <option value="/collections/{{ collection.handle }}">{{ 'collections.filters.all_tags' | t }}</option>
+                      {% elsif collection.current_type %}
+                        <option value="{{ collection.current_type | url_for_type }}">{{ 'collections.filters.all_tags' | t }}</option>
+                      {% elsif collection.current_vendor %}
+                        <option value="{{ collection.current_vendor | url_for_vendor }}">{{ 'collections.filters.all_tags' | t }}</option>
+                      {% endif %}
+                    {% else %}
+                      {% if current_tags contains tag %}
+                        <option value="">{{ 'collections.filters.all_tags' | t }}</option>{% endif %}
+                    {% endif %}
+                    {% for tag in collection.all_tags %}
+                      <option value="{{ tag | handleize }}">{{ tag }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              {% endif %}
+  
+              <div class="col filters-toolbar__item--count{% if section.settings.tags_enable == false and section.settings.sort_enable %} text-left{% endif %}{% if section.settings.tags_enable and section.settings.sort_enable == false %} text-right{% endif %}">
+                <span class="filters-toolbar__product-count">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</span>
+              </div>
+  
+              {% if section.settings.sort_enable %}
+                <div class="col text-right">
+                  {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                  <label for="SortBy" class="label--hidden">{{ 'collections.sorting.title' | t }}</label>
+                  <select name="SortBy" id="SortBy" class="filters-toolbar__input filters-toolbar__input--sort hidden">
+                    {% if sort_by == collection.default_sort_by %}
+                      <option value="title-ascending" selected="selected">{{ 'collections.sorting.title' | t }}</option>
+                      {% if collection.default_sort_by != 'manual' %}
+                        <option value="manual"{% if sort_by == "manual" %} selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+                      {% endif %}
+                      {% if collection.default_sort_by != 'best-selling' %}
+                        <option value="best-selling"{% if sort_by == "best-selling" %} selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+                      {% endif %}
+                      {% if collection.default_sort_by != 'title-ascending' %}
+                        <option value="title-ascending"{% if sort_by == "title-ascending"  %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+                      {% endif %}
+                      {% if collection.default_sort_by != 'title-descending' %}
+                        <option value="title-descending"{% if sort_by == "title-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+                      {% endif %}
+                      {% if collection.default_sort_by != 'price-ascending' %}
+                        <option value="price-ascending"{% if sort_by == "price-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
+                      {% endif %}
+                      {% if collection.default_sort_by != 'price-descending' %}
+                        <option value="price-descending"{% if sort_by == "price-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
+                      {% endif %}
+                      {% if collection.default_sort_by != 'created-descending' %}
+                        <option value="created-descending"{% if sort_by == "created-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
+                      {% endif %}
+                      {% if collection.default_sort_by != 'created-ascending' %}
+                        <option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+                      {% endif %}
+                    {% else %}
+                      <option value="manual"{% if sort_by == "manual" %} selected="selected"{% endif %}>{{ 'collections.sorting.featured' | t }}</option>
+                      <option value="best-selling"{% if sort_by == "best-selling" %} selected="selected"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</option>
+                      <option value="title-ascending"{% if sort_by == "title-ascending"  %}selected="selected"{% endif %}>{{ 'collections.sorting.az' | t }}</option>
+                      <option value="title-descending"{% if sort_by == "title-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.za' | t }}</option>
+                      <option value="price-ascending"{% if sort_by == "price-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</option>
+                      <option value="price-descending"{% if sort_by == "price-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</option>
+                      <option value="created-descending"{% if sort_by == "created-descending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</option>
+                      <option value="created-ascending"{% if sort_by == "created-ascending" %} selected="selected"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</option>
+                    {% endif %}
+                  </select>
+                  <input class="collection-header__default-sort" type="hidden" value="{{ collection.default_sort_by }}">
+                </div>
+              {% endif %}
+            </div>
+          </div>
         </div>
-      </div>
-    {% endif %}
-  </header>
-
-  <div class="container-fluid" id="Collection">
-  {% if section.settings.filter_settings == "top" %}
-    <div class="collection--filter-top">
-      <strong>{{ collection.title }}</strong>
-      {%- assign filters = section.settings.filters | split: ',' -%}
-      {% for filter in filters %}
-      {% if collection.all_tags contains filter %}
-      {% if current_tags contains filter %}
-      <a href="javascript:void(0);" class="active">{{ filter }}</a>
-        {% else %}
-      <a href="{{ collection.url }}/{{ filter | handleize }}">{{ filter }}</a>
       {% endif %}
-      {% endif %}
-      {% endfor %}
-    </div>
-  {% endif %}
-  <div class="breadcrums-bar my-3">
+    </header>
+  <div class="breadcrums-bar">
     {% include 'breadcrumbs' %}
   </div>
 		<div class="row">
 			{% if section.settings.filter_settings == "left" %}
-				<div class="col-lg-15">
+				<div class="col-lg-10 offset-lg-5">
 					<div class="filters-toolbar">
             <div class="filters-toolbar-placeholder"></div>
             {%- assign filters = section.settings.filters | split: ',' -%}
@@ -299,7 +299,7 @@
 	        			{% endif %}
 	        		{% endif %}
 	        	{% endif %}
-	          <div class="{{ grid_item_width }}">
+	          <div class="{{ grid_item_width }}" data-aos="{{ section.settings.animation_products }}">
 	            {% include 'product-card-grid', grid_image_width: image_size %}
 	          </div>
 	        {% else %}
@@ -520,7 +520,483 @@
         "id":"filters",
         "label":"Filters",
         "info":"Comma separate each filter wihtout space"
-      }
+      },
+      {
+        "type":"header",
+        "content":"Animations"
+      },
+      {
+          "type": "select",
+          "id": "animation_title",
+          "label": "Animation title",
+          "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+          ],
+          "default": "flip-down"
+          },
+          {
+          "type": "select",
+          "id": "animation_description",
+          "label": "Animation description",
+          "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+          ],
+          "default": "flip-down"
+          },
+          {
+          "type": "select",
+          "id": "animation_filters",
+          "label": "Animation Filters",
+          "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+          ],
+          "default": "flip-down"
+          },
+          {
+          "type": "select",
+          "id": "animation_products",
+          "label": "Animation products",
+          "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+          ],
+          "default": "flip-down"
+          }
     ],
     "blocks": [
       {
@@ -1035,7 +1511,7 @@
             "id": "titletwo",
             "label": "Ad Title"
           },
-			{
+    			{
             "type": "textarea",
             "id": "adcopytwo",
             "label": "Ad Copy"

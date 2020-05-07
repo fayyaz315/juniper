@@ -1134,6 +1134,12 @@
       },
       {
         "type": "text",
+        "id": "social_spotify_link",
+        "label": "Spotify",
+        "info": "https:\/\/spotify.com\/shopify"
+      },
+      {
+        "type": "text",
         "id": "social_instagram_link",
         "label": "Instagram",
         "info": "http:\/\/instagram.com\/shopify"

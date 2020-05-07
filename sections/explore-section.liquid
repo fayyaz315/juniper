@@ -1,5 +1,5 @@
 <div class="explore-with">
-        <div class="section-header">
+        <div class="section-header custom-section-heading">
             <div class="container">
             {% if section.settings.title != blank %}
                 <h2>{{ section.settings.title }}</h2>
@@ -11,9 +11,9 @@
                 <div class="col-lg-9 d-none d-xl-block"></div>
                 <div class="col-sm-30 col-md-25 col-xl-20 pr-sm-0">
                 {% if section.settings.image1 != blank %}
-                    <div class="explore-image explore-image1" style="background-image:url('{{ section.settings.image1 | img_url: '1500x' }}')">
+                    <div data-aos="{{ section.settings.animation_image1 }}" class="explore-image explore-image1" style="background-image:url('{{ section.settings.image1 | img_url: '1500x' }}')">
                     {% if section.settings.image_1_button_link != blank and section.settings.image_1_button != blank %}
-                        <a href="{{ section.settings.image_1_button_link }}">{{ section.settings.image_1_button }}</a>
+                        <a data-aos="{{ section.settings.animation_button1 }}" href="{{ section.settings.image_1_button_link }}">{{ section.settings.image_1_button }}</a>
                     {% endif %}
                     </div>
                 {% endif %}
@@ -25,9 +25,9 @@
                  </div>
                 {% if section.settings.image2 != blank %}
                 <div class="col-sm-30 col-md-35 col-xl-31 pr-xl-0">
-                    <div class="explore-image explore-image2" style="background-image:url('{{ section.settings.image2 | img_url: '1500x' }}')">
+                    <div data-aos="{{ section.settings.animation_image2 }}" class="explore-image explore-image2" style="background-image:url('{{ section.settings.image2 | img_url: '1500x' }}')">
                     {% if section.settings.image_2_button_link != blank and section.settings.image_2_button != blank %}
-                        <a href="{{ section.settings.image_2_button_link }}">{{ section.settings.image_2_button }}</a>
+                        <a data-aos="{{ section.settings.animation_button2 }}" href="{{ section.settings.image_2_button_link }}">{{ section.settings.image_2_button }}</a>
                     {% endif %}
                     </div>
                 </div>
@@ -36,14 +36,14 @@
                 </div>
                 {% if section.settings.image2 != blank %}
                 <div class="col-sm-30 col-md-30 col-xl-26">
-                    <div class="explore-image explore-image3" style="background-image:url('{{ section.settings.image3 | img_url: '1500x' }}')">
+                    <div data-aos="{{ section.settings.animation_image3 }}" class="explore-image explore-image3" style="background-image:url('{{ section.settings.image3 | img_url: '1500x' }}')">
                     </div>
                 </div>
                 {% endif %}
                 <div class="col-sm-30 col-md-30 col-xl-25">
                     <div class="discover">
                     {% if section.settings.image_3_button_link != blank and section.settings.image_3_button != blank %}
-                        <a href="{{ section.settings.image_3_button_link }}">{{ section.settings.image_3_button }}</a>
+                        <a data-aos="{{ section.settings.animation_button3 }}" href="{{ section.settings.image_3_button_link }}">{{ section.settings.image_3_button }}</a>
                     {% endif %}
                     </div>
                 </div>
@@ -71,6 +71,124 @@
         "label": "Image 1"
       },
       {
+        "type": "select",
+        "id": "animation_image1",
+        "label": "Animation",
+        "options": [
+            {
+            "group": "FADE",
+            "value": "fade-up",
+            "label": "fade up"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down",
+            "label": "fade down"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-right",
+            "label": "fade right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-left",
+            "label": "fade left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-right",
+            "label": "fade up right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-left",
+            "label": "fade up left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-right",
+            "label": "fade down right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-left",
+            "label": "fade down left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-left",
+            "label": "flip left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-right",
+            "label": "flip right"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-up",
+            "label": "flip up"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-down",
+            "label": "flip down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in",
+            "label": "zoom in"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-up",
+            "label": "zoom in up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-down",
+            "label": "zoom in down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-left",
+            "label": "zoom in left"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-right",
+            "label": "zoom in right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out",
+            "label": "zoom out"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-up",
+            "label": "zoom out up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-down",
+            "label": "zoom out down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-right",
+            "label": "zoom out right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-left",
+            "label": "zoom out left"
+            }
+        ],
+        "default": "flip-down"
+        },
+      {
         "type": "text",
         "id": "image_1_button",
         "label": "Image 1 Button"
@@ -81,10 +199,246 @@
         "label": "Image 1 Button Link"
       },
       {
+        "type": "select",
+        "id": "animation_button1",
+        "label": "Animation",
+        "options": [
+            {
+            "group": "FADE",
+            "value": "fade-up",
+            "label": "fade up"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down",
+            "label": "fade down"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-right",
+            "label": "fade right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-left",
+            "label": "fade left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-right",
+            "label": "fade up right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-left",
+            "label": "fade up left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-right",
+            "label": "fade down right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-left",
+            "label": "fade down left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-left",
+            "label": "flip left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-right",
+            "label": "flip right"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-up",
+            "label": "flip up"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-down",
+            "label": "flip down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in",
+            "label": "zoom in"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-up",
+            "label": "zoom in up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-down",
+            "label": "zoom in down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-left",
+            "label": "zoom in left"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-right",
+            "label": "zoom in right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out",
+            "label": "zoom out"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-up",
+            "label": "zoom out up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-down",
+            "label": "zoom out down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-right",
+            "label": "zoom out right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-left",
+            "label": "zoom out left"
+            }
+        ],
+        "default": "flip-down"
+        },
+      {
         "type": "image_picker",
         "id": "image2",
         "label": "Image 2"
       },
+      {
+        "type": "select",
+        "id": "animation_image2",
+        "label": "Animation",
+        "options": [
+            {
+            "group": "FADE",
+            "value": "fade-up",
+            "label": "fade up"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down",
+            "label": "fade down"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-right",
+            "label": "fade right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-left",
+            "label": "fade left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-right",
+            "label": "fade up right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-left",
+            "label": "fade up left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-right",
+            "label": "fade down right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-left",
+            "label": "fade down left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-left",
+            "label": "flip left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-right",
+            "label": "flip right"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-up",
+            "label": "flip up"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-down",
+            "label": "flip down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in",
+            "label": "zoom in"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-up",
+            "label": "zoom in up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-down",
+            "label": "zoom in down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-left",
+            "label": "zoom in left"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-right",
+            "label": "zoom in right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out",
+            "label": "zoom out"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-up",
+            "label": "zoom out up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-down",
+            "label": "zoom out down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-right",
+            "label": "zoom out right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-left",
+            "label": "zoom out left"
+            }
+        ],
+        "default": "flip-down"
+        },
       {
         "type": "text",
         "id": "image_2_button",
@@ -96,10 +450,246 @@
         "label": "Image 2 Button Link"
       },
       {
+        "type": "select",
+        "id": "animation_button2",
+        "label": "Animation",
+        "options": [
+            {
+            "group": "FADE",
+            "value": "fade-up",
+            "label": "fade up"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down",
+            "label": "fade down"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-right",
+            "label": "fade right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-left",
+            "label": "fade left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-right",
+            "label": "fade up right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-left",
+            "label": "fade up left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-right",
+            "label": "fade down right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-left",
+            "label": "fade down left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-left",
+            "label": "flip left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-right",
+            "label": "flip right"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-up",
+            "label": "flip up"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-down",
+            "label": "flip down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in",
+            "label": "zoom in"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-up",
+            "label": "zoom in up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-down",
+            "label": "zoom in down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-left",
+            "label": "zoom in left"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-right",
+            "label": "zoom in right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out",
+            "label": "zoom out"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-up",
+            "label": "zoom out up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-down",
+            "label": "zoom out down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-right",
+            "label": "zoom out right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-left",
+            "label": "zoom out left"
+            }
+        ],
+        "default": "flip-down"
+        },
+      {
         "type": "image_picker",
         "id": "image3",
         "label": "Image 3"
       },
+      {
+        "type": "select",
+        "id": "animation_image3",
+        "label": "Animation",
+        "options": [
+            {
+            "group": "FADE",
+            "value": "fade-up",
+            "label": "fade up"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down",
+            "label": "fade down"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-right",
+            "label": "fade right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-left",
+            "label": "fade left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-right",
+            "label": "fade up right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-left",
+            "label": "fade up left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-right",
+            "label": "fade down right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-left",
+            "label": "fade down left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-left",
+            "label": "flip left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-right",
+            "label": "flip right"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-up",
+            "label": "flip up"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-down",
+            "label": "flip down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in",
+            "label": "zoom in"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-up",
+            "label": "zoom in up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-down",
+            "label": "zoom in down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-left",
+            "label": "zoom in left"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-right",
+            "label": "zoom in right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out",
+            "label": "zoom out"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-up",
+            "label": "zoom out up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-down",
+            "label": "zoom out down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-right",
+            "label": "zoom out right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-left",
+            "label": "zoom out left"
+            }
+        ],
+        "default": "flip-down"
+        },
       {
         "type": "text",
         "id": "image_3_button",
@@ -109,7 +699,125 @@
         "type": "url",
         "id": "image_3_button_link",
         "label": "Image 3 Button Link"
-      }
+      },
+      {
+        "type": "select",
+        "id": "animation_button3",
+        "label": "Animation",
+        "options": [
+            {
+            "group": "FADE",
+            "value": "fade-up",
+            "label": "fade up"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down",
+            "label": "fade down"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-right",
+            "label": "fade right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-left",
+            "label": "fade left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-right",
+            "label": "fade up right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-up-left",
+            "label": "fade up left"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-right",
+            "label": "fade down right"
+            },
+            {
+            "group": "FADE",
+            "value": "fade-down-left",
+            "label": "fade down left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-left",
+            "label": "flip left"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-right",
+            "label": "flip right"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-up",
+            "label": "flip up"
+            },
+            {
+            "group": "FLIP",
+            "value": "flip-down",
+            "label": "flip down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in",
+            "label": "zoom in"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-up",
+            "label": "zoom in up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-down",
+            "label": "zoom in down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-left",
+            "label": "zoom in left"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-in-right",
+            "label": "zoom in right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out",
+            "label": "zoom out"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-up",
+            "label": "zoom out up"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-down",
+            "label": "zoom out down"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-right",
+            "label": "zoom out right"
+            },
+            {
+            "group": "ZOOM",
+            "value": "zoom-out-left",
+            "label": "zoom out left"
+            }
+        ],
+        "default": "flip-down"
+        }
     ],
     "presets": [{
       "name": "Explore Juniper",

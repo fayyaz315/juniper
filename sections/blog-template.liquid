@@ -1,47 +1,78 @@
+<div class="article-main">
 <div class="container">
-  <div class="row">
-    <div class="col-md-40 mx-auto">
-    {% if section.settings.title != blank %}
-      <h2>{{ section.settings.title }}</h2>
-    {% endif %}
-    {% if section.settings.description != blank %}
-      <p>{{ section.settings.description }}</p>
-    {% endif %}
+      <div class="custom-page-heading">
+        <div class="section-header collection-page-header text-left">
+          {% if section.settings.title != blank %}
+            <h1>{{ section.settings.title }}</h1>
+          {% endif %}
+          {% if section.settings.description != blank %}
+          <div class="rte">
+            <p>{{ section.settings.description }}</p>
+          </div>
+          {% endif %}
+        </div>
+
+        <ul class="pdp-top-links aos-init aos-animate" data-aos="flip-down">
+            <li><a href="#">THEME <em>of</em> MONTH</a></li>
+            <li><a href="#"><em>by</em> CONDITION</a></li>
+            <li><a href="#">LATEST</a></li>
+            <li><span>ALL</span></li>
+          </ul>
     </div>
-  </div>
+    {% if section.settings.tags contains tag %}
   <div class="row">
     <div class="col-md-60 text-center">
       <div class="blog-links font-italic">
       {% for tag in blog.all_tags %}
-      {% if section.settings.tags contains tag %}
     <a href="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</a>{% if forloop.last %}{% else %} / {% endif %}
-    {% endif %}
 {% endfor %}
       </div>
     </div>
   </div>
+  {% endif %}
 </div>
+
 <div class="container">
   <div class="row">
-    <div class="col-md-30">
-      <p>_ARCHIVE/ <a href="#">ALL</a></p>
+    <div class="col-md-30 archive-links">
+      <p>_ARCHIVE / <a href="#">ALL</a></p>
     </div>
     <div class="col-md-30 text-right">
-      <p>SEARCH // <input type="text" ></p>
+      <form action="/search" method="get" role="search">
+        <input type="hidden" name="type" value="article">
+        <button class="search-header__submit search__submit btn--link" type="submit">
+          Search
+        </button>
+        <span>//</span>
+        <input class="search-header__input search__input"
+          type="search"
+          name="q"
+          aria-label="{{ 'general.search.placeholder' | t }}">
+       </form>
+
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
 {% for article in blog.articles limit: 16 %}
+{% for tag in article.tags %}
+  {% if tag contains 'button--' %}
+    {%- assign button = tag | remove_first: 'button--' -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
     <div class="col-md-15">
       <div class="article-wrap">
         <a href="{{ article.url }}"><div class="article-image" style="background-image:url('{{ article.image.src | img_url: '1000x' }}')"></div></a>
           <div class="article-meta">
             {% if article.tags.size > 0 %}
             <p>
+            {%- assign firstTag = false -%}
                 {% for tag in article.tags %}
-                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}/ {% endunless %}
+                {% unless tag contains '--' %}
+                  {% if firsttag == false%}/ {%- assign firstTag = true -%}{% endif %}<a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                  {% endunless %}
                 {% endfor %}
             </p>
             {% endif %}
@@ -51,9 +82,10 @@
                 {% if article.excerpt.size > 0 %}
                   {{ article.excerpt }}
                 {% else %}
-                  <p>{{ article.content | strip_html | truncate: 150 }}</p>
+                  <p>{{ article.content | strip_html | truncatewords: 10, '' }}</p>
                 {% endif %}
-            <a href="{{ article.url }}">Read more about this {{ article.title }} here</a>
+                <div class="clearfix"></div>
+            <a href="{{ article.url }}">Read more {{ button }}</a>
           </div>
       </div>
     </div>
@@ -61,6 +93,7 @@
 
   </div>
 
+</div>
 </div>
 {% schema %} 
   {

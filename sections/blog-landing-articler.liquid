@@ -2,45 +2,45 @@
 <div class="blog-template-section">
    <div class="container-fluid">
       <div class="row">
-         <div class="col-lg-45 blog-template-ls">
+         <div class="col-lg-40 offset-lg-5 blog-template-ls">
          {% if section.settings.title != blank %}
             <div class="section-title" data-aos="{{ section.settings.animation_title }}">{{ section.settings.title  }}</div>
          {% endif %}
-         {%- assign featuredArticle = blog.articles[0] -%}
          {% if section.settings.blog != blank %}
-            <div class="blog-featured-img" data-aos="{{ section.settings.animation_blog }}" style="background-image: url({{ featuredArticle.image.src | img_url: '1600x' }});"></div>
+         {% for article in blog.articles limit: 1 %}
+            <a href="{{ article.url }}" class="blog-featured-img" data-aos="{{ section.settings.animation_blog }}" style="background-image: url({{ article.image.src | img_url: '1600x' }});"></a>
             <div class="blog-template-details" data-aos="{{ section.settings.animation_blog }}">
                <div class="row">
                   <div class="col-md-22">
                      <div class="details-left-side">
-                        <h3>{{ featuredArticle.title }}</h3>
+                        <a href="{{ article.url }}"><h3>{{ article.title }}</h3></a>
                         <br>
-                        <span>{{ featuredArticle.excerpt }}</span>
+                        <span>{{ article.excerpt }}</span>
                      </div>
                   </div>
                   <div class="col-md-38 details-right-side">
-                  {%- assign featuredExceprt = featuredArticle.content | split: '<p>' -%}
-                     {{ featuredExceprt[0] }}
+                  <p>{{ article.content | truncatewords: 50, '' | strip_html }}</p>
                   </div>
                </div>
             </div>
+            {% endfor %}
          {% endif %}
             <div class="blog-grids-container">
                <div class="row">
-               {% for article in blog.articles %}
-               {% if forloop.index == 1 %}
-                  {% continue %}
-                  {% elsif forloop.index > 4 %}
-                  {% break %}
-               {% endif %}
+               {% for article in blog.articles limit:3 offset: 1 %}
+               {% for tag in article.tags %}
+                  {% if tag contains 'button--' %}
+                     {%- assign button = tag | remove_first: 'button--' -%}
+                  {% endif %}
+               {% endfor %}
                   <div class="col-md-20">
                      <div class="blog-grid" data-aos="{{ section.settings.animation_blog }}">
-                        <div class="blog-grid-img" style="background-image:url({{ article.image.src | img_url: '800x' }})"></div>
+                        <a href="{{ article.url }}" class="blog-grid-img" style="background-image:url({{ article.image.src | img_url: '800x' }})"></a>
                         <div class="blog-grid-details">
                            <h3>{{ article.title }}</h3>
                            {%- assign articleExceprt = article.content | split: '.' -%}
                               <p>{{ articleExceprt[0] }}</p>
-                           <a href="{{article.url }}">READ MORE ABOUT THIS GEAR HERE</a>
+                           <a href="{{article.url }}">READ MORE {{ button }}</a>
                         </div>
                      </div>
                   </div>

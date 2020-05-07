@@ -14,7 +14,7 @@
     {% capture collection_image_url %}{{ collection.products.first | img_url: collection_image_size }}{% endcapture %}
   {% endif %}
 {% endif %}
-<div class="collection-grid-item collection-grid-item--{{ block.id }}">
+<div class="collection-grid-item grid-index{{ forloop.index }} collection-grid-item--{{ block.id }}">
   <a href="{% if block.settings.link_override != blank %}{{ block.settings.link_override }}{% elsif collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="collection-grid-item__link">
     <div class="collection-grid-item__overlay" style="background-image: url({{ collection_image_url }})">
       {% if collection.empty? %}

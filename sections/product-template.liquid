@@ -57,7 +57,7 @@
   {%- assign product_thumbnail_perrow = product_thumbnail_perrow | times: 1 -%}
 
   <div class="row product-single">
-    <div class="product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
+    <div data-aos="{{ section.settings.image_animation }}" class="product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
       {%- assign featured_img_src = current_variant.featured_image.src | default: product.featured_image.src -%}
       {%- assign featured_img_alt = current_variant.featured_image.alt | default: product.featured_image.alt -%}
 
@@ -74,7 +74,7 @@
 
       {% if section.settings.vertical and prod_image_size > 1 %}
         <div class="row vertical-thumbs">
-          <div class="col-lg-43 order-lg-2">
+          <div class="col-lg-42 vertical-thumbs-cont order-lg-2">
       {% endif %}
 
       <div id="FeaturedImageZoom-{{ product.id }}" class="product-single__photo{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}" {% if enable_zoom %}data-zoom="{{ featured_img_src | img_url: product_image_zoom_size }}"{% endif %}>
@@ -89,7 +89,7 @@
 
       {% if section.settings.vertical and prod_image_size > 1 %}
         </div>
-        <div class="col-lg-15 order-lg-1">
+        <div class="col-lg-16 order-lg-1">
       {% endif %}
 
         <div class="thumbnails-wrapper">
@@ -131,24 +131,31 @@
         </div>
       {% endif %}
 
-      <div class="d-none d-md-block">
-        <div class="how-to-section">
-          <div class="row">
-            <div class="col-md-25">
-              <div class="video-container"></div>
-            </div>
-            <div class="col-md-35">
-              <div class="howto-text">
-                <h3>HOW-TO</h3>
-                <p>rae si ut est, et aliati doloriberi omnia
-                  quiat offic te simporio ea peliquis
-                  derchitet possectorcum faceri antiis</p>
-                <a href="#">More</a>
+      <div class="d-none d-md-block" style="padding-right: 22px;">
+        {% for block in section.blocks %}
+          {% if product.tags contains block.settings.tag %}
+          <div class="how-to-section">
+            <div class="row">
+              <div class="col-md-25">
+                {% if block.settings.video != blank and block.settings.image != blank %}
+                <a href="{{ block.settings.video }}" class="video-container video-popup" style="background-image: url({{ block.settings.image | img_url: '800x' }});"></a>
+                {% endif %}
+              </div>
+              <div class="col-md-35">
+                <div class="howto-text">
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+                {{ block.settings.text }}
+                {% if block.settings.link_text != blank and block.settings.link != blank %}
+                  <a href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
+                {% endif %}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
+          {% endif %}
+        {% endfor %}
         <div class="connection-events">
           <div class="section-header">
                   <h2>  
@@ -206,12 +213,16 @@
                   </div>
           </div>
         </div>
+
+        <div class="review-list-container">
+          <img src="{{'reviews-list.png' | asset_url }}">
+        </div>
     </div>
 
     </div>
 
     <div class="{{ product_description_width }}">
-      <ul class="pdp-top-links pdp-topright-links">        
+      <ul class="pdp-top-links pdp-topright-links">
         <li><a href="#"><strong>_SHOP</strong></a></li>
         <li><a href="#">MEN</a></li>
         <li><a href="#">FOOTWEAR</a></li>
@@ -219,14 +230,14 @@
       </ul>
       <div class="product-single__meta">
         {% if section.settings.show_vendor %}
-          <p class="product-single__vendor">{{ product.vendor }}</p>
+          <p data-aos="{{ section.settings.vendor_animation }}" class="product-single__vendor">{{ product.vendor }}</p>
         {% endif %}
 
-        <h1 class="product-single__title">{{ product.title }}</h1>
+        <h1 data-aos="{{ section.settings.title_animation }}" class="product-single__title">{{ product.title }}</h1>
 
         <div>
 
-          <p class="product-single__price product-single__price-{{ product.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
+          <p data-aos="{{ section.settings.price_animation }}" class="product-single__price product-single__price-{{ product.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
             {% if current_variant.compare_at_price > current_variant.price %}
                 <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
                 <s id="ComparePrice-{{ product.id }}">{{ current_variant.compare_at_price | money }}</s>
@@ -245,8 +256,8 @@
           </p>
 
           <form action="/cart/add" method="post" enctype="multipart/form-data" class="product-form product-form-{{ product.id }}{% unless section.settings.show_variant_labels %} product-form--hide-variant-labels{% endunless %}" data-section="{{ product.id }}">
-            <div class="custom-pdp-option">
             {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+            <div class="custom-pdp-option">
               {% for option in product.options_with_values %}
                 <div class="selector-wrapper {{ product.handle }} js">
                   <label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">
@@ -258,14 +269,18 @@
                     {% endfor %}
                   </select>
                 </div>
-
+                {% if option.name == "Color" or option.name == "color" or option.name == "Size" or option.name == "size" %}
                 {% if settings.enable_colorswatch %}
                   {% include 'swatch' with option.name %}
                 {% endif %}
-
+                {% endif %}
+                {% if option.name contains 'size' or option.name contains 'Size' %}
+                {% if section.settings.size_guide != blank %}
+                {% endif %}
+                {% endif %}
               {% endfor %}
+              </div>
             {% endunless %}
-
             <select name="id" id="ProductSelect-{{ product.id }}" data-section="{{ product.id }}" class="product-form__variants col no-js">
               {% for variant in product.variants %}
                 {% if variant.available %}
@@ -277,9 +292,8 @@
                 {% endif %}
               {% endfor %}
             </select>
-          </div>
-            <a href="#" class="size-chart-link">size guide</a>
-
+          
+          <a href="#size-guide" class="size-chart-link open-sizechart">size guide</a>
             {% if section.settings.show_quantity_selector %}
               <div class="product-form__item product-form__item--quantity">
                 <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
@@ -291,7 +305,7 @@
 
               <div class="button{% if product.options.size == 1 and product.variants[0].title == 'Default Title' and settings.cartajax == false %} product-form__cart-submit--small{% endif %}">
                 <div class="add">
-                  <button type="submit" name="add" id="AddToCart-{{ product.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit">
+                  <button data-aos="{{ section.settings.add_to_cart_animation }}" type="submit" name="add" id="AddToCart-{{ product.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit">
                     <span id="AddToCartText-{{ product.id }}">
                       {% unless current_variant.available %}
                         {{ 'products.product.sold_out' | t }}
@@ -316,18 +330,26 @@
               </div>
 
             </div>
-            <div class="wishlist-btn">
-              <a href="#">favorite</a>
-            </div>
+            {% if section.settings.enable_wishlist %}
+              <div data-aos="{{ section.settings.wishlist_animation }}" class="wishlist-btn">
+            {% include 'wishlist' %}
+          </div>
+          {% endif %}
           </form>
 
-          {% if section.settings.enable_wishlist %}
-            {% include 'wishlist' %}
-          {% endif %}
 
         </div>
 
-        <div class="accordion" id="accordionExample">
+        <div class="vandor-cont">
+          <li>
+            <strong>Vendor</strong>: Company
+          </li>
+          <li>
+            <strong>Patent</strong>: #94563
+          </li>
+        </div>
+        {%- assign descriptions = product.content | split: '<h6>split</h6>' -%}
+        <div data-aos="{{ section.settings.accordian_animation }}" class="accordion" id="accordionExample">
           <div class="card">
             <div class="card-header" id="headingOne">
               <h2 class="mb-0">
@@ -339,7 +361,7 @@
         
             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
               <div class="card-body">
-                {{ product.description }}
+                {{ descriptions[0] }}
               </div>
             </div>
           </div>
@@ -353,7 +375,7 @@
             </div>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                {{ descriptions[1] }}
               </div>
             </div>
           </div>
@@ -367,12 +389,15 @@
             </div>
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
               <div class="card-body">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                {{ descriptions[2] }}
               </div>
             </div>
           </div>
         </div>
-
+        <div class="disclaimer-cont">
+          <h3>Disclaimer</h3>
+        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
         {% if settings.enable_crossclick and product.images.size == prod_image_size %}
         <div class="product-single__description rte">
             {{ product.description }}
@@ -636,22 +661,30 @@
 {% endif %}
 
 <div class="d-block d-md-none container">
-  <div class="how-to-section">
-    <div class="row">
-      <div class="col-md-25">
-        <div class="video-container"></div>
-      </div>
-      <div class="col-md-35">
-        <div class="howto-text">
-          <h3>HOW-TO</h3>
-          <p>rae si ut est, et aliati doloriberi omnia
-            quiat offic te simporio ea peliquis
-            derchitet possectorcum faceri antiis</p>
-          <a href="#">More</a>
-        </div>
-      </div>
-    </div>
-  </div>
+{% for block in section.blocks %}
+          {% if product.tags contains block.settings.tag %}
+          <div class="how-to-section">
+            <div class="row">
+              <div class="col-md-25">
+                {% if block.settings.video != blank and block.settings.image != blank %}
+                <a href="{{ block.settings.video }}" class="video-container video-popup" style="background-image: url({{ block.settings.image | img_url: '800x' }});"></a>
+                {% endif %}
+              </div>
+              <div class="col-md-35">
+                <div class="howto-text">
+                {% if block.settings.title != blank %}
+                  <h3>{{ block.settings.title }}</h3>
+                {% endif %}
+                {{ block.settings.text }}
+                {% if block.settings.link_text != blank and block.settings.link != blank %}
+                  <a href="{{ block.settings.link }}">{{ block.settings.link_text }}</a>
+                {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
 
   <div class="connection-events">
     <div class="section-header">
@@ -711,24 +744,186 @@
     </div>
   </div>
 </div>
+{%- assign hasStories = false -%}
+{% for tag in product.tags %}
+  {% if tag contains 'story--' %}
+  {%- assign hasStories = true -%}
+  {% break %}
+  {% endif %}
+{% endfor %}
+{% if hasStories %}
 <div class="relate-stories-container">
   <div class="container">
-    <h3 class="pdp-section-heading">_RELATE <em>stories</em></h3>
+    <h3 class="pdp-section-header">_RELATE <em>stories</em></h3>
     <ul class="relate-stories-list">
-      <li><a href="#">story name</a></li>
-      <li><a href="#">store name</a></li>
-      <li><a href="#">original article name</a></li>
-      <li><a href="#">guest interview</a></li>
-      <li><a href="#">original article name</a></li>
-      <li><a href="#">store name</a></li>
-      <li><a href="#">videos</a></li>
+      {% for tag in product.tags %}
+        {% if tag contains 'story--' %}
+        {%- assign story_handle = tag | remove_first: 'story--' -%}
+        {%- assign story_article = articles[story_handle] -%}
+        {% if story_article != blank %}
+        <li><a href="{{ story_article.url  }}">{{ story_article.title  }}</a></li>
+        {% endif %}
+        {% endif %}
+      {% endfor %}
     </ul>
-
   </div>
-
-
 </div>
+{% endif %}
+{% if section.settings.size_guide != blank %}
+<div id="size-guide" class="white-popup mfp-hide">
+  {{ section.settings.size_guide | img_url: '800x' | img_tag: 'size guide', 'd-block mx-auto' }}
+</div>
+<script>
+  $(document).ready(function(){
+    $('.open-sizechart').magnificPopup({
+      type:'inline'
+    });
+    $('.video-popup').magnificPopup({
+      type:'iframe'
+    });
+  })
+  </script>
+{% endif %}
+{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+<style>
+.size-chart-link {display:none !important;}
+</style>
+{% endif %}
+{% if settings.cartajax %}
+  <script>
+    $('#ProductSection-{{ product.id }} form').on('submit', function(e){
+      e.preventDefault();
+      $('#AddToCartText-{{ product.id }}').fadeOut(function() {
+        $(this).text('{{ 'products.product.added_to_cart' | t }}').fadeIn(function() {
+          setTimeout(function(){
+            $('.button').toggleClass('opened');
+            setTimeout(function(){
+              $('#AddToCartText-{{ product.id }}').text('{{ 'products.product.add_to_cart' | t }}')
+            },1000);
+          },1000);
+        });
+      });
+      setTimeout(function(){
+        $('.button').toggleClass('opened');
+      },10000);
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        dataType: 'json',
+        data: $(this).serialize(),
+        success: function(response){
+          $.ajax({
+            type: 'GET',
+            url: '/cart.js',
+            dataType: 'json',
+            success: function(cartdata){
+              if(!$('#CartCount').length) {
+                $('.site-header__cart').append('<div id="CartCount" class="site-header__cart-count"><span></span><span class="icon__fallback-text hidden-md-up">{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span></div>');
+              }
+              $('#CartCount').find('span').first().text(cartdata.item_count);
+              $('.cart-sidebar').removeClass('hide');
+              $('.cart-black-overlay').show();
+                // Handlebars.js bralette layout
+                var sourceSiebar = $("#CartTemplateSidebar").html(),
+                    templateSidebar = Handlebars.compile(sourceSiebar);
 
+                var allItems = cartdata.items,
+                    items = [],
+                    item = {};
+                // Add each item to our handlebars.js data
+                $.each(allItems, function(index,varItem) {
+                  var imageSmall = Shopify.resizeImage(varItem.image,'small');
+                  item = {
+                    id: varItem.id,
+                    title: varItem.product_title,
+                    variant: varItem.variant_title,
+                    url: varItem.url,
+                    price: Shopify.formatMoney(varItem.price, '${% raw %}{{amount}}{% endraw %}'),
+                    quantity: varItem.quantity,
+                    image: imageSmall
+                  };
+
+                  items.push(item);
+                });
+
+                // Gather all  data and add to DOM
+                data = {
+                  total: Shopify.formatMoney(cartdata.total_price, '${% raw %}{{amount}}{% endraw %}'),
+                  variants: items
+                }
+                $('.cart-sidebar--items-wrpaper').html(templateSidebar(data));
+                $('.site-header__cart+strong').html(data.total.replace(/((\,00)|(\.00))$/g, ''));
+              //Cart Sidebar Functionlity
+              $('.cart-subtotals').text(Shopify.formatMoney(cartdata.total_price).replace(/((\,00)|(\.00))$/g, ''));
+              $('.cart-prod-qty').each(function(){
+                $(this).val($(this).data('cartval'));
+              })
+            },
+            error: function(data){
+              console.log(data);
+            }
+          });
+        },
+        error: function(data){
+          alert('Something went wrong! Please refresh the page and try again');
+        }
+      });
+      // console.log($(this).serializeArray())
+      // Shopify.addItem();
+    });
+  </script>
+
+  {% if settings.cartdropdown  %}
+    <script id="CartTemplateSidebar" type="text/template">
+    {% raw %}
+        {{#variants}}
+        <div class="cart-sidebar-item">
+          <a href="javascript:void(0);" class="delete-cart-item" data-itemid="{{id}}"><em class="fas fa-times"></em></a>
+          <div class="row align-items-center">
+             <div class="col-15">
+                <img src="{{image}}" alt="{{title}}" class="img-fluid">
+             </div>
+             <div class="col-45 h-100">
+                <div class="sidebar-cart--product-info">
+                   <div class="row">
+                      <div class="col-60">
+                            <strong>{{title}}</strong>
+                            {{#if variant}}
+                            <span>{{variant}}</span>
+                            {{/if}}
+                      </div>
+                      <div class="col-60">
+                         <div class="row align-items-end">
+                            <div class="col-30">
+                               <select data-item="{{ id }}" data-cartval="{{quantity}}" name="cart-prod-qty" class="cart-prod-qty">
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+                                 <option value="3">3</option>
+                                 <option value="4">4</option>
+                                 <option value="5">5</option>
+                                 <option value="6">6</option>
+                                 <option value="7">7</option>
+                                 <option value="8">8</option>
+                                 <option value="9">9</option>
+                                 <option value="10">10</option>
+                               </select>
+                            </div>
+                            <div class="col-30 text-right text-right">
+                               <span>{{price}}</span>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+        {{/variants}}
+    {% endraw %}
+  </script>
+  {% endif %}
+
+{% endif %}
 {% schema %}
   {
     "name": "Product pages",
@@ -793,6 +988,916 @@
         "id": "show_share_buttons",
         "label": "Show social sharing buttons",
         "default": true
+      },
+      {
+        "type":"image_picker",
+        "id":"size_guide",
+        "label":"Size Chart"
+      },
+      {
+        "type":"checkbox",
+        "id":"enable_wishlist",
+        "label":"Enable Wishlist",
+        "default":true
+      },
+      {
+        "type": "header",
+        "content": "Image Animation"
+      },
+      {
+        "type": "select",
+        "id": "image_animation",
+        "label": "Animation",
+        "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+        ],
+        "default": "fade-up"
+      },
+      {
+        "type": "header",
+        "content": "Title Animation"
+      },
+      {
+        "type": "select",
+        "id": "title_animation",
+        "label": "Animation",
+        "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+        ],
+        "default": "fade-up"
+      },
+      {
+        "type": "header",
+        "content": "Vendor Animation"
+      },
+      {
+        "type": "select",
+        "id": "vendor_animation",
+        "label": "Animation",
+        "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+        ],
+        "default": "fade-up"
+      },
+      {
+        "type": "header",
+        "content": "Price Animation"
+      },
+      {
+        "type": "select",
+        "id": "price_animation",
+        "label": "Animation",
+        "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+        ],
+        "default": "fade-up"
+      },
+      {
+        "type": "header",
+        "content": "Cart Button Animation"
+      },
+      {
+        "type": "select",
+        "id": "add_to_cart_animation",
+        "label": "Animation",
+        "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+        ],
+        "default": "fade-up"
+      },
+      {
+        "type": "header",
+        "content": "Wishlist Button Animation"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_animation",
+        "label": "Animation",
+        "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+        ],
+        "default": "fade-up"
+      },
+      {
+        "type": "header",
+        "content": "Accordian Animation"
+      },
+      {
+        "type": "select",
+        "id": "accordian_animation",
+        "label": "Animation",
+        "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+        ],
+        "default": "fade-up"
+      }
+    ],
+    "blocks":[
+      {
+        "type":"video",
+        "name":"How to Video",
+        "settings":[
+          {
+            "type":"image_picker",
+            "id":"image",
+            "label":"Placeholder Thumbnail"
+          },
+          {
+            "type":"video_url",
+            "id":"video",
+            "label":"Video Link",
+            "accept":["youtube","vimeo"]
+          },
+          {
+            "type":"text",
+            "id":"title",
+            "label":"Title"
+          },
+          {
+            "type":"richtext",
+            "id":"text",
+            "label":"Copy"
+          },
+          {
+            "type":"text",
+            "id":"link_text",
+            "label":"Link text"
+          },
+          {
+            "type":"url",
+            "id":"link",
+            "label":"Link"
+          },
+          {
+            "type":"text",
+            "id":"tag",
+            "label":"Tag",
+            "info":"Product with this tag will show this video"
+          }
+        ]
       }
     ]
   }

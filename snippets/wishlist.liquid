@@ -42,10 +42,13 @@
 
   {% else %}
 
-    <a class="wishlist wishlist-added btn btn--secondary" href="/pages/wish-list">
+    {% comment %} <a class="wishlist wishlist-added btn btn--secondary" href="/pages/wish-list">
       <span>
         <i class="fa fa-heart-o"></i> {{ 'products.wishlist.added_to_wishlist' | t }}
       </span>
+    </a> {% endcomment %}
+    <a class="wishlist wishlist-added btn btn--secondary" href="/pages/wish-list">
+      favorite
     </a>
 
   {% endif %}
@@ -53,9 +56,7 @@
 {% else %}
 
   <a class="wishlist mp-inline btn btn--secondary" href="#wishlist-{{ product.id }}">
-    <span>
-      <i class="fa fa-heart"></i> {{ 'products.wishlist.add_to_wishlist' | t }}
-    </span>
+    favorite
   </a>
 
   <div id="wishlist-{{ product.id }}" class="white-popup notloggedin mfp-hide">

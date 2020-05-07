@@ -10,8 +10,8 @@
    {% if section.settings.article !=blank %}
    {% assign article = articles[section.settings.article] %}
       <div class="archive-content row" data-aos="{{ section.settings.animation_article }}">
-         <div class="col-md-20 archive-content-img" style="background-image: url({{ article.image.src | img_url: '600x' }});">
-         </div>
+         <a href="{{ article.url }}" class="col-md-20 archive-content-img" style="background-image: url({{ article.image.src | img_url: '600x' }});">
+         </a>
          <div class="col-md-40 archive-content-text">
             <h3>{{ article.title }}</h3>
             {%- assign excerpt = false -%}

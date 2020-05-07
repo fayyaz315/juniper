@@ -27,13 +27,11 @@
     "description": "{{ article.excerpt_or_content | strip_html | truncatewords: 100 | escape }}"
   }
 </script>
-
 <style>
   {% if article.image %}
   .article-hero__image {
     background-image: url({{ article.image.src | img_url: '1600x467', crop: 'center' }});
   }
-
   @media only screen and (max-width: 1200px) {
     .article-hero__image {
       background-image:url('{{ article.image.src | img_url: '1280x374', crop: 'center' }}'); 
@@ -56,307 +54,44 @@
   }
   {% endif %}
 </style>
-
-<div class="article-hero__image">
-  <div class="section-header text-center">
-    <h1 class="article__title">{{ article.title }}</h1>
-    {% if section.settings.blog_show_author %}
-      <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
-    {% endif %}
-
-    {% if section.settings.blog_show_date %}
-      <span class="article__date">
-        {{ article.published_at | time_tag: format: 'month_day_year' }}
-      </span>
-    {% endif %}
-  </div>
-</div>
-<article class="container" itemscope itemtype="http://schema.org/Article">
-  <div class="row">
-    <div class="col-xl-40 offset-xl-10 col-lg-48 offset-lg-6">
-      <div class="rte">
-        {{ article.content }}
-      </div>
-
-      {% if section.settings.show_share_buttons %}
-        {% include 'social-sharing', share_title: article.title, share_permalink: article.url, share_image: article.image %}
-      {% endif %}
-
-    </div>
-  </div>
-
-  {% assign current_found = false %}
-  {% assign done = false %}
-  {% for a in blog.articles %}
-    {% if current_found and done == false %}
-      {% assign next_article = a %}
-      {% assign done = true %}
-    {% endif %}
-    {% unless done %}
-      {% if a.id == article.id %}
-        {% assign current_found = true %}
-      {% else %}
-        {% assign prev_article = a %}
-      {% endif %}
-    {% endunless %}
-  {% endfor %}
-  {% if prev_article or next_article %}
-    <div class="row">
-      <!-- START post article BAR -->
-      <div class="col-xl-40 offset-xl-10 col-lg-48 offset-lg-6" style="margin-top:40px; margin-bottom:40px;">
-        <h3>Additional Articles</h3>
-        <div class="row">
-          {% if prev_article %}
-            <div class="prev-prod col-md-28 col-xs-60">
-              <a href="{{ prev_article.url }}">
-                <div class="sustainable-repeater">
-                  <div class="half-top {{ prev_article.handle }}" style="{% if prev_article.image %}background-image:url('{{ prev_article | img_url: 'original' }}');{% else %}background-color:#d8d7d3;{%endif%}width:100%;background-size:cover;height:300px"></div>
-                  <p>Previous Article</p>
-                  <h4>{{ prev_article.title | truncatewords: 10 }}</h4>
-                  <div class="btnholder">
-                    <span class="btn btn--secondary btn--has-icon-before return-link" href="{{ prev_article.url }}">{{ 'blogs.article.read_more' | t }}</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          {% endif %}
-
-          {% if next_article %}
-            <div class="prev-prod col-md-28 offset-md-4 col-xs-60">
-              <a href="{{ next_article.url }}">
-                <div class="sustainable-repeater">
-                  <div class="half-top {{ next_article.handle }}" style="{% if next_article.image %}background-image:url('{{ next_article | img_url: 'original' }}');{% else %}background-color:#d8d7d3;{%endif%}width:100%;background-size:cover;height:300px"></div>
-                  <p>Next Article</p>
-                  <h4>{{ next_article.title | truncatewords: 10 }}</h4>
-                  <div class="btnholder">
-                    <span class="btn btn--secondary btn--has-icon-before return-link" href="{{ next_article.url }}">{{ 'blogs.article.read_more' | t }}</span>
-                  </div>
-                </div>
-              </a>
-            </div>
-          {% endif %}
-        </div>
-      </div>
-      <!-- END post article BAR -->
-    </div>
-  {% endif %}
-</article>
-
-<!-- do you html here -->
+{% if article.image != blank %}
 <div class="article-banner">
-  <div class="banner-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/Dream_email5.jpg?v=1586175204);"></div>
+  <div data-aos="{{ section.settings.images_animation }}" class="banner-img" style="background-image: url({{ article.image.src | img_url: '2000x' }});"></div>
 </div>
+{% endif %}
 <div class="breadcrumb-article">
   <div class="container">
     <a href="">_Life / </a>
     <span>EVERYBODYFITS</span>
-    <a href="" class="next text-right">NEXT //</a>
+    {% if blog.next_article %}
+    <div class="next text-right">{{ 'Next //' | link_to: blog.next_article }}</div>
+    {% elsif blog.previous_article %}
+    <div class="next text-right">{{ 'Prev //' | link_to: blog.previous_article }}</div>
+    {% endif %}
   </div>
 </div>
+{% for tag in article.tags %}
+  {% if tag contains 'title--' %}
+    {%- assign titleTag = tag | remove_first: 'title--' -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
 <div class="article-content">
   <div class="content-inner">
     <div class="heading clearfix">
-      <h2> #EverybodyFits </h2>
-      <h3> People who inspire us, by redefining beauty and style</h3>
+      {% if titleTag %}
+      <h2>#{{ titleTag }}</h2>
+      {% endif %}
+      {% if article.excerpt != blank %}
+      <h3>{{ article.excerpt | strip_html }}</h3>
+      {% endif %}
     </div>
-    
     <div class="heading-main">
-      <h1> Loren copy guest </h1>
+      <h2>{{ article.title }}</h2>
     </div>
-
-    <div class="content-main">
-      <div class="row">
-        <div class="col-md-15"></div>
-        <div class="col-md-30">
-          <div class="content-text">
-            <p>
-              In memory of <span class="highlight">Mama Cax</span> , model and disabled rights activist.
-  With her prosthetic right leg, Cax was a proudly unconventional figure who changed
-  the face of modern modeling. Epelictatem quam quo ommolorem quamend eliquas aut
-  doluptia sequam id que venimol uptaece rovitaest elluptas ex et eum harupta nissinturion
-  rem. Et quas debitis vel illo moluptiam hpos nonectarum endipsa eceatiae mod eos nos
-  secti sequam, odita nis andem ero et pra sant pos nonectexcea nectibus, quis enem el
-  ipsam litias cus imporeperum quo evereic torempos nopos nonectnectur magnis antia
-  sintis explitiumque volendamus et fugite sunt volut et optio doluptpos nonectaque aut
-  aboritios mo officit exernatiis doluptas doles et ullate qui omnis id expeditis sam eos
-  dolore volore verspitiis dollab int eati consend elictur?
-            </p>
-          </div>
-          
-        </div>
-        <div class="col-md-15"></div>
-
-        <div class="col-md-30 no-padding">
-          <div href="" class="img-block block-1" style="background-image: url('https://cdn.shopify.com/s/files/1/0363/6704/0647/files/TeenVogue_99270001_2fe869be-7891-4b8c-9f36-488f25976c60.jpg?v=1586179711')"></div>
-        </div>
-        <div class="col-md-30 no-padding">
-          <div href="" class="img-block block-2" style="background-image: url('https://cdn.shopify.com/s/files/1/0363/6704/0647/files/Abilities_Tout_1.jpg?v=1586179719')"></div>
-        </div>
-
-        <div class="col-md-15"></div>
-        <div class="col-md-30">
-          <div class="content-heading">
-            <h1>loren doren</h1><br><h1>copy</h1>
-          </div>
-        </div>
-        <div class="col-md-15"></div>
-
-        <div class="col-md-15"></div>
-        <div class="col-md-30">
-          <div class="content-text">
-            <p>
-              Epelictatem quam quo ommolorem quamend eliquas aut doluptia sequam id que
-venimol uptaece rovitaest elluptas ex et eum harupta nissinturion rem. Et quas debitis
-vel illo moluptiam harum endipsa eceatiae mod eos nos secti sequam, odita nis andem
-ero et pra sant excea nectibus, quis enem el ipsam litias cus imporeperum quo evereic
-torempos nonectur magnis antia sintis explitiumque volendamus et fugite sunt volut et
-optio doluptaque aut aboritios mo officit exernatiis doluptas doles et ullate qui omnis
-id expeditis sam eos dolore volore verspitiis dollab int eati consend elictur?Uciasiti
-onsequosam lit vidunt pos earchit iatur? Am lab ipsam, quo cum aceresectur sum
-quaturoritios mo officit exernatiis doluptas dole?
-            </p>
-          </div>
-        </div>
-        <div class="col-md-15"></div>
-        <div class="col-md-15"></div>
-        <div class="col-md-40">
-          <div class="content-text">
-            <div class="row">
-              <div class="col-md-35">
-                <p>
-                  Qui susam etus nihicab oribusa pistota tionsequi
-    cum santo etur aceat magnima seceateni dis sunt
-    faceruptas sinciam a dolorum a con porum quos
-    doluptate pore perendae preribea pro int occabor
-    emolorest expliqu idempores et offici que pa
-    siminiment a seque nessum ipsapis cipsam rem
-    nonsequo velit, as dollendant et ipsaes pa dolupta
-    pratum inctio blab inveribus mos di nobisci anditia
-    sunt, opta sitatur, odi omniam, experor ernates ciuntis
-    intu expliqu idempores et offici que pa siminiment a
-    seque nessum ipsapis cipsam rem nonsequr?
-                </p>
-                <p>
-                  Iqui aut res nisqui dolum eostiat atiuntia sin ni occum
-    quiate cuptatibus sincius il modit volentur simus eum
-    iliae perum, optatin turiscimodis nusam voluptassim
-    dia cullest molorerum vellabor rem que sunt quiberit, 
-                </p>
-              </div>
-              <div class="col-md-25">
-                <div class="txt-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/Abilities_Tout_1.jpg?v=1586179719);"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5"></div>
-
-      </div>
+    <div class="content-main text-center">
+      {{ article.content }}
     </div>
-
-    <div class="didyouknow-sec">
-      <div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-50">
-          <div class="didyouknow-content clearfix">
-            <div class="row">
-              <div class="col-lg-15">
-                <h3>Did you know?</h3>
-                <div class="clearfix"></div>
-                <h4>People who inspire us,</h4>
-                <div class="clearfix"></div>
-                <h4>by redefining beauty</h4>
-                <div class="clearfix"></div>
-                <h4 class="mb-20">and style. </h4>
-              </div>
-              <div class="col-lg-15">
-                <div class="block">
-                  <div class="row">
-                    <div class="col-15">
-                      <h1>1</h1>
-                    </div>
-                    <div class="col-45">
-                      <h2>gear that goes everywhere</h2>
-                      <p>Cool gear that makes
-                        traveling seem effortless
-                        and manageable, from
-                        scooter luggage to RFID
-                        travel bags.</p>
-                      <a href="">MORE ABOUT THIS GEAR HERE</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-15">
-                <div class="block">
-                  <div class="row">
-                    <div class="col-15">
-                      <h1>2</h1>
-                    </div>
-                    <div class="col-45">
-                      <h2>gear that goes everywhere</h2>
-                      <p>Cool gear that makes
-                        traveling seem effortless
-                        and manageable, from
-                        scooter luggage to RFID
-                        travel bags.</p>
-                      <a href="">MORE ABOUT THIS GEAR HERE</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-15">
-                <div class="block">
-                  <div class="row">
-                    <div class="col-15">
-                      <h1>3</h1>
-                    </div>
-                    <div class="col-45">
-                      <h2>gear that goes everywhere</h2>
-                      <p>Cool gear that makes
-                        traveling seem effortless
-                        and manageable, from
-                        scooter luggage to RFID
-                        travel bags.</p>
-                      <a href="">MORE ABOUT THIS GEAR HERE</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-5"></div>
-        
-      </div>
-    </div>
-
-    <div class="content-main">
-      <div class="row">
-        <div class="col-md-15"></div>
-        <div class="col-md-30">
-          <div class="content-text">
-            <p>
-              Epelictatem quam quo ommolorem quamend eliquas aut doluptia sequam id que
-venimol uptaece rovitaest elluptas ex et eum harupta nissinturion rem. Et quas debitis
-vel illo moluptiam harum endipsa eceatiae mod eos nos secti sequam, odita nis andem
-ero et pra sant excea nectibus, quis enem el ipsam litias cus imporeperum quo evereic
-torempos nonectur magnis antia sintis explitiumque volendamus et fugite sunt volut et
-optio doluptaque aut aboritios mo officit exernatiis doluptas doles et ullate qui omnis
-id expeditis sam eos dolore volore verspitiis dollab int eati consend elictur?Uciasiti
-onsequosam lit vidunt pos earchit iatur? Am lab ipsam, 
-            </p>
-            <div class="article-icon" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/article-icon.png?v=1586234269);">
-
-            </div>
-          </div>
-          
-        </div>
-        <div class="col-md-15"></div>
-
-      </div>
-    </div>
-
     <div class="relate-stories">
       <div class="container">
         <div class="section-header">
@@ -367,22 +102,20 @@ onsequosam lit vidunt pos earchit iatur? Am lab ipsam,
         <div class="row">
           <div class="col-md-45">
             <div class="story-links">
-              <a href="">story name</a>
-              <a href="">original article name</a>
-              <a href="">guest interview</a>
-              <a href="">original article name</a>
-              <a href="">story name</a>
-              <a href="">videos</a>
+              {% for tag in article.tags %}
+                {% if tag contains 'related--' %}
+                {%- assign article_handle = tag | remove_first: 'related--' -%}
+                {%- assign related_article = articles[article_handle] -%}
+                <a href="{{ related_article.url }}">{{ related_article.title }}</a>
+                {% endif %}
+              {% endfor %}
             </div>
           </div>
         </div>
-        
       </div>
     </div>
   </div>
 </div>
-
-
 {% schema %}
   {
     "name": "Posts",
@@ -404,6 +137,128 @@ onsequosam lit vidunt pos earchit iatur? Am lab ipsam,
         "id": "show_share_buttons",
         "label": "Show social sharing buttons",
         "default": true
+      },
+      {
+        "type": "header",
+        "content": "Images Animation"
+      },
+      {
+        "type": "select",
+        "id": "images_animation",
+        "label": "Animation",
+        "options": [
+              {
+              "group": "FADE",
+              "value": "fade-up",
+              "label": "fade up"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down",
+              "label": "fade down"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-right",
+              "label": "fade right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-left",
+              "label": "fade left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-right",
+              "label": "fade up right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-up-left",
+              "label": "fade up left"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-right",
+              "label": "fade down right"
+              },
+              {
+              "group": "FADE",
+              "value": "fade-down-left",
+              "label": "fade down left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-left",
+              "label": "flip left"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-right",
+              "label": "flip right"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-up",
+              "label": "flip up"
+              },
+              {
+              "group": "FLIP",
+              "value": "flip-down",
+              "label": "flip down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in",
+              "label": "zoom in"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-up",
+              "label": "zoom in up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-down",
+              "label": "zoom in down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-left",
+              "label": "zoom in left"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-in-right",
+              "label": "zoom in right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out",
+              "label": "zoom out"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-up",
+              "label": "zoom out up"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-down",
+              "label": "zoom out down"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-right",
+              "label": "zoom out right"
+              },
+              {
+              "group": "ZOOM",
+              "value": "zoom-out-left",
+              "label": "zoom out left"
+              }
+        ],
+        "default": "flip-down"
       }
     ]
   }

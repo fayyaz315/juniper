@@ -25,7 +25,6 @@
       </div>
     </div>
   </div>
-
   <style>
     .site-newsletter {
       {% if section.settings.background != blank %}
@@ -40,131 +39,200 @@
     }
   </style>
 {% endif %}
-
-<footer class="site-footer" role="contentinfo" {% if section.settings.footer_newsletter_alone %}{% else %}style="margin-top:60px;"{% endif %}>
+<div class="clearfix"></div>
+<footer class="site-footer {% if section.settings.footer_newsletter_alone %}{% else %}m-top{% endif %}" role="contentinfo">
+  <div class="footer-right-icon" data-aos="zoom-in-up">
+    <span></span>
+  </div>
   <div class="container">
-    <div class="row justify-content-around">
-
-      <div class="col-md-12">
-        {%- assign footer_logo = section.settings.logo -%}
-        {% if footer_logo == blank %}
-          {%- assign footer_logo = settings.logo -%}
-        {% endif %}
-        <a href="/" class="logo--footer"><img src="{{ footer_logo | img_url: '150x' }}"
-           srcset="{{ footer_logo | img_url: '300x' }} 1x, {{ footer_logo | img_url: '150x', scale: 2 }} 2x"
-           alt="{{ settings.logo.alt | default: shop.name }}" /></a>
-      </div>
-
-      {% for block in section.blocks %}
-        {%- assign footer_linklist = block.settings.linklist -%}
-        {% if linklists[footer_linklist].links.size > 0 %}
-          <div class="col-md-auto col-60">
-            {% if block.settings.title != blank %}<h4 class="mobile-toggler">{{ block.settings.title }}</h4>{% endif %}
-            <ul class="site-footer__linklist">
-              {% for link in linklists[footer_linklist].links %}
-                <li class="site-footer__linklist-item">
-                  <a href="{{ link.url }}">{{ link.title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
-      {% endfor %}
-
-      {% if section.settings.footer_socials_enable or section.settings.footer_newsletter_enable and section.settings.footer_newsletter_alone == false %}
-        <div class="{% if section.settings.footer_newsletter_alone %}col-md-12{% else %}col-md-20{% endif %}">
-          {% if section.settings.footer_newsletter_enable and section.settings.footer_newsletter_alone == false %}
-            <div class="site-footer__newsletter">
-              {% include 'newsletter' %}
+    <div class="footer-logo-area">
+      <div class="row justify-content-around">
+        <div class="col-md-9">
+          {%- assign footer_logo = section.settings.logo -%}
+          {% if footer_logo == blank %}
+            {%- assign footer_logo = settings.logo -%}
+          {% endif %}
+          <a href="/" class="logo--footer"><img src="{{ footer_logo | img_url: '150x' }}"
+            srcset="{{ footer_logo | img_url: '300x' }} 1x, {{ footer_logo | img_url: '150x', scale: 2 }} 2x"
+            alt="{{ settings.logo.alt | default: shop.name }}" /></a>
+        </div>
+        {% for block in section.blocks %}
+          {%- assign footer_linklist = block.settings.linklist -%}
+          {% if linklists[footer_linklist].links.size > 0 %}
+            <div class="col-md-auto col-60">
+              {% if block.settings.title != blank %}<h4 class="mobile-toggler">{{ block.settings.title }}</h4>{% endif %}
+              <ul class="site-footer__linklist">
+                {% for link in linklists[footer_linklist].links %}
+                  <li class="site-footer__linklist-item">
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
             </div>
           {% endif %}
-
-          {% if social_icons %}
-            {% if section.settings.socials_title %}<h4>{{ section.settings.socials_title }}</h4>{% endif %}
-            <ul class="list--inline site-footer__social-icons social-icons">
-              {% if settings.social_facebook_link != blank %}
-                <li>
-                  <a class="social-icons__link" href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
-                    {% include 'icon-facebook' %}
-                    <span class="icon__fallback-text">Facebook</span>
-                  </a>
-                </li>
-              {% endif %}
-              {% if settings.social_twitter_link != blank %}
-                <li>
-                  <a class="social-icons__link" href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
-                    {% include 'icon-twitter' %}
-                    <span class="icon__fallback-text">Twitter</span>
-                  </a>
-                </li>
-              {% endif %}
-              {% if settings.social_pinterest_link != blank %}
-                <li>
-                  <a class="social-icons__link" href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
-                    {% include 'icon-pinterest' %}
-                    <span class="icon__fallback-text">Pinterest</span>
-                  </a>
-                </li>
-              {% endif %}
-              {% if settings.social_instagram_link != blank %}
-                <li>
-                  <a class="social-icons__link" href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
-                    {% include 'icon-instagram' %}
-                    <span class="icon__fallback-text">Instagram</span>
-                  </a>
-                </li>
-              {% endif %}
-              {% if settings.social_tumblr_link != blank %}
-                <li>
-                  <a class="social-icons__link" href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
-                    {% include 'icon-tumblr' %}
-                    <span class="icon__fallback-text">Tumblr</span>
-                  </a>
-                </li>
-              {% endif %}
-              {% if settings.social_snapchat_link != blank %}
-                <li>
-                  <a class="social-icons__link" href="{{ settings.social_snapchat_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
-                    {% include 'icon-snapchat' %}
-                    <span class="icon__fallback-text">Snapchat</span>
-                  </a>
-                </li>
-              {% endif %}
-              {% if settings.social_youtube_link != blank %}
-                <li>
-                  <a class="social-icons__link" href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
-                    {% include 'icon-youtube' %}
-                    <span class="icon__fallback-text">YouTube</span>
-                  </a>
-                </li>
-              {% endif %}
-              {% if settings.social_vimeo_link != blank %}
-                <li>
-                  <a class="social-icons__link" href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
-                    {% include 'icon-vimeo' %}
-                    <span class="icon__fallback-text">Vimeo</span>
-                  </a>
-                </li>
-              {% endif %}
-              {% if template contains 'blog' or template contains 'article' %}
-                <li>
-                  <a class="social-icons__link" href="{{ shop.url }}{{ blog.url }}.atom">
-                    {% include 'icon-rss' %}
-                    <span class="icon__fallback-text">RSS</span>
-                  </a>
-                </li>
-              {% endif %}
-            </ul>
-          {% endif %}
-
-        </div>
-      {% endif %}
-
+        {% endfor %}
+      </div>
     </div>
+    {% if section.settings.footer_socials_enable or section.settings.footer_newsletter_enable %}
+    <div class="footer-newsletter-area">
+      <div class="row">
+        {% if section.settings.footer_socials_enable %}
+          <div class="col-lg-18">
+            <div class="footer-social-container">
+            {% if social_icons %}
+                {% if section.settings.socials_title %}<h4>{{ section.settings.socials_title }}</h4>{% endif %}
+                <ul class="list--inline site-footer__social-icons social-icons">
+                  {% if settings.social_facebook_link != blank %}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                        <em class="fab fa-facebook-f"></em>
+                        <span class="icon__fallback-text">Facebook</span>
+                      </a>
+                    </li>
+                  {% endif %}                  
+                  {% if settings.social_youtube_link != blank %}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">  
+                        <em class="fab fa-youtube"></em>
+                        <span class="icon__fallback-text">YouTube</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_instagram_link != blank %}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                        {% include 'icon-instagram' %}
+                        <span class="icon__fallback-text">Instagram</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_twitter_link != blank %}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                        {% include 'icon-twitter' %}
+                        <span class="icon__fallback-text">Twitter</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_pinterest_link != blank %}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                        <em class="fab fa-pinterest-p"></em>
+                        <span class="icon__fallback-text">Pinterest</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_spotify_link != blank %}
+                  <li>
+                    <a class="social-icons__link" href="{{ settings.social_spotify_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Spotify' }}">
+                      {% include 'icon-feed' %}
+                      <span class="icon__fallback-text">Spotify</span>
+                    </a>
+                  </li>
+                  {% endif %}
+                  {% if settings.social_tumblr_link != blank %}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                        {% include 'icon-tumblr' %}
+                        <span class="icon__fallback-text">Tumblr</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_snapchat_link != blank %}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_snapchat_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                        {% include 'icon-snapchat' %}
+                        <span class="icon__fallback-text">Snapchat</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if settings.social_vimeo_link != blank %}
+                    <li>
+                      <a class="social-icons__link" href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                        {% include 'icon-vimeo' %}
+                        <span class="icon__fallback-text">Vimeo</span>
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if template contains 'blog' or template contains 'article' %}
+                  {% endif %}
+                    
+                  
+                </ul>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+          <div class="col-lg-20">
+            <div class="footer-contact-container">
+              <ul>
+                <li>
+                  <div class="row">
+                    <div class="col-15">
+                      <span class="chat-icon" style="">
+                        <!-- {% include 'icon-chat' %} -->
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32.91 21"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#fff;}</style><clipPath id="clip-path" transform="translate(-211 -385)"><rect class="cls-1" x="211" y="385" width="32.91" height="21"/></clipPath></defs><title>chat</title><g class="cls-2"><path class="cls-3" d="M218.06,392.3c-3.49.73-5.93,2.91-5.93,5.4a5,5,0,0,0,2.57,4.06.52.52,0,0,1,.22.61l-.78,2.19,3.83-1.38a.58.58,0,0,1,.32,0,12.34,12.34,0,0,0,2.36.23,11.74,11.74,0,0,0,4.86-1c-4.66-1.47-7.7-4.69-7.7-8.32a6.31,6.31,0,0,1,.25-1.77M213.22,406a.54.54,0,0,1-.39-.15.51.51,0,0,1-.15-.53l1-2.9A5.85,5.85,0,0,1,211,397.7c0-3.24,3.29-6,7.83-6.62a.59.59,0,0,1,.53.2.53.53,0,0,1,.07.54,5.66,5.66,0,0,0-.49,2.25c0,3.45,3.27,6.5,8.12,7.59a.53.53,0,0,1,.42.65.5.5,0,0,1-.22.31,12.14,12.14,0,0,1-6.61,1.83,13.15,13.15,0,0,1-2.43-.22l-4.8,1.73a.45.45,0,0,1-.2,0" transform="translate(-211 -385)"/><path class="cls-3" d="M234.26,401.76a.52.52,0,0,1,.21,0l5.67,2.05-1.21-3.42a.52.52,0,0,1,.21-.61c2.35-1.53,3.63-3.57,3.63-5.75,0-4.41-5.34-8-11.91-8-5.24,0-9.94,2.36-11.43,5.74a5.74,5.74,0,0,0-.49,2.26c0,3.45,3.27,6.5,8.12,7.6a17.64,17.64,0,0,0,7.09.1Zm6.81,3.52a.44.44,0,0,1-.2,0l-6.66-2.4a18.86,18.86,0,0,1-7.41-.15c-5.38-1.21-9-4.68-9-8.63a6.46,6.46,0,0,1,.57-2.66c1.7-3.83,6.69-6.41,12.48-6.41,7.19,0,13,4.07,13,9.07,0,2.43-1.33,4.68-3.76,6.41l1.49,4.1a.5.5,0,0,1-.15.53.55.55,0,0,1-.42.17" transform="translate(-211 -385)"/><path class="cls-3" d="M224.31,394a.78.78,0,1,0,.84.78.8.8,0,0,0-.84-.78Zm0,2.63a1.85,1.85,0,1,1,2-1.85,1.92,1.92,0,0,1-2,1.85h0" transform="translate(-211 -385)"/><path class="cls-3" d="M230.86,394a.78.78,0,1,0,.83.78.81.81,0,0,0-.83-.78m0,2.63a1.85,1.85,0,1,1,2-1.85,1.91,1.91,0,0,1-2,1.85" transform="translate(-211 -385)"/><path class="cls-3" d="M237.41,394a.78.78,0,1,0,.83.78.81.81,0,0,0-.83-.78m0,2.63a1.85,1.85,0,1,1,2-1.85,1.91,1.91,0,0,1-2,1.85" transform="translate(-211 -385)"/></g></svg>
+                      </span>
+                    </div>
+                    <div class="col-45">
+                      <h3>CHAT WITH US</h3>
+                      <h4>Available 365 days/year</h4>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row">
+                    <div class="col-15">
+                      <span class="phone-icon" style="">
+                        <!-- {% include 'icon-chat' %} -->
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24.66 22.88"><defs><style>.cls-1,.cls-3{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{stroke:#fff;stroke-miterlimit:10;}</style><clipPath id="clip-path" transform="translate(-215 -384.12)"><rect class="cls-1" x="215" y="384.12" width="24.66" height="22.88"/></clipPath></defs><title>phone</title><g class="cls-2"><path class="cls-3" d="M238,400.14c-.59-.29-3.45-1.69-4-1.88s-.92-.29-1.31.29-1.52,1.88-1.85,2.26-.68.43-1.27.14a15.94,15.94,0,0,1-4.68-2.87,17.08,17.08,0,0,1-3.23-4c-.34-.58,0-.89.25-1.18s.58-.68.88-1l.21-.28a4.87,4.87,0,0,0,.37-.69,1.05,1.05,0,0,0,0-1c-.15-.29-1.32-3.13-1.81-4.29s-1-1-1.31-1-.72-.05-1.11-.05a2.16,2.16,0,0,0-1.56.72,6.49,6.49,0,0,0-2,4.83,7.22,7.22,0,0,0,.3,2,13.19,13.19,0,0,0,2.08,4c.29.37,4,6.4,9.94,8.72s5.92,1.54,7,1.44,3.45-1.39,3.92-2.75a4.82,4.82,0,0,0,.35-2.74C238.94,400.57,238.55,400.43,238,400.14Z" transform="translate(-215 -384.12)"/></g></svg>
+                      </span>
+                    </div>
+                    <div class="col-45">
+                      <h3>CALL US</h3>
+                      <h4>+1 (000) 000-0000</h4>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="row">
+                    <div class="col-15">
+                      <span class="text-icon" style="">
+                        <!-- {% include 'icon-chat' %} -->
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 17.83 31.6"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#fff;}</style><clipPath id="clip-path" transform="translate(-219 -379.4)"><rect class="cls-1" x="219" y="379.4" width="17.83" height="31.6"/></clipPath></defs><title>text</title><g class="cls-2"><path class="cls-3" d="M227.92,379.4c-2.42,0-2.73,0-3.68.05a6.41,6.41,0,0,0-2.16.41,4.55,4.55,0,0,0-2.61,2.55,6.55,6.55,0,0,0-.42,2.13c0,.93-.05,15.34-.05,17.72s0,2.67.05,3.6a6.43,6.43,0,0,0,.42,2.12,4.17,4.17,0,0,0,1,1.55,4.22,4.22,0,0,0,1.58,1,6.67,6.67,0,0,0,2.16.41c.95,0,1.26.05,3.68.05s2.72,0,3.67-.05a6.8,6.8,0,0,0,2.17-.41,4.38,4.38,0,0,0,1.58-1,4.29,4.29,0,0,0,1-1.55,6.21,6.21,0,0,0,.41-2.12c0-.93.05-1.23.05-3.6s0-16.79-.05-17.72a6.32,6.32,0,0,0-.41-2.13,4.55,4.55,0,0,0-2.61-2.55,6.53,6.53,0,0,0-2.17-.41c-1,0-1.25-.05-3.67-.05m0,.58c2.61,0,2.92,0,4,0a5.49,5.49,0,0,1,1.81.32,3.07,3.07,0,0,1,1.13.7,2.88,2.88,0,0,1,.73,1.06,5.18,5.18,0,0,1,.34,1.73c0,1,0,16.27,0,18.75s0,2.77,0,3.75a5.18,5.18,0,0,1-.34,1.73,3,3,0,0,1-.73,1.07,3.19,3.19,0,0,1-1.13.69,5.49,5.49,0,0,1-1.81.32c-1,0-1.35.05-4,.05s-2.92,0-4-.05a5.63,5.63,0,0,1-1.82-.32,3.15,3.15,0,0,1-1.12-.69,2.88,2.88,0,0,1-.73-1.07,4.71,4.71,0,0,1-.34-1.73c-.05-1-.06-1.27-.06-3.75s0-17.77.06-18.75a4.71,4.71,0,0,1,.34-1.73,2.77,2.77,0,0,1,.73-1.06,3,3,0,0,1,1.12-.7A5.63,5.63,0,0,1,224,380c1,0,1.34,0,4,0" transform="translate(-219 -379.4)"/><path class="cls-3" d="M229.15,407.43a1.42,1.42,0,1,1-1.41-1.35,1.38,1.38,0,0,1,1.41,1.35" transform="translate(-219 -379.4)"/><path class="cls-3" d="M233.5,387a.74.74,0,1,1,.79-.74.76.76,0,0,1-.79.74m-2.39,0a.74.74,0,1,1,.79-.74.76.76,0,0,1-.79.74m-2.39,0a.74.74,0,1,1,.78-.74.76.76,0,0,1-.78.74m5.07-2.73h-7.54a1.47,1.47,0,0,0-1.51,1.43v1.16a1.47,1.47,0,0,0,1.51,1.43h7.54a1.47,1.47,0,0,0,1.5-1.43v-1.16a1.47,1.47,0,0,0-1.5-1.43" transform="translate(-219 -379.4)"/><path class="cls-3" d="M227.31,393.44a.76.76,0,0,1-.78-.74.78.78,0,0,1,1.56,0,.76.76,0,0,1-.78.74m-2.39,0a.76.76,0,0,1-.79-.74.79.79,0,0,1,1.57,0,.76.76,0,0,1-.78.74m-2.39,0a.76.76,0,0,1-.79-.74.79.79,0,0,1,1.57,0,.76.76,0,0,1-.78.74m7-2.75H222a1.47,1.47,0,0,0-1.51,1.43v1.16a1.48,1.48,0,0,0,1.51,1.43h7.54a1.48,1.48,0,0,0,1.5-1.43v-1.16a1.47,1.47,0,0,0-1.5-1.43" transform="translate(-219 -379.4)"/></g></svg>
 
+                      </span>
+                    </div>
+                    <div class="col-45">
+                      <h3>TEXT US</h3>
+                      <h4>+1 (000) 000-0000</h4>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        {% if section.settings.footer_newsletter_enable and section.settings.footer_newsletter_alone == false %}
+        <div class="col-lg-22">
+          <div class="site-footer__newsletter">
+            {% include 'newsletter' %}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>    
+    {% endif %}
     <div class="site-footer__copyright--bottom">
+      <ul>
+        {% for link in linklists[section.settings.bottom_linklist].links %}
+                  <li class="site-footer__linklist-item">
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+        {% endfor %}
+      </ul>
       <small class="site-footer__copyright-content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}</small>
-      <small class="site-footer__copyright-content">Built on Inferno Framework by <a href="http://wickcreative.com" target="_blank">Wick Creative</a></small>
+      <small class="site-footer__copyright-content">All Rights Reserved. juniperunltd.® is a registered trademark of JuniperUnltd and is registered with the U.S. Patent and Trademark Office.</small>
     </div>
 
   </div>
@@ -259,6 +327,15 @@
         "id": "newsletter_color",
         "label": "Newsletter text color",
         "info": "Only applicable if 'Display newsletter before footer' is checked"
+      },
+      {
+        "type": "header",
+        "content": "Footer Bottom"
+      },
+      {
+        "type": "link_list",
+        "id": "bottom_linklist",
+        "label": "Linklist"
       }
     ],
     "blocks": [

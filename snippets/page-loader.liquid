@@ -1,0 +1,16 @@
+<div id="page-load-placeholder">
+   <div class="footer-right-icon">
+      <span></span>
+   </div>   
+</div>
+<script>
+var body = document.body;
+var page_placeholder = document.getElementById('page-load-placeholder');
+body.classList.add("loading-page");
+window.addEventListener('load', (event) => {
+   $('body').removeClass("loading-page");
+   $('#page-load-placeholder').fadeOut('slow');
+   /* body.classList.remove("loading-page");
+   page_placeholder.classList.add('d-none'); */
+});
+</script>

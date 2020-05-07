@@ -8,9 +8,13 @@
         var div_top = 5;
       }
       if (window_top > div_top) {
+        $('.slideshow-main').addClass('sticky-slideshow');
         $('#shopify-section-header > div').addClass('sticky-header logo-change');
+        $('#shopify-section-collection-template .Collection-page-container').addClass('gapLeft');
       } else {
+        $('.slideshow-main').removeClass('sticky-slideshow');
         $('#shopify-section-header > div').removeClass('sticky-header logo-change');
+        $('#shopify-section-collection-template .Collection-page-container').removeClass('gapLeft');
       }
     }
 
@@ -50,10 +54,12 @@
 
 <div data-section-type="header-section" id="header-container" class="{% if settings.header_overlay %}homepageoverlay{% endif %}">
   {% if settings.align_menu == 'below' %}
+  <div id="header-centered">
     {% include 'header-row_top--no_menu' %}
-    <nav class="nav-below hidden-sm-down text-{{ settings.align_menu_text }}" id="AccessibleNav" role="navigation">
+    <nav class="nav-below d-none d-md-block text-{{ settings.align_menu_text }}" id="AccessibleNav" role="navigation">
       {% include 'site-nav', nav_alignment: 'site-nav--centered' %}
     </nav>
+  </div>
   {% else %}
     {% include 'header-row_top--w_menu' %}
   {% endif %}
@@ -72,4 +78,4 @@
     }
   {% endif %}
 </style>
- 
+<div id="sticky-anchor"></div>

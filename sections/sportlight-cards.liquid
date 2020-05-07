@@ -1,7 +1,7 @@
 {% if section.settings.title != blank %}
 	<div class="section-header">
 		<div class="container">
-			<h2>{{ section.settings.title }}</h2>
+			<h2 data-aos="{{ section.settings.animation_title }}">{{ section.settings.title }}</h2>
 		</div>
 	</div>
 {% endif %}
@@ -18,19 +18,21 @@
 	<div class="container-fluid no-padding">
 		<div class="spotlight-blocks">
       {% for block in section.blocks %}
-      <div class="spotify-block gift-bg border-right-5 active" data-i="{{ forloop.index }}">
-         <a href="{{ block.settings.link }}" class="spotify-text">
-            {% if block.settings.tag != blank %}
-               <h4>{{ block.settings.tag }}</h4>
-            {% endif %}
-            {% if block.settings.title != blank %}
-            <h2>{{ block.settings.title }}</h2>
-            {% endif %}
-            {% if block.settings.copy != blank %}
-            <h3>{{ block.settings.copy }}</h3>
-            {% endif %}
-         </a>
-      </div>
+         {% if block.settings.image != blank %}
+            <div class="spotify-block gift-bg border-right-5 active" style="background-image: url('{{ block.settings.image | img_url: '1500x'}}');" data-i="{{ forloop.index }}">
+               <a href="{{ block.settings.link }}" class="spotify-text" data-aos="{{ block.settings.animation_block }}">
+                  {% if block.settings.tag != blank %}
+                     <h4>{{ block.settings.tag }}</h4>
+                  {% endif %}
+                  {% if block.settings.title != blank %}
+                  <h2>{{ block.settings.title }}</h2>
+                  {% endif %}
+                  {% if block.settings.copy != blank %}
+                  <h3>{{ block.settings.copy }}</h3>
+                  {% endif %}
+               </a>
+            </div>
+         {% endif %}
       {% endfor %}
 		</div>
 	</div>

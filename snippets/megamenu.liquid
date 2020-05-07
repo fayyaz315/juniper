@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     {% for block in section.blocks %}
       <div class="{{ block.settings.column_width }}">
@@ -7,7 +7,7 @@
         {% case block.type %}
           {% when 'megamenu_image' %}
             {% if block.settings.column_width == 'col-10' %}
-              {%- assign image_size = '250x' -%}
+              {%- assign image_size = '600x' -%}
             {% elsif block.settings.column_width == 'col-20' %}
               {%- assign image_size = '500x' -%}
             {% elsif block.settings.column_width == 'col-30' %}

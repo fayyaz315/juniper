@@ -2759,13 +2759,24 @@ $(document).ready(function() {
   });
 
   // Toggler for mobile
+  // function mobileToggler() {
+  //   if($('.hidden-sm-down').css('display') == 'none') {
+  //     $('.mobile-toggler').on('click',function(evt){
+  //       evt.stopImmediatePropagation();
+  //       $(this).next('ul').toggleClass('open');
+  //     })
+  //   }
+  // }
+  // mobileToggler();
+  // $(window).on('resize', function(){
+  //   mobileToggler();
+  // });
+
   function mobileToggler() {
-    if($('.hidden-sm-down').css('display') == 'none') {
-      $('.mobile-toggler').on('click',function(evt){
-        evt.stopImmediatePropagation();
-        $(this).next('ul').toggleClass('open');
-      })
-    }
+    $('.mobile-toggler').on('click',function(evt){
+      evt.stopImmediatePropagation();
+      $(this).next('ul').toggleClass('open');
+    })
   }
   mobileToggler();
   $(window).on('resize', function(){

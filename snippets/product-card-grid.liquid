@@ -19,6 +19,9 @@
     {% if section.settings.show_vendor %}
     <h4>{{ product.vendor }}</h4>
     {% endif %}
+    {% if template contains 'product' %}
+      <h4>{{ product.vendor }}</h4>
+    {% endif %}
     {% if product.price < product.compare_at_price %}
       <h5 class="product-price__price">{{ product.price | money}}</h5>
       <h5 class="product-price__price"><s>{{ product.compoare_at_price | money }}</s></h5>

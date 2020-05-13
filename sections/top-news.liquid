@@ -21,11 +21,11 @@
             <div class="single-news-article">
               <div class="row no-gutters">
               {% if article.image %}
-                <div class="col-lg-20">
+                <div class="col-lg-15 col-xl-15">
                   <div class="news-image" style="background-image:url('{{article.image | img_url: '500x'}}');"></div>
                 </div>
               {% endif %}
-                <div class="col-lg-40">
+                <div class="col-lg-45 col-xl-45">
                   <div class="news-content">
                     <h2>{{ title[0] }}</h2>
                     <p>on <em>{{ title[1] }}</em> with {{ title[2] }}.</p>
@@ -44,33 +44,16 @@
 </div>
 <script>
   $('.topnews-slider').slick({
-  infinite: false,
+  // infinite: false,
   slidesToShow: 3,
   slidesToScroll: 1,
-  arrows:true,
-  focusOnSelect: true,
+  arrows: true,
+  //focusOnSelect: true,
   responsive: [
-    {
-      breakpoint: 1651,
-      settings: {
-        centerPadding: '450px'
-      }
-    },
     {
       breakpoint: 1500,
       settings: {
-        centerPadding: '350px'
-      }
-    },    {
-      breakpoint: 1330,
-      settings: {
-        centerPadding: '200px'
-      }
-    },
-    {
-      breakpoint: 992,
-      settings: {
-        centerPadding:'100'
+        slidesToShow: 2
       }
     },
     {

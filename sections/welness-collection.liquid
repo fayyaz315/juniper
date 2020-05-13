@@ -6,7 +6,7 @@
     </div>
   {% endif %}
       <div class="wellness-slider">
-        {% for block in section.blocks %}      
+        {% for block in section.blocks %}
         {% if block.settings.collection != blank %}
         {%- assign collection = collections[block.settings.collection] -%}
         {% assign collectionUrl = collection.url %}
@@ -324,7 +324,7 @@ $('.wellness-slider').slick({
             "id": "collection",
             "label": "Collection"
           },
-    		  {
+          {
             "type": "text",
             "id": "title",
             "label": "Collection title override"
@@ -334,7 +334,7 @@ $('.wellness-slider').slick({
             "id": "collectionimage",
             "label": "Collection image override"
           },
-    		  {
+          {
             "type": "url",
             "id": "link_override",
             "label": "Collection Link Override"

@@ -11,10 +11,14 @@
         $('.slideshow-main').addClass('sticky-slideshow');
         $('#shopify-section-header > div').addClass('sticky-header logo-change');
         $('#shopify-section-collection-template .Collection-page-container').addClass('gapLeft');
+        $('.spotlight').addClass('gapLeft');
+        $('.brands-love').addClass('gapLeft');
       } else {
         $('.slideshow-main').removeClass('sticky-slideshow');
         $('#shopify-section-header > div').removeClass('sticky-header logo-change');
         $('#shopify-section-collection-template .Collection-page-container').removeClass('gapLeft');
+        $('.spotlight').addClass('gapLeft');
+        $('.brands-love').addClass('gapLeft');
       }
     }
 
@@ -22,6 +26,14 @@
       $('#shopify-section-header').height($('#shopify-section-header').outerHeight());
       $(window).scroll(sticky_relocate);
       sticky_relocate();
+    });
+
+    $(document).ready(function(){
+      $('#review-btn').click(function() {
+        $('html, body').animate({
+          scrollTop: $("#main-review-sec").offset().top - 150
+        }, 1000)
+      });
     });
   </script>
 {% endif %}

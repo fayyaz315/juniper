@@ -1,17 +1,23 @@
 <header class="container-fluid site-header" role="banner">
   {% if template != 'index' %}
   <div class="header-topbar d-none d-md-block">
-    <ul>  
-      <li>
-        <form action="/search" method="get" role="search">
-          <button type="submit"><span>search</span> {% include 'icon-search' %}</button>
-          <input type="search" name="q" value="{{ search.terms | escape }}" aria-label="{{ 'general.search.placeholder' | t }}">
-        </form>
-      </li>
-      <li><a href="/account">account</a></li>
-      <li><a href="/pages/wishlist">favorites</a></li>
-      <li><a class="site-header__cart" href="/cart">cart <span id="CartCount">{% include 'icon-cart' %} {% if cart.item_count > 0 %}<span>{{ cart.item_count }}</span>{% endif %}</span></a></li>
-    </ul>
+    <div class="row">
+      <ul class="col-md-15 left-link">
+        <li><a href="/pages/contact-us">contact us</a></li>
+      </ul>
+      <ul class="col-md-45">  
+        <li>
+          <form action="/search" method="get" role="search">
+            <button type="submit"><span>search</span> {% include 'icon-search' %}</button>
+            <input type="search" name="q" value="{{ search.terms | escape }}" aria-label="{{ 'general.search.placeholder' | t }}">
+          </form>
+        </li>
+        <li><a href="/account">account</a></li>
+        <li><a href="/pages/wishlist">favorites</a></li>
+        <li><a class="site-header__cart" href="/cart">cart <span id="CartCount">{% include 'icon-cart' %} {% if cart.item_count > 0 %}<span>{{ cart.item_count }}</span>{% endif %}</span></a></li>
+      </ul>
+    </div>
+    
   </div>
   {% endif %}
   <div class="row align-items-center">
@@ -19,7 +25,9 @@
       {% include 'header-logo' %}
     </div>
     <div class="col-60 col-md-15 text-center order-5 order-md-4 d-none d-md-block">
-      <a href="https://www.essentialaccessibility.com/gbg?utm_source=gbghomepage&utm_medium=iconlarge&utm_term=eachannelpage&utm_content=header&utm_campaign=gbg" target="_blank">{{ 'ea-icon.png' | asset_img_url: 'x30' | img_tag: 'This icon serves as a link to download the eSSENTIAL Accessibility assistive technology app for individuals with physical disabilities. It is featured as part of our commitment to diversity and inclusion.', 'mb-3 mb-md-0' }}</a>
+      <a href="https://www.essentialaccessibility.com/juniperunltd?utm_source=juniperltdhomepage&utm_medium=iconlarge&utm_term=eachannelpage&utm_content=header&utm_campaign=juniperunltd" target="_blank">
+        {{ 'ea-icon.png' | asset_img_url: 'x30' | img_tag: 'This icon serves as a link to download the eSSENTIAL Accessibility assistive technology app for individuals with physical disabilities. It is featured as part of our commitment to diversity and inclusion.', 'mb-3 mb-md-0' }}
+      </a>
     </div>
     {% comment %} <div class="col-35 col-md-60 order-{% if settings.align_logo == 'center' %}3{% else %}1{% endif %}">
       {% include 'header-logo' %}

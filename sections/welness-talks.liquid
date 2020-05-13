@@ -1,10 +1,10 @@
-<div class="welness-talks" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/JUtalks_Grace_Ashton.jpg?v=1588064080);">
+<div class="welness-talks" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/talk-bg.png?v=1588852544);">
   <div class="container">
     <div class="section-header">
       <h2>_JUNIPER <em>talks</em></h2>
     </div>
     <div class="row">
-      <div class="col-lg-20 offset-lg-40">
+      <div class="col-lg-25 offset-lg-35">
         <div class="block-content">
           <h3> Grace Stratton </h3><br>
           <h3> X </h3><br>
@@ -21,282 +21,65 @@
     </div>
   </div>
 </div>
-
+{% comment %} <div class="welness-talks" style="background-image: url({{ section.settings.image | img_url: '2000x' }});">
+  <div class="container">
+  {% if section.settings.heading != blank %}
+    <div class="section-header">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+  {% endif %}
+    <div class="row">
+      <div class="col-lg-25 offset-lg-35">
+        <div class="block-content">
+          {{ section.settings.title }}
+          {{ section.settings.text }}
+        </div>
+        {% if section.settings.button_link != blank and section.settings.button_text != blank %}
+        <div class="block-btn">
+          <a href="{{ section.settings.button_link }}">{{ section.settings.button_text }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
 {% schema %}
   {
-    "name": "Collection list Wellness",
-    "class": "index-section wellness-collection-list",
-    "max_blocks": 12,
+    "name": "Welness Talks",
     "settings": [
       {
         "type": "html",
-        "id": "title",
-        "label": "Heading",
-        "default": "Collection list"
+        "id": "heading",
+        "label": "Page Heading",
+        "default": "_JUNIPER <em>talks</em>"
       },
       {
-        "type": "select",
-        "id": "animation_collection",
-        "label": "Animation for category blocks",
-        "options": [
-            {
-            "group": "FADE",
-            "value": "fade-up",
-            "label": "fade up"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-down",
-            "label": "fade down"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-right",
-            "label": "fade right"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-left",
-            "label": "fade left"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-up-right",
-            "label": "fade up right"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-up-left",
-            "label": "fade up left"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-down-right",
-            "label": "fade down right"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-down-left",
-            "label": "fade down left"
-            },
-            {
-            "group": "FLIP",
-            "value": "flip-left",
-            "label": "flip left"
-            },
-            {
-            "group": "FLIP",
-            "value": "flip-right",
-            "label": "flip right"
-            },
-            {
-            "group": "FLIP",
-            "value": "flip-up",
-            "label": "flip up"
-            },
-            {
-            "group": "FLIP",
-            "value": "flip-down",
-            "label": "flip down"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in",
-            "label": "zoom in"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in-up",
-            "label": "zoom in up"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in-down",
-            "label": "zoom in down"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in-left",
-            "label": "zoom in left"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in-right",
-            "label": "zoom in right"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out",
-            "label": "zoom out"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out-up",
-            "label": "zoom out up"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out-down",
-            "label": "zoom out down"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out-right",
-            "label": "zoom out right"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out-left",
-            "label": "zoom out left"
-            }
-        ],
-        "default": "flip-down"
-        },
-        {
-        "type": "select",
-        "id": "animation_title",
-        "label": "Animation",
-        "options": [
-            {
-            "group": "FADE",
-            "value": "fade-up",
-            "label": "fade up"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-down",
-            "label": "fade down"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-right",
-            "label": "fade right"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-left",
-            "label": "fade left"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-up-right",
-            "label": "fade up right"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-up-left",
-            "label": "fade up left"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-down-right",
-            "label": "fade down right"
-            },
-            {
-            "group": "FADE",
-            "value": "fade-down-left",
-            "label": "fade down left"
-            },
-            {
-            "group": "FLIP",
-            "value": "flip-left",
-            "label": "flip left"
-            },
-            {
-            "group": "FLIP",
-            "value": "flip-right",
-            "label": "flip right"
-            },
-            {
-            "group": "FLIP",
-            "value": "flip-up",
-            "label": "flip up"
-            },
-            {
-            "group": "FLIP",
-            "value": "flip-down",
-            "label": "flip down"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in",
-            "label": "zoom in"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in-up",
-            "label": "zoom in up"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in-down",
-            "label": "zoom in down"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in-left",
-            "label": "zoom in left"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-in-right",
-            "label": "zoom in right"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out",
-            "label": "zoom out"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out-up",
-            "label": "zoom out up"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out-down",
-            "label": "zoom out down"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out-right",
-            "label": "zoom out right"
-            },
-            {
-            "group": "ZOOM",
-            "value": "zoom-out-left",
-            "label": "zoom out left"
-            }
-        ],
-        "default": "flip-down"
-        }
-    ],
-    "blocks": [
+        "type":"image_picker",
+        "id":"image",
+        "label":"Image"
+      },
       {
-        "type": "featured_collection",
-        "name": "Collection",
-        "settings": [
-          {
-            "type": "collection",
-            "id": "collection",
-            "label": "Collection"
-          },
-    		  {
-            "type": "text",
-            "id": "title",
-            "label": "Collection title override"
-          },
-          {
-            "type": "image_picker",
-            "id": "collectionimage",
-            "label": "Collection image override"
-          },
-    		  {
-            "type": "url",
-            "id": "link_override",
-            "label": "Collection Link Override"
-          }
-        ]
+        "type": "html",
+        "id": "title",
+        "label": "Title",
+        "default": "<h3> Grace Stratton </h3><br><h3> X </h3><br><h3> Ashton Applewhite </h3>"
+      },
+      {
+        "type":"richtext",
+        "id":"text",
+        "label":"Copy",
+        "default":"<p>This month’s Juniper Talks takes the conversation next level with disability  activist Grace Stratton and Anti-Ageist Ashton Applewhite</p>"
+      },
+      {
+        "type":"text",
+        "id":"button_text",
+        "label":"Button text",
+        "default":"read NOW"
+      },
+      {
+        "type":"url",
+        "id":"button_link",
+        "label":"Button link"
       }
     ]
   }

@@ -1,6 +1,6 @@
 <style>
   #header-container {
-     margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 </style>
 <div class="product-template__container container" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ product.id }}" data-section-id="{{ product.id }}" data-section-type="product" data-enable-history-state="true" data-crossclick="{% if settings.enable_crossclick %}allow{% endif %}" data-comingsoon="{% if product.tags contains 'coming soon' %}true{% else %}false{% endif %}">
@@ -53,14 +53,11 @@
       {%- assign product_image_size = '1090x' -%}
       {%- assign enable_zoom = false -%}
   {% endcase %}
-
   {%- assign product_thumbnail_perrow = product_thumbnail_perrow | times: 1 -%}
-
   <div class="row product-single">
     <div data-aos="{{ section.settings.image_animation }}" class="product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
       {%- assign featured_img_src = current_variant.featured_image.src | default: product.featured_image.src -%}
       {%- assign featured_img_alt = current_variant.featured_image.alt | default: product.featured_image.alt -%}
-
       {% if settings.enable_crossclick %}
         {%- assign prod_image_size = 0 -%}
         {% for image in product.images %}
@@ -71,34 +68,25 @@
       {% else %}
         {%- assign prod_image_size = product.images.size -%}
       {% endif %}
-
       {% if section.settings.vertical and prod_image_size > 1 %}
         <div class="row vertical-thumbs">
           <div class="col-lg-42 vertical-thumbs-cont order-lg-2">
       {% endif %}
-
       <div id="FeaturedImageZoom-{{ product.id }}" class="product-single__photo{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}" {% if enable_zoom %}data-zoom="{{ featured_img_src | img_url: product_image_zoom_size }}"{% endif %}>
         <img src="{{ featured_img_src | img_url: product_image_size }}" alt="{{ featured_img_alt }}" id="FeaturedImage-{{ product.id }}" class="product-featured-img{% if enable_zoom %} js-zoom-enabled{% endif %}">
       </div>
-
       {% if prod_image_size > product_thumbnail_perrow %}
         {%- assign enable_buttons = true -%}
       {% endif %}
-
       {% if prod_image_size > 1 %}
-
       {% if section.settings.vertical and prod_image_size > 1 %}
         </div>
         <div class="col-lg-16 order-lg-1">
       {% endif %}
-
         <div class="thumbnails-wrapper">
-
           {% if enable_buttons == true %}<a id="prevArrow" class="slick-prev"><i class="fa fa-angle-{% if section.settings.vertical %}up{% else %}left{% endif %}"></i></a>{% endif %}
           <ul class="product-single__thumbnails product-single__thumbnails-{{ product.id }}">
-
             {% if settings.enable_crossclick %}
-
               {%- assign attach_tot = 0 -%}
               {%- assign cross_need = false -%}
               {% for image in product.images %}
@@ -107,30 +95,22 @@
                   {% include 'loop-thumbnail' %}
                 {% endif %}
               {% endfor %}
-
               {% unless attach_tot == product.images.size %}
                 {%- assign cross_need = true -%}
               {% endunless %}
-
             {% else %}
-
               {% for image in product.images %}
                 {% include 'loop-thumbnail' %}
               {% endfor %}
-
             {% endif %}
-
           </ul>
           {% if enable_buttons == true %}<a id="nextArrow" class="slick-next"><i class="fa fa-angle-{% if section.settings.vertical %}down{% else %}right{% endif %}"></i></a>{% endif %}
-
         </div>
       {% endif %}
-
       {% if section.settings.vertical and prod_image_size > 1 %}
           </div>
         </div>
       {% endif %}
-
       <div class="d-none d-md-block" style="padding-right: 22px;">
         {% for block in section.blocks %}
           {% if product.tags contains block.settings.tag %}
@@ -158,69 +138,104 @@
         {% endfor %}
         <div class="connection-events">
           <div class="section-header">
-                  <h2>  
-                    _REVIEWS <em>from OUR</em> COMMUNITY
-                  </h2>
+            <h2>_REVIEWS <em>from OUR</em> COMMUNITY</h2>
           </div>
           <div class="connection-events-detial">
-                  <div class="row">
-                      <div class="col-md-30 col-lg-30 col-xl-20">
-                          <div class="connect-grid">
-                              <div class="connect-grid-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/37b2ed68c8_b7846495-817a-467b-8bbf-ce4f85f64bfa.jpg?v=1586003925);"></div>
-                              <div class="connect-grid-txt">
-                                  <h3> XBox </h3>
-                                  <br>
-                                  <h3>Controller</h3>
-                              </div>
-                              <div class="connect-grid-detail">
-                                  <h2>Dominick Evans                                </h2>
-                                  <p>“I play laying down, so the challenge for me is always finding the right place to mount the controller.”</p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-30 col-lg-30 col-xl-20">
-                          <div class="connect-grid">
-                              <div class="connect-grid-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/37b2ed68c8_b7846495-817a-467b-8bbf-ce4f85f64bfa.jpg?v=1586003925);"></div>
-                              <div class="connect-grid-txt">
-                                  <h3>Dancing</h3>
-                                  <br>
-                                  <h3>king</h3>
-                              </div>
-                              <div class="connect-grid-detail">
-                                  <h2>Jerron Herman</h2>
-                                  <p>“I have to dress for
-                                    the unexpected.”</p>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-md-30 col-lg-30 col-xl-20">
-                          <div class="connect-grid">
-                              <div class="connect-grid-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/37b2ed68c8_b7846495-817a-467b-8bbf-ce4f85f64bfa.jpg?v=1586003925);"></div>
-                              <div class="connect-grid-txt">
-                                  <h3>Ready</h3>
-                                  <br>
-                                  <h3>to Ski?</h3>
-                              </div>
-                              <div class="connect-grid-detail">
-                                  <h2>Momoka Muraoka</h2>
-                                  <p>“Sports is probably the world to
-                                    me... I was able to get involved
-                                    and communicate with various
-                                    people, and I could go to places...”</p>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+            <div class="row">
+              <div class="col-md-30 col-lg-30 col-xl-20">
+                <div class="connect-grid">
+                    <div class="connect-grid-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/37b2ed68c8_b7846495-817a-467b-8bbf-ce4f85f64bfa.jpg?v=1586003925);"></div>
+                    <div class="connect-grid-txt">
+                        <h3> XBox </h3>
+                        <br>
+                        <h3>Controller</h3>
+                    </div>
+                    <div class="connect-grid-detail">
+                        <h2>Dominick Evans                                </h2>
+                        <p>“I play laying down, so the challenge for me is always finding the right place to mount the controller.”</p>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-30 col-lg-30 col-xl-20">
+                <div class="connect-grid">
+                    <div class="connect-grid-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/37b2ed68c8_b7846495-817a-467b-8bbf-ce4f85f64bfa.jpg?v=1586003925);"></div>
+                    <div class="connect-grid-txt">
+                        <h3>Dancing</h3>
+                        <br>
+                        <h3>king</h3>
+                    </div>
+                    <div class="connect-grid-detail">
+                        <h2>Jerron Herman</h2>
+                        <p>“I have to dress for
+                          the unexpected.”</p>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-30 col-lg-30 col-xl-20">
+                <div class="connect-grid">
+                    <div class="connect-grid-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/37b2ed68c8_b7846495-817a-467b-8bbf-ce4f85f64bfa.jpg?v=1586003925);"></div>
+                    <div class="connect-grid-txt">
+                        <h3>Ready</h3>
+                        <br>
+                        <h3>to Ski?</h3>
+                    </div>
+                    <div class="connect-grid-detail">
+                        <h2>Momoka Muraoka</h2>
+                        <p>“Sports is probably the world to
+                          me... I was able to get involved
+                          and communicate with various
+                          people, and I could go to places...”</p>
+                    </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="review-list-container">
-          <img src="{{'reviews-list.png' | asset_url }}">
+        <div class="review-list-container collection-review">
+          <div class="review-block">
+            <div class="row">
+              <div class="col-md-20 col-lg-20 col-xl-10">
+                <div class="reviewer-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/seal.png?v=1589193804);"></div>
+              </div>
+              <div class="col-md-40 col-lg-40 col-xl-50">
+                <h3>Dominick Evans </h3>
+                <p>
+                  <span>“I play laying down, so the challenge for me is always finding the right place to mount the controller.”</span>
+                  Net pedisci unt utest, sequam eos rae si ut est, et aliati doloriberi omnia quiat offic te simporio ea peliquis derchitet possectorcum faceri antiis 
+                </p>
+                <div class="product-list">
+                  <ul>
+                    <li><a href="">recommend product // </a></li>
+                    <li><a href="">easy to wear // </a></li>
+                    <li><a href="">do not need assistance </a></li>
+                  </ul>
+                </div>
+                <div class="review-star">
+                  <ul>
+                    <li><a href="" class="selected"></a></li>
+                    <li><a href="" class="selected"></a></li>
+                    <li><a href="" class="selected"></a></li>
+                    <li><a href="" class="selected"></a></li>
+                    <li><a href="" class="selected"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="review-block">
+            <div class="row">
+              <div class="col-md-10">
+              </div>
+              <div class="col-md-50">
+                <div class="full-review">
+                  <a href="#" id="review-btn">{{ section.settings.more_review_button }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
-
     </div>
-
     <div class="{{ product_description_width }}">
       <ul class="pdp-top-links pdp-topright-links">
         <li><a href="#"><strong>_SHOP</strong></a></li>
@@ -292,7 +307,6 @@
                 {% endif %}
               {% endfor %}
             </select>
-          
           <a href="#size-guide" class="size-chart-link open-sizechart">size guide</a>
             {% if section.settings.show_quantity_selector %}
               <div class="product-form__item product-form__item--quantity">
@@ -924,6 +938,7 @@
   {% endif %}
 
 {% endif %}
+
 {% schema %}
   {
     "name": "Product pages",
@@ -1853,6 +1868,16 @@
               }
         ],
         "default": "fade-up"
+      },
+      {
+        "type":"header",
+        "content":"Reviews"
+      },
+      {
+        "type":"text",
+        "id":"more_review_button",
+        "label":"More Reviews Button Text",
+        "default":"More Reviews >>"
       }
     ],
     "blocks":[

@@ -553,10 +553,10 @@
             "settings": {
               "image": "shopify:\/\/shop_images\/slider-bg_800x_c2646c30-21ff-4834-93e8-05ea89439455.jpg",
               "image_mobile": "",
-              "image_1": "shopify:\/\/shop_images\/SlickChics_main_banner_SHOP.jpg",
+              "image_1": "shopify:\/\/shop_images\/SlickChics_main_banner_SHOP_1500x_3ddb6385-55bb-49cd-a21c-95fc1c5d28a9.jpg",
               "image_1_delay": "0.8s",
               "image_1_animation": "zoomInUp",
-              "image_2": "shopify:\/\/shop_images\/SlickChics_main_banner_SHOP1.jpg",
+              "image_2": "shopify:\/\/shop_images\/SlickChics_main_banner_SHOP-right.jpg",
               "image_2_delay": "0.5s",
               "image_2_animation": "bounceInDown",
               "title": "slick chicks",
@@ -666,7 +666,7 @@
           "1586000521469": {
             "type": "card",
             "settings": {
-              "image": "shopify:\/\/shop_images\/slickChick1_c6ff31f6-9b67-4f25-8823-74266cb874c0.jpg",
+              "image": "shopify:\/\/shop_images\/slick_1.jpg",
               "animation_block": "flip-down",
               "tag": "brand story",
               "title": "Slick Chicks",
@@ -692,7 +692,7 @@
               "animation_block": "flip-down",
               "tag": "the product",
               "title": "MagnaReady",
-              "copy": "Our pick this month is the Grid<br> Check Dress with magnetic closure",
+              "copy": "Our pick this month is the Grid Check Dress with magnetic closure",
               "link": "shopify:\/\/blogs\/top-news\/magnaready-today-show-kathy-lee-and-hoda-1"
             }
           }
@@ -955,7 +955,7 @@
           "show_quantity_selector": false,
           "show_variant_labels": true,
           "show_vendor": true,
-          "enable_zoom": true,
+          "enable_zoom": false,
           "show_share_buttons": false,
           "size_guide": "shopify:\/\/shop_images\/size_guide_table.png",
           "enable_wishlist": true,
@@ -965,7 +965,8 @@
           "price_animation": "fade-up",
           "add_to_cart_animation": "fade-up",
           "wishlist_animation": "fade-up",
-          "accordian_animation": "fade-up"
+          "accordian_animation": "fade-up",
+          "more_review_button": "Read More Reviews >>"
         }
       },
       "product-related": {
@@ -1114,7 +1115,7 @@
               "linklist": "new-arrivals",
               "title_2": "",
               "linklist_2": "",
-              "column_width": "col-8"
+              "column_width": "col-8 cus-col"
             }
           },
           "1586272112538": {
@@ -1172,9 +1173,9 @@
             "settings": {
               "title": "",
               "image": "shopify:\/\/shop_images\/image-1.png",
-              "caption": "SHOP <em>by<\/em> CONDITION",
+              "caption": "SHOP <em>by<\/em> BRAND",
               "link": "#",
-              "column_width": "col-10"
+              "column_width": "col-12"
             }
           },
           "1587668290046": {
@@ -1184,7 +1185,7 @@
               "image": "shopify:\/\/shop_images\/image-2.png",
               "caption": "BRANDS <em>we<\/em> LOVE",
               "link": "",
-              "column_width": "col-10"
+              "column_width": "col-12"
             }
           }
         },
@@ -1260,23 +1261,23 @@
           "1586327689000-0": {
             "type": "style1",
             "settings": {
-              "image": "shopify:\/\/shop_images\/gettyimages-1061825420-2048x2048.jpg",
-              "image_mobile": "shopify:\/\/shop_images\/gettyimages-1061825420-2048x2048.jpg",
+              "image": "shopify:\/\/shop_images\/banner_2000x_19d4418e-53e7-49fd-941f-bff3c5a874c6.png",
+              "image_mobile": "",
               "title": "01",
               "title_delay": "1s",
-              "headingAnimation": "bounceInRight",
+              "headingAnimation": "slideInRight",
               "heading_color": "#000000",
               "subheading": "Welcome to JUNIPER unltd",
               "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounceInDown",
+              "subHeadingAnimation": "slideInDown",
               "subheading_color": "",
               "subheading2": "Inclusive. Accessible. Unlimited.",
               "sub_heading2_delay": "1s",
-              "subHeading2Animation": "bounceInUp",
+              "subHeading2Animation": "zoomInUp",
               "button": "explore JUNIPERunltd.",
               "link": "shopify:\/\/pages\/life-unltd",
               "button_delay": "1s",
-              "buttonAnimation": "zoomInRight"
+              "buttonAnimation": "slideInRight"
             }
           },
           "1588061239641": {
@@ -1292,14 +1293,14 @@
               "image_2_animation": "slideInUp",
               "title": "02",
               "title_delay": "1.6s",
-              "headingAnimation": "bounceInLeft",
+              "headingAnimation": "fadeInLeft",
               "heading_color": "#000000",
               "subheading": "powered by MagnaReady",
               "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounce",
+              "subHeadingAnimation": "fadeIn",
               "subheading_2": "Patented technology at the forefront of",
               "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "bounceInUp",
+              "subHeading_2_Animation": "fadeInUp",
               "subheading_3": "Adaptive Fashion.",
               "sub_heading_3_delay": "1s",
               "subHeading_3_Animation": "rotateInUpLeft",
@@ -1312,18 +1313,18 @@
           "1588137035758": {
             "type": "homestyle3",
             "settings": {
-              "image": "shopify:\/\/shop_images\/slider3.jpg",
+              "image": "shopify:\/\/shop_images\/slider3_2000x_2000x_bc5b718f-1d0f-4ea9-bef4-8cdc3c668db4.png",
               "image_mobile": "",
               "title": "03",
               "title_delay": "1s",
-              "headingAnimation": "bounceInRight",
+              "headingAnimation": "slideInRight",
               "heading_color": "#d2691e",
               "subheading": "juniper talks",
               "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounceInUp",
+              "subHeadingAnimation": "slideInUp",
               "subheading2": "Grace Stratton X Ashton Applewhite",
               "sub_heading2_delay": "1s",
-              "subHeading2Animation": "bounceInLeft",
+              "subHeading2Animation": "slideInLeft",
               "button": "read JUNIPER talks",
               "link": "shopify:\/\/pages\/life-unltd",
               "button_delay": "1s",
@@ -1337,23 +1338,23 @@
               "image_mobile": "",
               "image_1": "shopify:\/\/shop_images\/racingFORacure_1500x_f8420b1c-b5f1-4448-b928-0657bd8c5c60.png",
               "image_1_delay": "0.8s",
-              "image_1_animation": "bounceInUp",
+              "image_1_animation": "zoomInUp",
               "image_2": "shopify:\/\/shop_images\/R4C-ColorRun-Small-min.jpg",
               "image_2_delay": "0.8s",
-              "image_2_animation": "bounceInDown",
+              "image_2_animation": "zoomInDown",
               "title": "04",
               "title_delay": "1s",
               "headingAnimation": "zoomInRight",
               "heading_color": "#000000",
               "subheading": "racing for a cure",
               "sub_heading_delay": "1s",
-              "subHeadingAnimation": "bounceInLeft",
+              "subHeadingAnimation": "fadeInLeft",
               "subheading_2": "Train, race and fundraise to find a cure for arthritis",
               "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "bounceInLeft",
+              "subHeading_2_Animation": "fadeInLeft",
               "subheading_3": "",
               "sub_heading_3_delay": "1s",
-              "subHeading_3_Animation": "bounce",
+              "subHeading_3_Animation": "rollIn",
               "button": "discover RACING FOR A CURE",
               "link": "shopify:\/\/pages\/shop",
               "button_delay": "1s",
@@ -1567,7 +1568,7 @@
             "type": "featured_collection",
             "settings": {
               "collection": "tech-apps",
-              "title": "natural",
+              "title": "wellness",
               "collectionimage": "shopify:\/\/shop_images\/gettyimages-1090514994-2048x2048.jpg",
               "link_override": "#"
             }

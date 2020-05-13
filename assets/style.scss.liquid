@@ -659,6 +659,14 @@ $button-size: 16pt;
 .spotlight{
   position: relative;
   overflow: hidden;
+  &.gapLeft {
+    margin-left: 220px;
+  }
+  .section-header {
+    h2 {
+      padding-left: 30px;
+    }
+  }
   .spotlight-images{
     position: absolute;
     top: 54px;
@@ -705,7 +713,7 @@ $button-size: 16pt;
     }
     &.active{
       .spotify-text {
-        bottom: 10%;
+        top: 7%;
         opacity: 1;
         transition: all .2s ease;
       }
@@ -724,7 +732,7 @@ $button-size: 16pt;
     }
     .spotify-text {
       left: 15%;
-      bottom: 5%;
+      top: 3%;
       font-weight: bold;
       position: absolute;
       z-index: 9;
@@ -733,7 +741,7 @@ $button-size: 16pt;
       h4{
           font-size: 25px;
           color: $white-color;
-          background-color: blue;
+          background-color: $blue-color;
           display: inline-block;
           padding: 10px 10px 0px 10px;
           font-family: "Univers";
@@ -748,7 +756,7 @@ $button-size: 16pt;
           font-size: 26px;
           color: $white-color;
           font-family: "Univers";
-          padding-right: 40px;
+          padding-right: 20px;
       }
     }
   }
@@ -810,7 +818,15 @@ $button-size: 16pt;
   background-color: #d4e1de;
 }
 .brands-love{
-  padding: 40px 0;
+  padding-top: 40px;
+  &.gapLeft {
+    margin-left: 220px;
+  }
+  .section-header {
+    h2 {
+      padding-left: 30px;
+    }
+  }
   // @include media-query($min,$md) {
   //   margin-bottom:-110px;
   // }
@@ -821,6 +837,7 @@ $button-size: 16pt;
     padding: 50% 0;
     width: 100%;
     background-size: cover;
+    background-position: center;
     transition: all .3s ease;
     &.block-1 {
       background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/davidwilliambaum_08d4cdec-8e0b-4222-aab4-dea6d06c1925_2016.12.09_coming-soon_flats37130.jpg?v=1585837464);
@@ -831,8 +848,7 @@ $button-size: 16pt;
     h2 {
       position: absolute;
       top: 50%;
-      left: 30%;
-      font-size: 34px;
+      font-size: 24px;
       color: #fff;
       text-align: center;
       padding: 10px 30px;
@@ -1574,6 +1590,10 @@ $button-size: 16pt;
 .slideshow-main .social-icons-main ul li.special-icons.icon-man a {
   border: 0;
   background: transparent;
+  width: 60px;
+}
+.slideshow-main .social-icons-main ul li.special-icons.icon-man a img { 
+  margin-left: -22px;
 }
 .slideshow-main .social-icons-main ul li.special-icons.icon-man a svg {
   border-radius: 50%;
@@ -1868,11 +1888,25 @@ $button-size: 16pt;
       }
     }
     .block {
-      padding: 32% 0;
+      padding: 60% 0;
+      overflow: hidden;
+      position: relative;
       /* border: 1px solid $blue-color; */
-      border-bottom: 3px solid $blue-color;
+      /* border-bottom: 3px solid $blue-color; */
+      background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+      &:after {
+        display: none;
+        content: "";
+        position: absolute;
+        bottom: 13px;
+        height: 4px;
+        width: 90px;
+        background-color: #1d64cf;
+        transform: rotate(138deg);
+        right: -14px;
+      }
     }
     h3 {
       font-size: 18px;
@@ -1917,6 +1951,7 @@ $button-size: 16pt;
       display: block;
       padding: 27% 0;
       position: relative;
+      border-bottom: 7px solid $blue-color;
       background-repeat: no-repeat;
       background-size: cover;
       &:after {
@@ -1931,7 +1966,7 @@ $button-size: 16pt;
       }
     }
     .howto-text {
-      padding: 12% 25px;
+      padding: 2% 25px;
       h3 {
         font-size: 13px;
         color: #000;
@@ -1941,17 +1976,24 @@ $button-size: 16pt;
         margin-bottom: 15px;
       }
       p{
-        font-size: 16px;
+        font-size: 18px;
         color: #000;
         font-family: "Univers";
         font-weight: 300;
+        line-height: 24px;
         margin-bottom: 15px;
+        width: 90%;
         span {
           color: #fff;
           font-size: 18px;
           background-color: $blue-color;
-          padding: 0 5px;
+          padding: 3px 5px;
           margin-right: 5px;
+        }
+        a {
+          font-size: 20px;
+          display: block;
+          margin-top: 28px;
         }
       }
       a {
@@ -1968,14 +2010,17 @@ $button-size: 16pt;
 .wellness-sidebar {
   padding-top: 40px ;
   .sidebar-content {
-    padding: 20px;
+    padding: 30px 40px;
     background-color: #ede6df;
     .block {
       margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0;
+      }
       .img-block {
-        width: 60%;
+        width: 50%;
         margin: 0px auto;
-        padding: 50% 0;
+        padding: 42% 0;
         background-size: cover;
         background-repeat: no-repeat;
       }
@@ -1983,19 +2028,21 @@ $button-size: 16pt;
         color: $white-color;
         display: inline-block;
         background-color: $blue-color;
-        font-size: 15px;
+        font-size: 20px;
         font-weight: 900;
         padding: 5px;
         margin-bottom: 5px;
       }
       h4 {
-        color: $black-color;
-        font-size: 16px;
+        color: #000;
+        font-size: 20px;
+        letter-spacing: 2px;
         font-weight: 900;
-        margin-bottom: 10px;
+        padding-right: 16px;
+        margin-bottom: 0px;
       }
       a {
-        font-size: 14px;
+        font-size: 18px;
         color: $blue-color;
         text-decoration: underline;
         display: block;
@@ -2003,12 +2050,13 @@ $button-size: 16pt;
         &.shop-here {
           text-transform: uppercase;
           text-decoration: none;
+          margin-bottom: 0px;
         }
       }
       p {
         color: $black-color;
-        font-size: 13px;
-        margin-bottom: 5px;
+        font-size: 18px;
+        margin-bottom: 0px;
       }
     }
     
@@ -2016,15 +2064,21 @@ $button-size: 16pt;
 }
 #shopify-section-welness-talks {
   padding: 0;
+  margin-bottom: -100px;
 }
 .welness-talks {
-  padding: 60px 0;
+  padding: 100px 0;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #ede6df;
   background-position: top;
+  .section-header {
+    h2 {
+      margin-top: -50px;
+    }
+  }
   .block-content {
-    padding: 60px 60px 100px 60px;
+    padding: 60px 60px 100px 100px;
     h3 {
       background-color: $red-color;
       color: $white-color;
@@ -2048,7 +2102,7 @@ $button-size: 16pt;
       display: inline-block;
       background: $red-color;
       color: $white-color;
-      padding: 18px 60px;
+      padding: 20px 80px;
     }
   }
 }
@@ -2104,6 +2158,9 @@ $button-size: 16pt;
       padding: 27% 0;
       border: 0;
       border-bottom: 3px solid $blue-color;
+      &:after {
+        display: none;
+      }
     }
   }
   /* the slides */
@@ -2138,7 +2195,7 @@ $button-size: 16pt;
       }
   }
   .slick-prev {
-    left: -40px;
+    left: 10px;
     &:after {
       font-family: Font Awesome\ 5 Pro;
       font-weight: 900;
@@ -2159,7 +2216,7 @@ $button-size: 16pt;
     }
   }
   .slick-next {
-    right: -40px;
+    right: 10px;
     &:after {
       font-family: Font Awesome\ 5 Pro;
       font-weight: 900;
@@ -2374,7 +2431,21 @@ $xxl: 1500px; */
   .spotlight .spotify-block .spotify-text h3 {
     font-size: 22px;
   }
-  
+  .welness-talks .block-content h3 {
+    font-size: 28px;
+  }
+  .spotlight.gapLeft {
+    margin-left: 155px;
+  }
+  .brands-love.gapLeft {
+    margin-left: 155px;
+  }
+  .wellness-quote .slick-prev {
+    left: -105px;
+  }
+  .wellness-quote .slick-next {
+    right: -105px;
+  }
 }
 @include media-query($max,$xl) {
   .slideshow-animation h2.h1, 
@@ -2553,11 +2624,27 @@ $xxl: 1500px; */
   .article-blocks .section-header {
     display: none;
   }
-  .welness-talks .block-content h3 {
-    font-size: 28px;
-  }
   .welness-talks .block-content p {
-    font-size: 18px;
+    font-size: 16px;
+  }
+  .welness-talks {
+    padding: 60px 0;
+  }
+
+  .welness-talks .section-header h2 {
+    margin-top: -30px;
+  }
+  .welness-talks .block-content h3{
+    font-size: 20px;
+  }
+  .welness-talks .block-btn a {
+    padding: 15px 60px;
+  }
+  .wellness-quote .slick-prev {
+    left: -40px;
+  }
+  .wellness-quote .slick-next {
+    right: -40px;
   }
 }
 @include media-query($max,$lg) {
@@ -2687,18 +2774,30 @@ $xxl: 1500px; */
   }
   .welness-talks {
     background-size: contain;
+    padding-bottom: 30px;
     .block-content {
-      padding-top: 50%;
+      padding-top: 37%;
       padding-bottom: 10px;
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center;
     }
     .block-btn {
       padding: 0 60px;
+      text-align: center;
     }
     .section-header {
       h2 {
-        margin-top: -60px;
+        margin-top: -44px;
+        margin-left: -40px;
       }
     }
+  }
+  .spotlight.gapLeft {
+    margin-left: 0px;
+  }
+  .brands-love.gapLeft {
+    margin-left: 0px;
   }
 }
 @include media-query($max,$md) {
@@ -2764,6 +2863,7 @@ $xxl: 1500px; */
     padding-top: 0;
   }
   .spotlight {
+    
     .spotlight-images{
       top: 74px;
     }
@@ -2864,11 +2964,20 @@ $xxl: 1500px; */
     float: left;
     width: auto;
   }
-  .welness-talks .block-content h3 {
-    font-size: 24px;
-  }
-  .welness-talks .block-content p {
-    font-size: 16px;
+  .welness-talks {
+    .block-content {
+      h3 {
+        font-size: 24px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+    .section-header {
+      h2 {
+        margin-left: 0px;
+      }
+    }
   }
 }
 
@@ -3021,4 +3130,35 @@ $xxl: 1500px; */
   .style7-container .slideshow__text-wrap .slider-content {
     justify-content: flex-end;
   }
+  .welness-talks {
+    .block-content {
+      padding-top: 30%;
+      h3 {
+        font-size: 16px;
+      }
+      p {
+        font-size: 13px;
+        line-height: 20px;
+      }
+    }
+    .block-btn {
+      a {
+        padding: 10px 45px;
+        font-size: 13px;
+      }
+    }
+    .section-header {
+      h2 {
+        margin-top: -44px;
+        margin-left: 0px;
+      }
+    }
+  }
 }
+
+
+@media screen and (max-width: 1330px) {
+  .testimonial-slider-wrap{
+     max-width: 1024px;
+   }
+ }

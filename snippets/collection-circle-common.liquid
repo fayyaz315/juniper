@@ -1,4 +1,4 @@
-<div class="{% if section.settings.full_width %}container-fluid{% else %}container{% endif %}{% if section.settings.remove_top_margin %} index-section--flush{% endif %}">
+<div class="{% if section.settings.full_width %}container-fluid page-gapLeft{% else %}container boxed-gapLeft{% endif %}{% if section.settings.remove_top_margin %} index-section--flush{% endif %}">
   {% if section.settings.title != blank %}
     <div class="section-header">
       <h2 data-aos="{{ section.settings.animation_title }}">{{ section.settings.title }}</h2>

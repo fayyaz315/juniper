@@ -15,7 +15,7 @@
 
 {% if section.settings.footer_newsletter_alone %}
   <div class="site-newsletter">
-    <div class="container">
+    <div class="container boxed-gapLeft">
       <div class="row align-items-center">
         <div class="col-lg-36 offset-lg-12 col-md-40 offset-md-10">
           <div class="site-footer__newsletter">
@@ -44,9 +44,9 @@
   <div class="footer-right-icon" data-aos="zoom-in-up">
     <span></span>
   </div>
-  <div class="container">
+  <div class="container boxed-gapLeft">
     <div class="footer-logo-area">
-      <div class="row justify-content-around">
+      <div class="row">
         <div class="col-md-9">
           {%- assign footer_logo = section.settings.logo -%}
           {% if footer_logo == blank %}

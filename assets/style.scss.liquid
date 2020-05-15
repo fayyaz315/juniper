@@ -662,14 +662,9 @@ $button-size: 16pt;
   &.gapLeft {
     margin-left: 220px;
   }
-  .section-header {
-    h2 {
-      padding-left: 30px;
-    }
-  }
   .spotlight-images{
     position: absolute;
-    top: 54px;
+    top: 0;
     left: 0;
     width: 100%;
     .mask{
@@ -822,14 +817,6 @@ $button-size: 16pt;
   &.gapLeft {
     margin-left: 220px;
   }
-  .section-header {
-    h2 {
-      padding-left: 30px;
-    }
-  }
-  // @include media-query($min,$md) {
-  //   margin-bottom:-110px;
-  // }
   .brands-love-block{
     position: relative;
     display: flex;
@@ -2347,6 +2334,12 @@ $button-size: 16pt;
   margin-left: 22%;
   margin-top: 5%;
 }
+.product-single > h1 {
+  display: none;
+}
+.product-single .product-single__meta > h1 {
+  display: block;
+}
 /* font-family: "Univers"; */
 
 /* media queries starts here */
@@ -2369,15 +2362,10 @@ $xxl: 1500px; */
     background-image: none !important;
   }
 }
-@include media-query($min, $xxl) {
-  .connection-events .connection-events-detial {
-    background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/full-bg.png?v=1586170420);
-    background-size: 100%;
-    background-repeat: repeat;
-  }
-  .connection-events .connection-events-detial .connect-grid {
-    background-image: none !important;
-  }
+@include media-query($min, $lg) {
+  /* .container {
+    padding-left: 12%;
+  } */
 }
 @include media-query($min, $xl) {
   .connection-events .connection-events-detial {
@@ -2388,7 +2376,26 @@ $xxl: 1500px; */
   .connection-events .connection-events-detial .connect-grid {
     background-image: none !important;
   }
+  /* .container {
+    padding-left: 10%;
+  } */
 }
+@include media-query($min, $xl-1330) {
+  /* .container {
+    padding-left: 3%;
+  } */
+}
+@include media-query($min, $xxl) {
+  .connection-events .connection-events-detial {
+    background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/full-bg.png?v=1586170420);
+    background-size: 100%;
+    background-repeat: repeat;
+  }
+  .connection-events .connection-events-detial .connect-grid {
+    background-image: none !important;
+  }
+}
+
 
 @include media-query($max,$xxl) {
   .shop-by{
@@ -2578,7 +2585,7 @@ $xxl: 1500px; */
   }
   .spotlight {
     .spotlight-images{
-      top: 74px;
+      /* top: 74px; */
     }
   } 
   .wellness-quote h2 {
@@ -2776,15 +2783,20 @@ $xxl: 1500px; */
     background-size: contain;
     padding-bottom: 30px;
     .block-content {
-      padding-top: 37%;
+      padding-top: 0;
       padding-bottom: 10px;
       padding-left: 0;
       padding-right: 0;
-      text-align: center;
+      margin-left: 50px;
+      margin-top: -60px;
     }
     .block-btn {
-      padding: 0 60px;
+      padding: 0 20px;
       text-align: center;
+      a {
+        padding: 10px 20px;
+        margin-bottom: 26px;
+      }
     }
     .section-header {
       h2 {
@@ -2865,7 +2877,7 @@ $xxl: 1500px; */
   .spotlight {
     
     .spotlight-images{
-      top: 74px;
+      /* top: 74px; */
     }
     .spotify-block{
       padding: 10% 0;
@@ -2965,7 +2977,11 @@ $xxl: 1500px; */
     width: auto;
   }
   .welness-talks {
+    background-size: cover;
     .block-content {
+      width: 250px;
+      margin-top: -40px;
+      margin-left: 60%;
       h3 {
         font-size: 24px;
       }
@@ -2973,11 +2989,28 @@ $xxl: 1500px; */
         font-size: 16px;
       }
     }
+    .block-btn {
+      margin-left: 60%;
+    }
     .section-header {
       h2 {
         margin-left: 0px;
       }
     }
+  }
+  .product-single > h1 {
+    display: block;
+    font-size: 21px;
+    color: #000;
+    font-family: "Univers";
+    font-weight: bold;
+    text-transform: lowercase;
+    margin-bottom: 10px;
+    margin-top: 0;
+    padding-left: 15px;
+  }
+  .product-single .product-single__meta > h1 {
+    display: none;
   }
 }
 
@@ -3132,7 +3165,7 @@ $xxl: 1500px; */
   }
   .welness-talks {
     .block-content {
-      padding-top: 30%;
+      margin-left: 50%;
       h3 {
         font-size: 16px;
       }
@@ -3142,6 +3175,7 @@ $xxl: 1500px; */
       }
     }
     .block-btn {
+      margin-left: 50%;
       a {
         padding: 10px 45px;
         font-size: 13px;
@@ -3154,8 +3188,34 @@ $xxl: 1500px; */
       }
     }
   }
+  .wellness-quote {
+    margin-top: 0px;
+  }
 }
-
+@media screen and (max-width: 480px) {
+  .welness-talks {
+    position: relative;
+    .section-header {
+      position: relative;
+      z-index: 1;
+    }
+    .block-content {
+      margin-left: 16%;
+    }
+    .block-btn {
+      margin-left: 16%;
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,.5);
+    }
+  }
+}
 
 @media screen and (max-width: 1330px) {
   .testimonial-slider-wrap{

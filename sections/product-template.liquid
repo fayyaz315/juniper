@@ -3,7 +3,7 @@
     margin-bottom: 0px;
 }
 </style>
-<div class="product-template__container container" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ product.id }}" data-section-id="{{ product.id }}" data-section-type="product" data-enable-history-state="true" data-crossclick="{% if settings.enable_crossclick %}allow{% endif %}" data-comingsoon="{% if product.tags contains 'coming soon' %}true{% else %}false{% endif %}">
+<div class="product-template__container container pdp-gapLeft" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ product.id }}" data-section-id="{{ product.id }}" data-section-type="product" data-enable-history-state="true" data-crossclick="{% if settings.enable_crossclick %}allow{% endif %}" data-comingsoon="{% if product.tags contains 'coming soon' %}true{% else %}false{% endif %}">
   <ul class="pdp-top-links">
     <li><span>MEN</span></li>
     <li><a href="#">footwear</a></li>
@@ -54,7 +54,11 @@
       {%- assign enable_zoom = false -%}
   {% endcase %}
   {%- assign product_thumbnail_perrow = product_thumbnail_perrow | times: 1 -%}
+
   <div class="row product-single">
+    
+    <h1 data-aos="{{ section.settings.title_animation }}" class="product-single__title">{{ product.title }}</h1>
+
     <div data-aos="{{ section.settings.image_animation }}" class="product-single__photos {{ product_image_width }}{% if section.settings.image_size == 'full' %} product-single__photos--full{% endif %}">
       {%- assign featured_img_src = current_variant.featured_image.src | default: product.featured_image.src -%}
       {%- assign featured_img_alt = current_variant.featured_image.alt | default: product.featured_image.alt -%}
@@ -429,7 +433,7 @@
 {% if settings.enable_crossclick %}
   {% if cross_need and product.images.size != prod_image_size %}
     <div id="description">
-      <div class="container">
+      <div class="container pdp-gapLeft">
         <div class="row product-single">
           <div class="col-md-60">
             <div class="row">
@@ -674,7 +678,7 @@
 
 {% endif %}
 
-<div class="d-block d-md-none container">
+<div class="d-block d-md-none container pdp-gapLeft">
 {% for block in section.blocks %}
           {% if product.tags contains block.settings.tag %}
           <div class="how-to-section">
@@ -767,7 +771,7 @@
 {% endfor %}
 {% if hasStories %}
 <div class="relate-stories-container">
-  <div class="container">
+  <div class="container pdp-gapLeft">
     <h3 class="pdp-section-header">_RELATE <em>stories</em></h3>
     <ul class="relate-stories-list">
       {% for tag in product.tags %}

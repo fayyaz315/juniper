@@ -1,10 +1,11 @@
 {% if section.settings.title != blank %}
+<div class="container boxed-gapLeft">
 	<div class="section-header">
-		<div class="">
-			<h2 data-aos="{{ section.settings.animation_title }}">{{ section.settings.title }}</h2>
-		</div>
+		<h2 data-aos="{{ section.settings.animation_title }}">{{ section.settings.title }}</h2>
 	</div>
+</div>
 {% endif %}
+<div class="page-gapLeft">
 {% if section.blocks.size > 1 %}
 	<div class="spotlight-images">
    {% for block in section.blocks %}
@@ -67,6 +68,7 @@ $(document).ready(function () {
 })
 </script>
 {% endif %}
+</div>
 {% schema %}
 {
 	"name": "Spotlight",

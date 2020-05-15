@@ -1115,77 +1115,77 @@
               "linklist": "new-arrivals",
               "title_2": "",
               "linklist_2": "",
-              "column_width": "col-8 cus-col"
+              "column_width": "col-7 cus-col"
             }
           },
           "1586272112538": {
             "type": "megamenu_menu",
             "settings": {
-              "title": "Home",
+              "title": "Footwear",
               "linklist": "home",
               "title_2": "",
               "linklist_2": "",
-              "column_width": "col"
+              "column_width": "col-auto"
             }
           },
           "1586273266854": {
             "type": "megamenu_menu",
             "settings": {
-              "title": "Wellness",
+              "title": "apparel",
               "linklist": "wellness",
               "title_2": "",
               "linklist_2": "",
-              "column_width": "col"
+              "column_width": "col-auto"
             }
           },
           "1586272120688": {
             "type": "megamenu_menu",
             "settings": {
-              "title": "Style",
+              "title": "Wellness",
               "linklist": "style",
               "title_2": "",
               "linklist_2": "",
-              "column_width": "col"
+              "column_width": "col-auto"
             }
           },
           "1586272140950": {
             "type": "megamenu_menu",
             "settings": {
-              "title": "Tech",
+              "title": "Tech\/Gear",
               "linklist": "tech",
               "title_2": "",
               "linklist_2": "",
-              "column_width": "col"
+              "column_width": "col-auto"
             }
           },
           "1586272148254": {
             "type": "megamenu_menu",
             "settings": {
-              "title": "Care",
+              "title": "Gift Ideas",
               "linklist": "care",
-              "title_2": "Gift Package",
+              "title_2": "Start Package",
               "linklist_2": "wellness",
-              "column_width": "col"
+              "column_width": "col-auto"
             }
           },
           "1587668265868": {
             "type": "megamenu_image",
             "settings": {
               "title": "",
-              "image": "shopify:\/\/shop_images\/image-1.png",
+              "image": "shopify:\/\/shop_images\/image-1_700x_aa234bc9-a167-42f3-bede-ea90dccd568d.png",
               "caption": "SHOP <em>by<\/em> BRAND",
               "link": "#",
-              "column_width": "col-12"
+              "column_width": "col-12 reduce-pad"
             }
           },
           "1587668290046": {
             "type": "megamenu_image",
             "settings": {
               "title": "",
-              "image": "shopify:\/\/shop_images\/image-2.png",
+              "image": "shopify:\/\/shop_images\/image-2_700x_9b36616d-c452-4138-8bc9-c59d2a766470.png",
               "caption": "BRANDS <em>we<\/em> LOVE",
               "link": "",
-              "column_width": "col-12"
+              "column_width": "col-12 reduce-pad"
             }
           }
         },
@@ -1694,9 +1694,12 @@
       "welness-talks": {
         "type": "welness-talks",
         "settings": {
+          "heading": "_JUNIPER <em>talks<\/em>",
+          "image": "",
           "title": "Collection list",
-          "animation_collection": "flip-down",
-          "animation_title": "flip-down"
+          "text": "<p>This month’s Juniper Talks takes the conversation next level with disability  activist Grace Stratton and Anti-Ageist Ashton Applewhite<\/p>",
+          "button_text": "read NOW",
+          "button_link": ""
         }
       },
       "1588061814071": {

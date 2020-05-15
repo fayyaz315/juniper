@@ -1,103 +1,105 @@
-<div class="wellness-content">
-  <div class="row">
-      <div class="col-xl-38 offset-xl-6">
-      {%- assign blog = blogs[section.settings.blog] -%}
-      {% if blog.articles.size > 0 %}
-          <div class="article-blocks">
-              <div class="section-header">
-                  <h2>article</h2>
-              </div>
-              <div class="row">
-              {% for article in blog.articles limit:3 %}
-              {%- assign title = blank -%}
-              {%- assign button = blank -%}
-              {%- assign excerpt = blank -%}
-              {%- for tag in article.tags -%}
-                {% if tag contains 'title--' %}
-                  {%- assign title = tag | remove_first: 'title--' -%}
-                {% endif %}
-                {% if tag contains 'button--' %}
-                  {%- assign button = tag | remove_first: 'button--' -%}
-                {% endif %}
-              {%- endfor -%}
-              {% if article.excerpt != blank %}
-                {%- assign excerpt = article.excerpt -%}
-                {% else %}
-                  {%- assign excerpt = article.content | truncatewords: 25, '' -%}
-              {% endif %}
-                <div class="col-md-20" data-aos="{{ section.settings.animation_blog }}">
-                  <div class="block" style="background-image:url({{ article.image | img_url: '600x'}})"></div>
-                  <h3>{{ title }}</h3>
-                  <h4>{{ article.title }}</h4>
-                  <p>{{ excerpt | strip_html }}</p>
-                  <a href="{{ article.url }}">{{ title }}</a>
+<div class="page-gapLeft">
+  <div class="wellness-content">
+    <div class="row">
+        <div class="col-xl-44">
+        {%- assign blog = blogs[section.settings.blog] -%}
+        {% if blog.articles.size > 0 %}
+            <div class="article-blocks">
+                <div class="section-header">
+                    <h2>article</h2>
                 </div>
-              {% endfor %}
-                  {% if section.settings.articles_button_text  and section.settings.article_button_link %}
-                  <div class="view-more">
-                    <a href="{{ section.settings.article_button_link }}" class="btn view-more-btn">{{ section.settings.articles_button_text }}</a>
+                <div class="row">
+                {% for article in blog.articles limit:3 %}
+                {%- assign title = blank -%}
+                {%- assign button = blank -%}
+                {%- assign excerpt = blank -%}
+                {%- for tag in article.tags -%}
+                  {% if tag contains 'title--' %}
+                    {%- assign title = tag | remove_first: 'title--' -%}
+                  {% endif %}
+                  {% if tag contains 'button--' %}
+                    {%- assign button = tag | remove_first: 'button--' -%}
+                  {% endif %}
+                {%- endfor -%}
+                {% if article.excerpt != blank %}
+                  {%- assign excerpt = article.excerpt -%}
+                  {% else %}
+                    {%- assign excerpt = article.content | truncatewords: 25, '' -%}
+                {% endif %}
+                  <div class="col-md-20" data-aos="{{ section.settings.animation_blog }}">
+                    <div class="block" style="background-image:url({{ article.image | img_url: '600x'}})"></div>
+                    <h3>{{ title }}</h3>
+                    <h4>{{ article.title }}</h4>
+                    <p>{{ excerpt | strip_html }}</p>
+                    <a href="{{ article.url }}">{{ title }}</a>
+                  </div>
+                {% endfor %}
+                    {% if section.settings.articles_button_text  and section.settings.article_button_link %}
+                    <div class="view-more">
+                      <a href="{{ section.settings.article_button_link }}" class="btn view-more-btn">{{ section.settings.articles_button_text }}</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+          {% endif %}
+            <div class="spotlight-video">
+                <div class="section-header">
+                    <h2>{{ section.settings.video_title }}</h2>
+                </div>
+                {% for block in section.blocks %}
+                  {% if block.type == "video" %}
+                    <div class="how-to-section">
+                    <div class="row">
+                        <div class="col-md-25">
+                            <a href="{{ block.settings.video_url }}" class="video-container video-popup" style="background-image: url({{ block.settings.image | img_url: '600x'}});"></a>
+                        </div>
+                        <div class="col-md-35">
+                            <div class="howto-text">
+                                <p>
+                                  {{ block.settings.text }}
+                                  <a href="{{ block.settings.video_url }}" class="video-popup">Watch Now</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                   </div>
                   {% endif %}
-              </div>
-          </div>
-        {% endif %}
-          <div class="spotlight-video">
-              <div class="section-header">
-                  <h2>{{ section.settings.video_title }}</h2>
-              </div>
-              {% for block in section.blocks %}
-                {% if block.type == "video" %}
-                  <div class="how-to-section">
-                  <div class="row">
-                      <div class="col-md-25">
-                          <a href="{{ block.settings.video_url }}" class="video-container video-popup" style="background-image: url({{ block.settings.image | img_url: '600x'}});"></a>
-                      </div>
-                      <div class="col-md-35">
-                          <div class="howto-text">
-                              <p>
-                                {{ block.settings.text }}
-                                <a href="{{ block.settings.video_url }}" class="video-popup">Watch Now</a>
-                              </p>
-                          </div>
-                      </div>
-                  </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-xl-15 offset-xl-1">
+            <div class="wellness-sidebar">
+                <div class="section-header">
+                    <h2>{{ section.settings.products_title }}</h2>
                 </div>
-                {% endif %}
-              {% endfor %}
-          </div>
-      </div>
-      <div class="col-xl-15 offset-xl-1">
-          <div class="wellness-sidebar">
-              <div class="section-header">
-                  <h2>{{ section.settings.products_title }}</h2>
-              </div>
-              <div class="sidebar-content">
-              {% for block in section.blocks %}
-              {% if block.type == "product" %}
-                <div class="block">
-                      <div class="row">
-                          <div class="col-sm-30 col-xl-60">
-                              <div class="img-block" style="background-image: url({{ block.settings.image | img_url: '300x'}});">
-                              </div>
-                          </div>
-                          <div class="col-sm-30 col-xl-60">
-                              <h3>{{ block.settings.tag }}</h3>
-                              <h4>{{ block.settings.title }}</h4>
-                              {% if block.settings.product_by and block.settings.product_by_link %}
-                              <a href="{{ block.settings.product_by_link }}">by {{ block.settings.product_by }}</a>
-                              {% endif %}
-                              <p>{{ block.settings.text }}</p>
-                              {% if block.settings.link and block.settings.link_text %}
-                                <a href="{{ block.settings.link }}" class="shop-here">{{ block.settings.link_text }}</a>
-                              {% endif %}
-                          </div>
-                      </div>
-                  </div>
-                  {% endif %}
-              {% endfor %}
-              </div>
-          </div>
-      </div>
+                <div class="sidebar-content">
+                {% for block in section.blocks %}
+                {% if block.type == "product" %}
+                  <div class="block">
+                        <div class="row">
+                            <div class="col-sm-30 col-xl-60">
+                                <div class="img-block" style="background-image: url({{ block.settings.image | img_url: '300x'}});">
+                                </div>
+                            </div>
+                            <div class="col-sm-30 col-xl-60">
+                                <h3>{{ block.settings.tag }}</h3>
+                                <h4>{{ block.settings.title }}</h4>
+                                {% if block.settings.product_by and block.settings.product_by_link %}
+                                <a href="{{ block.settings.product_by_link }}">by {{ block.settings.product_by }}</a>
+                                {% endif %}
+                                <p>{{ block.settings.text }}</p>
+                                {% if block.settings.link and block.settings.link_text %}
+                                  <a href="{{ block.settings.link }}" class="shop-here">{{ block.settings.link_text }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </div>
 <script>

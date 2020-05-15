@@ -754,6 +754,7 @@ html {
 #shopify-section-header {
   position: relative;
   z-index: 2;
+  height: auto !important;
 }
 
 #header-container {
@@ -8562,6 +8563,9 @@ body svg.icon {
           font-size:15px;
           color:$blue-color;
           font-family:$font-primary;
+          @include media-query($max,$lg){
+            padding:0 9px;
+          }
           &:last-child{
             padding-right:0;
           }
@@ -9860,7 +9864,7 @@ body svg.icon {
 // Sticky Header
 div#sticky-anchor {
   clear: both;
-  margin-top: 450px;
+  margin-top: 350px;
   position: absolute;
   z-index: -6;
 }
@@ -10059,6 +10063,9 @@ div#sticky-anchor {
     border-bottom: 1px solid #fff;
     padding-bottom: 30px;
     margin-bottom: 20px;
+    >div.row {
+      justify-content:space-between;
+    }
     li.site-footer__linklist-item {
       padding: 0 0 8px 0;
     }
@@ -10195,7 +10202,7 @@ div#sticky-anchor {
 }
 
 .custom-page-heading {
-  padding-top:90px;
+  padding-top:70px;
   border-bottom:1px solid #e4e4e4;
   margin-bottom:100px;
   text-align:center;
@@ -11055,6 +11062,7 @@ body.loading-page {overflow:hidden; position: relative;}
     padding: 0 30px;
     .row {
       flex-wrap: nowrap;
+      justify-content:center;
       @include media-query($max,$lg){
         flex-wrap: wrap;  
       }
@@ -11133,12 +11141,70 @@ body.loading-page {overflow:hidden; position: relative;}
 
     }
   }
+.col-12.reduce-pad {
+  padding-left:15px;
+  padding-right:0;
+}
 .slideshow-home {
+  @include media-query($min,$md){
     margin-top: -70px;
+  }    
+    overflow-x: hidden;
 }
 #shopify-section-slideshow-shop-secondary {
   margin-top: 0px;
 }
 body {
   overflow-x: hidden;
+}
+.paddinglr {
+  padding-left:15px;
+  padding-right:15px;
+}
+.page-gapLeft {
+  margin-left: 220px;
+  position: relative;
+  @include media-query($max,$xxl) {
+    margin-left: 155px; 
+  }
+  @include media-query($max,$lg) {
+    margin-left: auto; 
+  }
+}
+.boxed-gapLeft {
+  position: relative;
+  @media screen and (max-width:1800px){
+    margin-left: 220px;
+  }
+  @include media-query($max,$xxl) {
+    margin-left: 155px; 
+  }
+  @include media-query($max,$lg) {
+    margin-left: auto; 
+  }
+}
+html {
+  padding-bottom:0 !important;
+}
+.shopify-section ,.explore-content.container-fluid {
+  overflow-x: hidden;
+}
+#shopify-section-footer {
+  overflow: visible;
+}
+  .container.page-gapLeft ,.page-gapLeft .container,
+  .container.boxed-gapLeft ,.boxed-gapLeft .container {
+    @media screen and (max-width:1600px) and (min-width:1450px){
+      max-width: 1300px;
+    }
+    @media screen and (max-width:1300px) and (min-width:1199px){
+      max-width: 1040px;
+    }
+    @media screen and (max-width:1100px) and (min-width:991px){
+      max-width: 840px;
+    }
+}
+
+.pdp-gapLeft {
+  transition: all .4s ease;
 }

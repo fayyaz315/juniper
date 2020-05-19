@@ -77,11 +77,11 @@
                 {% if block.type == "product" %}
                   <div class="block">
                         <div class="row">
-                            <div class="col-sm-30 col-xl-60">
+                            <div class="col-lg-30 col-md-20 col-xl-60">
                                 <div class="img-block" style="background-image: url({{ block.settings.image | img_url: '300x'}});">
                                 </div>
                             </div>
-                            <div class="col-sm-30 col-xl-60">
+                            <div class="col-lg-30 col-md-40 col-xl-60">
                                 <h3>{{ block.settings.tag }}</h3>
                                 <h4>{{ block.settings.title }}</h4>
                                 {% if block.settings.product_by and block.settings.product_by_link %}

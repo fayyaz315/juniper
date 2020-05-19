@@ -39,19 +39,23 @@
 	</div>
 <script>
 $(document).ready(function () {
-	$(".spotify-block").hover(function () {
-		var dataAtr = $(this).attr("data-i");
-		var match = $(".spotlight-images .mask[data-i='" + dataAtr + "']");
-		$(".spotlight-images .mask").each(function () {
-			$(this).removeClass("selected");
-		});
-		$(".spotify-block").each(function () {
-			$(this).removeClass("active");
+	if($(window).width() > 768) {
+		console.log("m,xczmxc,")
+		$(".spotify-block").hover(function () {
+			var dataAtr = $(this).attr("data-i");
+			var match = $(".spotlight-images .mask[data-i='" + dataAtr + "']");
+			$(".spotlight-images .mask").each(function () {
+				$(this).removeClass("selected");
+			});
+			$(".spotify-block").each(function () {
+				$(this).removeClass("active");
+			})
+			$(this).addClass("active")
+			match.addClass("selected");
+			// $(".s")
 		})
-		$(this).addClass("active")
-		match.addClass("selected");
-		// $(".s")
-	})
+	}
+	
 
 	$('.spotlight-blocks').slick({
 		slidesToShow: 3,

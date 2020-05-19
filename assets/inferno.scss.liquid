@@ -5786,9 +5786,11 @@ body svg.icon {
     margin-right: 140px;
     margin-bottom:12px;
     font-family:$font-primary;
+    
     @include media-query($max,$lg){
       font-size: 36px;  
       line-height:60px;
+      margin-bottom: 6px;
     }
     @include media-query($max,$md){
       max-width:100%;
@@ -5851,6 +5853,7 @@ body svg.icon {
 
     @include media-query($max,$xl){
       right:50px;
+      top:40%;
     }
     @include media-query($max,$lg){
         display:none;          
@@ -5916,11 +5919,21 @@ body svg.icon {
     }
   }  
 }
+
+.template-index {
+  .slideshow-main .social-icons-main{ 
+    top:35% !important;
+  }
+}
 .sticky-slideshow.slideshow-main .social-icons-main ul li:before {
   background-color: #111213;
 }
 .template-index .slideshow-main .social-icons-main {
   top:26%;
+  @include media-query($max,$xl) {
+    top: auto;
+    bottom: 50px;
+  }
 }
 .home-collection-list{
     padding-bottom:0px;
@@ -6155,6 +6168,12 @@ body svg.icon {
 .home-top-news{
   padding-top:0;
   padding-bottom:0;
+  
+  @include media-query($max,$lg) {
+    .section-header {
+      margin-bottom: 20px;
+    }
+  }
 }
 .home-topnews{
   background-color:#f7f3ef;
@@ -6177,7 +6196,8 @@ body svg.icon {
     }
     @include media-query($max,$lg){
       margin-top:0;
-      max-width:720px;
+      //max-width:720px;
+      padding:0 40px;
       margin:0 auto;
     }
     @include media-query($max,$md){
@@ -6271,11 +6291,25 @@ body svg.icon {
 }
  /* topnews styling ends */
 .index-section.explore-section {
-  padding-top:30px;
+  margin-top:30px;
+  background-color: #cfd7d0;
+  position: relative;
+  padding-bottom: 0;
+}
+.index-section.explore-section:after {
+  content: "";
+  position: absolute;
+  height: 80px;
+  width: 100%;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  @include media-query($max,$lg){
+    height: 45px;
+  }
 }
 .explore-with {
   position: relative;
-  background-color: #cfd7d0;
   padding-top: 60px;
   /* overflow-x: hidden; */
   .section-header{
@@ -6440,7 +6474,8 @@ body svg.icon {
         padding-right:0;
       }
       @include media-query($max,$md){
-        padding-top:120px;
+        padding-top: 40px;
+        padding-bottom: 20px;
       }
       @include media-query($max,$md){
         padding-top:60px;
@@ -6576,7 +6611,6 @@ body svg.icon {
     width: 100%;
     bottom: 0;
     height: 220px;
-    background-color: #fff;
     left: 0;
     @include media-query($max,$lg){
       height:120px;
@@ -8669,7 +8703,7 @@ body svg.icon {
   .style4-container {
     @include media-query($max,$md){
       &:before {
-        padding-top:85% !important;
+        padding-top:66% !important;
       }
     }
     .slideshow__text-wrap {
@@ -8725,7 +8759,7 @@ body svg.icon {
           padding-right: 30px;
         }
         @include media-query($max,$md){
-          padding-bottom:50px;
+          padding-bottom:0px;
           left: -25%;
         }
       }
@@ -8791,6 +8825,7 @@ body svg.icon {
         font-weight:bold;
         @include media-query($max,$xl){
           font-size: 21px; 
+          max-width: 80%;
         }
         @include media-query($max,$lg){
           font-weight:normal;
@@ -8799,7 +8834,7 @@ body svg.icon {
         @include media-query($max,$md){
           font-weight:normal;
           font-size: 15px;
-          margin-bottom:5px;
+          margin-bottom:0;
         }
         @include media-query($max,$sm){
           font-size: 11px;
@@ -8867,6 +8902,7 @@ body svg.icon {
           font-family:$font-primary;
           @include media-query($max,$lg){
             font-size:40px;
+            margin-bottom: 10px;
           }
           @include media-query($max,$md){
             font-size:30px;
@@ -8882,11 +8918,16 @@ body svg.icon {
           color: $white-color;
           margin-bottom: 0;
           line-height: 54px;
+          @include media-query($min,$xl){
+            line-height: 35px;
+          }
           @include media-query($min,$lg){
             max-width: 325px;
             margin: 0 auto;
             margin-right: 0;
+            line-height: 35px;
           }
+          
           @include media-query($max,$md){
             font-size:18px;
             line-height: 28px;
@@ -8928,6 +8969,9 @@ body svg.icon {
             background-color: $blue-color;
             border:2px solild transparent;
           }
+          @include media-query($max,$lg){
+            margin-top: 10px;
+          }
           @include media-query($max,$md){
             padding: 9px 22px;
           }
@@ -8948,12 +8992,12 @@ body svg.icon {
         width:100%;
         max-width:95%;
         margin-right: 0;
-        pagging-right: 0;
+        padding-right: 0;
         @include media-query($max,$lg){
           max-width:100%;  
           height: 100%;
           display: flex;
-          padding: 50px;
+          padding: 50px 0;
           justify-content: center;
           align-items: center;
         }
@@ -8962,51 +9006,91 @@ body svg.icon {
         }
         .slide-active {
           position: relative;
-          padding: 59% 0;
+          padding: 52% 0;
           width: 88%;
           margin: 0px auto;
           background-size: cover;
           z-index: 9;
           border: 5px solid #fff;
+          
           @include media-query($max,$md){
-            padding: 53% 0;
+            padding: 70% 0;
+            width: 90%;
+            background-position: center;
+          }
+          @include media-query($max,$sm){
             width: 80%;
+            padding: 65% 0;
           }
         }
         .slide-inactive-1{
           position: absolute;
-          padding: 30% 0;
+          padding: 0;
           width: 43%;
           left: -15px;
-          bottom: 0;
-          background-position: 87% -96px;
+          bottom: -100px;
+          background-position: 98% -96px;
           opacity: .7;
           z-index: 1;
-          @include media-query($max,$lg){
-            bottom: 5%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          &:before {
+            content: '';
+            display: block;
+            padding-top: 125%;
           }
+          @include media-query($max,$xl){
+            // background-position: 79% -211px;
+          }
+          @include media-query($max,$lg){
+            // bottom: 5%;
+            background-size: cover;
+            background-position: 88% -96px;
+            height: 300px;
+            bottom: -46px;
+          }
+          
           @include media-query($max,$md){
-              padding: 32% 0;
-              width: 62%;
-              left:0;
-            }
+            width: 62%;
+            left:0;
+          }
+          @include media-query($max,$sm){
+            background-size: cover;
+            background-position: 85% -96px;
+            height: 203px;
+            bottom: -73px
+          }
+            
         }
         .slide-inactive-2{
           position: absolute;
-          padding: 32% 0;
-          width: 44%;
+          padding: 0;
+          width: 33%;
           right: -15px;
-          top: 0%;
-          // background-size: cover;
+          top: -40px;
+          background-size: cover;
           background-position: -68% 22%;
           opacity: .7;
           z-index: 1;
+          background-repeat: no-repeat;
+          &:before {
+            content: '';
+            display: block;
+            padding-top: 225%;
+            @include media-query($max,$md){
+              padding-top: 200%;
+            }
+          }
+          @include media-query($max,$md){
+            width:51%;
+          }          
           @include media-query($max,$md){
             width: 62%;
             right:0;
+            background-size: cover;
           }
           @include media-query($max,$sm){
-            top: -5%;
+            top: 11%;
           }
         }
       }
@@ -9045,9 +9129,16 @@ body svg.icon {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 15px;
-    @include media-query($max,$md){
+
+    @include media-query($max,$lg){
+      margin-top: 0;
       margin-bottom:50px;
     }
+    
+    @include media-query($max,$md){
+      margin-bottom:30px;
+    }
+    
     li {
       list-style:none;
       padding:0 20px;
@@ -9055,6 +9146,9 @@ body svg.icon {
       line-height:24px;
       text-transform:uppercase;
       letter-spacing:2px;
+      @include media-query($max,$xl){
+        padding:0 10px;
+      }
       span {
         color:$red-color;
         font-size:11pt;
@@ -9069,6 +9163,11 @@ body svg.icon {
         display:block;
         white-space: nowrap;
         color:#000;
+    
+        @include media-query($max,$xl) {
+          font-size: 14px;
+        }
+        
         &:hover {
           color:$red-color; 
         }
@@ -9076,6 +9175,9 @@ body svg.icon {
           content:"/";
           position: absolute;
           right:-20px;
+          @include media-query($max,$xl){
+            right:-12px;
+          }
         }
       }
       &:last-child {
@@ -9094,7 +9196,7 @@ body svg.icon {
       margin-bottom:30px;
       justify-content:left;
       li {
-        padding:0 5px;
+        padding:0 10px;
         span {
           font-size:10pt;
         }
@@ -9213,8 +9315,9 @@ body svg.icon {
         font-weight: bold;
         margin-bottom: 18px;
         text-transform: uppercase;
-        @include media-query($max,$sm){
-          margin-top: 50px;
+
+        @include media-query($max,$lg){
+          margin-top: 30px;
         }
       }
       p {
@@ -9251,6 +9354,12 @@ body svg.icon {
         position: absolute;
         top: 0px;
         right: 20px;
+              
+        @include media-query($max,$lg) {
+          right: auto;
+          left: 15px;
+        }
+
         ul {
           li {
             float: left;
@@ -9259,8 +9368,16 @@ body svg.icon {
               padding: 40% 0;
               background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/star.png?v=1589193811);
               background-repeat: no-repeat;
+              background-size: contain;
               display: block;
               width: 30px;
+              
+              @include media-query($max,$lg) {
+                padding: 0;
+                width: 20px;
+                height: 20px;
+              }
+              
               &.selected {
                 background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/star.png?v=1589193811);
               }
@@ -10063,6 +10180,13 @@ div#sticky-anchor {
     border-bottom: 1px solid #fff;
     padding-bottom: 30px;
     margin-bottom: 20px;
+    
+    @include media-query($max,$xl) {
+      .footer-logo {
+        margin-bottom: 40px;
+      }
+    }
+    
     >div.row {
       justify-content:space-between;
     }
@@ -10218,6 +10342,9 @@ div#sticky-anchor {
     margin: 0 auto 70px auto;
     display:inline-block;
     max-width: 730px;
+    @include media-query($max,$md){ 
+      margin-bottom:30px;
+    }
     h1 {
       font-size:50pt;
       font-weight:300;
@@ -10513,7 +10640,7 @@ div#sticky-anchor {
 // Slider 8
 #shopify-section-slideshow-welness .slideshow-animation.slideshow--maintain_ratio .style8-container.slideshow__slide:before {
   @include media-query($max,$md){
-    padding-top:80%;
+    padding-top:100%;
   }
 }
 .style8-container {
@@ -10548,6 +10675,9 @@ div#sticky-anchor {
               margin-bottom:12px;
               font-family: "Univers";
               font-weight: bold;
+              @include media-query($max,$xl){
+                font-size: 36px;
+              }
               @include media-query($max,$md){
                 font-size: 25px;
                 margin-bottom:5px;
@@ -10567,6 +10697,9 @@ div#sticky-anchor {
               font-size: 28px;
               font-family: "Univers";
               font-weight: bold;
+              @include media-query($max,$xl){
+              font-size: 19px;
+              }
               @include media-query($max,$md){
                 font-size: 15px;
                 margin-bottom: 0px;
@@ -10668,7 +10801,11 @@ body.loading-page {overflow:hidden; position: relative;}
   height: 100%;
 }
 .index-section.latest-articles {
-  padding-top:0;
+  padding-top:60px;
+  @include media-query($max,$md) {
+    padding-top:50px;
+    padding-bottom:0;
+  }
 }
 .slick-arrow.slick-disabled {
   display: none !important;
@@ -10691,12 +10828,24 @@ body.loading-page {overflow:hidden; position: relative;}
     -o-animation: pulses 1s linear infinite alternate;
   }
   .slick-next {
-    right: 10px;
+    right: auto;
+    left: 90%;
+    
+    @include media-query($max,$xl) {
+      right: -2.5%;
+      left: auto;
+    }
+    @include media-query($max,$lg) {
+      right: 10px;
+    }
   }
   .slick-prev {
     opacity: 0;
     visibility: hidden;
     left: -30px;
+    @include media-query($max,$lg) {
+      left: 10px;
+    }
   }
   .slick-next:after {
     font-family: Font Awesome\ 5 Pro;
@@ -10837,6 +10986,11 @@ body.loading-page {overflow:hidden; position: relative;}
     padding-top: 75px;
     
     .slide-2-main .slideshow__text-content {
+      @include media-query($max,$xl){
+        br {
+          display:none;
+        }
+      }
       
       .slideshow__title {
         margin-left: 0px;
@@ -11047,7 +11201,6 @@ body.loading-page {overflow:hidden; position: relative;}
       }
     }
   }
-  
   .slick-next,
   .slick-prev {
     
@@ -11189,7 +11342,7 @@ html {
 .shopify-section ,.explore-content.container-fluid {
   overflow-x: hidden;
 }
-#shopify-section-footer {
+#shopify-section-footer,#shopify-section-mobile-nav {
   overflow: visible;
 }
   .container.page-gapLeft ,.page-gapLeft .container,
@@ -11204,7 +11357,41 @@ html {
       max-width: 840px;
     }
 }
-
 .pdp-gapLeft {
   transition: all .4s ease;
+}
+@include media-query($max,$md) {
+  .product-single>h1 {
+    width:100%;
+    text-align:center;
+    padding-bottom:30px;
+  }
+}
+
+
+
+@include media-query($max,$sm) {
+  #shopify-section-1586327689000 {
+    .slideshow-animation.slideshow--maintain_ratio .slideshow__slide:before {
+      padding:0 !important;
+    }
+    .slideshow__link {
+      position: relative;
+      top: 0 !important;
+      padding: 0;
+    }
+    .slideshow__image {
+      padding: 50% 0;
+      position: relative;
+    }
+    .slideshow-animation .slideshow__text-content {
+      top: 0;
+      transform: none;
+      position: relative;
+    }
+    h2.h1.mega-title.slideshow__title {
+      display:none;
+    }
+  }
+  
 }

@@ -47,7 +47,7 @@
   <div class="container boxed-gapLeft">
     <div class="footer-logo-area">
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-xl-9 footer-logo">
           {%- assign footer_logo = section.settings.logo -%}
           {% if footer_logo == blank %}
             {%- assign footer_logo = settings.logo -%}
@@ -59,7 +59,7 @@
         {% for block in section.blocks %}
           {%- assign footer_linklist = block.settings.linklist -%}
           {% if linklists[footer_linklist].links.size > 0 %}
-            <div class="col-md-auto col-60">
+            <div class="col-lg-auto col-md col-60">
               {% if block.settings.title != blank %}<h4 class="mobile-toggler">{{ block.settings.title }}</h4>{% endif %}
               <ul class="site-footer__linklist">
                 {% for link in linklists[footer_linklist].links %}
@@ -174,7 +174,7 @@
                         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32.91 21"><defs><style>.cls-1{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{fill:#fff;}</style><clipPath id="clip-path" transform="translate(-211 -385)"><rect class="cls-1" x="211" y="385" width="32.91" height="21"/></clipPath></defs><title>chat</title><g class="cls-2"><path class="cls-3" d="M218.06,392.3c-3.49.73-5.93,2.91-5.93,5.4a5,5,0,0,0,2.57,4.06.52.52,0,0,1,.22.61l-.78,2.19,3.83-1.38a.58.58,0,0,1,.32,0,12.34,12.34,0,0,0,2.36.23,11.74,11.74,0,0,0,4.86-1c-4.66-1.47-7.7-4.69-7.7-8.32a6.31,6.31,0,0,1,.25-1.77M213.22,406a.54.54,0,0,1-.39-.15.51.51,0,0,1-.15-.53l1-2.9A5.85,5.85,0,0,1,211,397.7c0-3.24,3.29-6,7.83-6.62a.59.59,0,0,1,.53.2.53.53,0,0,1,.07.54,5.66,5.66,0,0,0-.49,2.25c0,3.45,3.27,6.5,8.12,7.59a.53.53,0,0,1,.42.65.5.5,0,0,1-.22.31,12.14,12.14,0,0,1-6.61,1.83,13.15,13.15,0,0,1-2.43-.22l-4.8,1.73a.45.45,0,0,1-.2,0" transform="translate(-211 -385)"/><path class="cls-3" d="M234.26,401.76a.52.52,0,0,1,.21,0l5.67,2.05-1.21-3.42a.52.52,0,0,1,.21-.61c2.35-1.53,3.63-3.57,3.63-5.75,0-4.41-5.34-8-11.91-8-5.24,0-9.94,2.36-11.43,5.74a5.74,5.74,0,0,0-.49,2.26c0,3.45,3.27,6.5,8.12,7.6a17.64,17.64,0,0,0,7.09.1Zm6.81,3.52a.44.44,0,0,1-.2,0l-6.66-2.4a18.86,18.86,0,0,1-7.41-.15c-5.38-1.21-9-4.68-9-8.63a6.46,6.46,0,0,1,.57-2.66c1.7-3.83,6.69-6.41,12.48-6.41,7.19,0,13,4.07,13,9.07,0,2.43-1.33,4.68-3.76,6.41l1.49,4.1a.5.5,0,0,1-.15.53.55.55,0,0,1-.42.17" transform="translate(-211 -385)"/><path class="cls-3" d="M224.31,394a.78.78,0,1,0,.84.78.8.8,0,0,0-.84-.78Zm0,2.63a1.85,1.85,0,1,1,2-1.85,1.92,1.92,0,0,1-2,1.85h0" transform="translate(-211 -385)"/><path class="cls-3" d="M230.86,394a.78.78,0,1,0,.83.78.81.81,0,0,0-.83-.78m0,2.63a1.85,1.85,0,1,1,2-1.85,1.91,1.91,0,0,1-2,1.85" transform="translate(-211 -385)"/><path class="cls-3" d="M237.41,394a.78.78,0,1,0,.83.78.81.81,0,0,0-.83-.78m0,2.63a1.85,1.85,0,1,1,2-1.85,1.91,1.91,0,0,1-2,1.85" transform="translate(-211 -385)"/></g></svg>
                       </span>
                     </div>
-                    <div class="col-45">
+                    <div class="col-auto col-lg-45">
                       <h3>CHAT WITH US</h3>
                       <h4>Available 365 days/year</h4>
                     </div>
@@ -188,7 +188,7 @@
                         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24.66 22.88"><defs><style>.cls-1,.cls-3{fill:none;}.cls-2{clip-path:url(#clip-path);}.cls-3{stroke:#fff;stroke-miterlimit:10;}</style><clipPath id="clip-path" transform="translate(-215 -384.12)"><rect class="cls-1" x="215" y="384.12" width="24.66" height="22.88"/></clipPath></defs><title>phone</title><g class="cls-2"><path class="cls-3" d="M238,400.14c-.59-.29-3.45-1.69-4-1.88s-.92-.29-1.31.29-1.52,1.88-1.85,2.26-.68.43-1.27.14a15.94,15.94,0,0,1-4.68-2.87,17.08,17.08,0,0,1-3.23-4c-.34-.58,0-.89.25-1.18s.58-.68.88-1l.21-.28a4.87,4.87,0,0,0,.37-.69,1.05,1.05,0,0,0,0-1c-.15-.29-1.32-3.13-1.81-4.29s-1-1-1.31-1-.72-.05-1.11-.05a2.16,2.16,0,0,0-1.56.72,6.49,6.49,0,0,0-2,4.83,7.22,7.22,0,0,0,.3,2,13.19,13.19,0,0,0,2.08,4c.29.37,4,6.4,9.94,8.72s5.92,1.54,7,1.44,3.45-1.39,3.92-2.75a4.82,4.82,0,0,0,.35-2.74C238.94,400.57,238.55,400.43,238,400.14Z" transform="translate(-215 -384.12)"/></g></svg>
                       </span>
                     </div>
-                    <div class="col-45">
+                    <div class="col-auto">
                       <h3>CALL US</h3>
                       <h4>+1 (000) 000-0000</h4>
                     </div>
@@ -203,7 +203,7 @@
 
                       </span>
                     </div>
-                    <div class="col-45">
+                    <div class="col-auto">
                       <h3>TEXT US</h3>
                       <h4>+1 (000) 000-0000</h4>
                     </div>

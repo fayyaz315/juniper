@@ -686,7 +686,6 @@ $button-size: 16pt;
   }
   &:hover {
     .spotify-block{
-      background-image: none !important;
       &.border-right-5{
         border-right: 0;
       }
@@ -1709,6 +1708,12 @@ $button-size: 16pt;
     }
     .slick-prev {
       left: -40px;
+      @media screen and (max-width:1400px) and (min-width:991px) {
+        left: -15px;
+      }      
+      @include media-query($max,$lg) {
+        left: -32px;
+      }
       &:after {
         content: "\f104";
         left: -2px;
@@ -1721,6 +1726,12 @@ $button-size: 16pt;
     }
     .slick-next {
       right: -40px;
+      @media screen and (max-width:1200px) and (min-width:991px) {
+        right: -15px;
+      }
+      @include media-query($max,$lg) {
+        right: -32px;
+      }
       &:after {
         content: "\f105";
         right: -2px;
@@ -1735,7 +1746,6 @@ $button-size: 16pt;
 }
 .wellness-quote {
   padding: 65px 0;
-  margin: 50px 0 0 0;
   /* background-color: #cfd7d0; */
   .slick-prev, .slick-next {
     border: 1px solid $red-color;
@@ -2066,6 +2076,12 @@ $button-size: 16pt;
   }
   .block-content {
     padding: 60px 60px 100px 100px;
+    
+    @include media-query($max,$xl) {
+      padding-top: 0px;
+      padding-bottom: 30px;
+    }
+    
     h3 {
       background-color: $red-color;
       color: $white-color;
@@ -2361,6 +2377,9 @@ $xxl: 1500px; */
   .connection-events .connection-events-detial .connect-grid {
     background-image: none !important;
   }
+  .spotlight:hover .spotify-block {
+    background-image: none !important;
+  }
 }
 @include media-query($min, $lg) {
   /* .container {
@@ -2448,10 +2467,10 @@ $xxl: 1500px; */
     margin-left: 155px;
   }
   .wellness-quote .slick-prev {
-    left: -105px;
+    left: -30px;
   }
   .wellness-quote .slick-next {
-    right: -105px;
+    right: -30px;
   }
 }
 @include media-query($max,$xl) {
@@ -2466,20 +2485,15 @@ $xxl: 1500px; */
     font-size: 12em;
     margin-bottom: -12px;
   }
-  .style8-container .style8 .slideshow__text-wrap .container .slider-content .slideshow-title {
-    font-size: 36px;
-  }
-  .style8-container .style8 .slideshow__text-wrap .container .slider-content .slideshow-text {
-    font-size: 19px;
-  }
+
   .slideshow-animation .homestyle2 .slideshow__subtitle span {
     font-size: 36px;
   }
   .homestyle2-container .homestyle2 .slide-2-main .slideshow__text-content .slideshow__subtitle2 {
     font-size: 22px;
   }
-  .homestyle2-container .homestyle2 {
-    padding-top: 105px;
+  .home-topnews {
+
   }
   .homestyle4-container .slide-2-main {
     padding-left: 30px;
@@ -2565,7 +2579,7 @@ $xxl: 1500px; */
               font-size: 20px;
             }
             h4 {
-              font-size: 16px;
+              font-size: 14px;
             }
           }
         }
@@ -2606,7 +2620,9 @@ $xxl: 1500px; */
   .explore-with .explore-heading {
     left: 0;
   }
-  
+  .site-footer .footer-newsletter-area .footer-social-container li {
+    margin-right: 4px;
+  }
   .home-topnews .top-news-content {
     margin-top: 0;
   }
@@ -2647,18 +2663,16 @@ $xxl: 1500px; */
   .welness-talks .block-btn a {
     padding: 15px 60px;
   }
-  .wellness-quote .slick-prev {
-    left: -40px;
-  }
-  .wellness-quote .slick-next {
-    right: -40px;
-  }
+  
 }
 @include media-query($max,$lg) {
+  .spotlight .spotify-block .spotify-text h2{
+    font-size: 28px
+  }
   .slideshow-animation h2.h1, 
   .slideshow-animation .h1.h2,
   .slideshow-animation .homestyle2-container .slide-2-main .slideshow__text-content .slideshow__title {
-    font-size: 12em;
+    font-size: 10em;
   }
   .homestyle4-container .slide-2-main .slideshow__text-content .slideshow__title {
     font-size: 9em;
@@ -2669,9 +2683,10 @@ $xxl: 1500px; */
     font-size: 46px;
   }
   .slideshow-animation .homestyle3-container .slideshow__text-content .slideshow__title {
-    font-size: 12em;
-    margin-bottom: -15px;
-    margin-top: 40%;
+    font-size: 10em;
+    margin-bottom: -30px;
+    margin-top: 30%;
+    margin-left: 15px;
   }
   .homestyle3-container .slideshow__text-content .slideshow__subtitle {
     font-size: 34px;
@@ -2681,7 +2696,7 @@ $xxl: 1500px; */
     font-size: 24px;
   }
   .slideshow-animation .slideshow__subtitle {
-    font-size: 38px;
+    font-size: 32px;
   }
   .slideshow-animation .slideshow__subtitle-2 {
     font-size: 24px;
@@ -2693,7 +2708,7 @@ $xxl: 1500px; */
     font-size: 32px;
   }
   .homestyle2-container .homestyle2 {
-    padding-top: 90px;
+    padding-top: 25px;
   }
   .homestyle2-container .homestyle2 .slide-2-main .slideshow__text-content .slideshow__subtitle2 {
     font-size: 20px;
@@ -2886,6 +2901,9 @@ $xxl: 1500px; */
       }
     }
   }
+  .spotlight .spotlight-images {
+    display: none;
+  }
   .shop-by{
     &.home-collection-list {
       .collection-grid-main {
@@ -2896,6 +2914,33 @@ $xxl: 1500px; */
         }
       } 
     }
+  }
+  .section-header {
+    margin-bottom: 30px;
+  }
+  .shop-slider {
+    margin-bottom: 0px;
+    padding-top: 50px;
+  }
+  .brands-love,
+  .spotlight,
+  .spotlight-video,
+  .wellness-collection-list,
+  .home-collection-list {
+    padding-top: 50px;
+  }
+  .article-blocks {
+    padding-bottom: 20px;
+  }
+  .spotlight-video .how-to-section .howto-text p a {
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+  .wellness-category {
+    margin-top: 0px;
+  }
+  .spotlight:hover .spotify-block::before {
+    background-color: rgba(0,0,0,0.6);
   }
   .connection-explore.explore-with .quote h2 {
     font-size: 30px;
@@ -2909,9 +2954,9 @@ $xxl: 1500px; */
     font-size: 14px;
   }
   .wellness-quote {
-    margin-top: 50px;
+    margin-top: 0px;
     padding: 50px;
-    padding-bottom: 15px;
+    padding-bottom: 30px;
   }
   .wellness-quote h2 {
     font-size: 30px;
@@ -3012,6 +3057,16 @@ $xxl: 1500px; */
   .product-single .product-single__meta > h1 {
     display: none;
   }
+  .topnews-slider .slick-next {
+    left: auto;
+    right: -20px;
+  }
+  .home-topnews {
+    padding-bottom: 0;
+  }
+  .spotlight-video .how-to-section .howto-text {
+    padding: 20px 0px 10px 0px;
+  }
 }
 
 @include media-query($max,$sm) {
@@ -3021,10 +3076,22 @@ $xxl: 1500px; */
   .homestyle4-container .slide-2-main .slideshow__text-content .slideshow__title {
     font-size: 6em;
   }
+  .homestyle4-container .slide-2-main .slideshow__text-content .slideshow__title {
+    margin-top: 62px;
+    margin-left: 16px;
+  }
+  .homestyle4-container .slide-2-main .slide2-btn .btn {
+    padding: 4px 5px;
+    margin-top: 38px;
+  }
+  .homestyle2-container .slide-2-main .slide2-btn .btn {
+      padding: 4px 5px;
+      margin-top: 25px;
+  }
   .slideshow-animation .homestyle3-container .slideshow__text-content .slideshow__title {
     font-size: 7em;
     margin-bottom: -5px;
-    margin-top: 30%;
+    margin-top: 0%;
   }
   .homestyle3-container .slide2-btn span {
     margin-top: -24px;
@@ -3037,7 +3104,7 @@ $xxl: 1500px; */
     font-size: 20px;
   }
   .slideshow-animation .slideshow__subtitle {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 22px;
   }
   .slideshow-animation .slideshow__subtitle-2 {
@@ -3046,7 +3113,7 @@ $xxl: 1500px; */
   }
   .slideshow-animation .slide-btn .btn {
     font-size: 16px;
-    padding: 10px 10px;
+    padding: 4px 10px;
   }
   .slideshow .slideshow__subtitle, 
   .slideshow-animation .slideshow__subtitle {
@@ -3057,17 +3124,24 @@ $xxl: 1500px; */
   }
   .homestyle2-container .homestyle2 .slide-2-main .slide2-btn {
     left: auto;
-    top: 30px;
+    top: 10px;
+  }
+  .homestyle3-container .slideshow__image {
+    background-position: center;
   }
   .homestyle4-container .slide-2-main .slide2-btn {
     width: 125%;
+  }
+  .homestyle4-container .slide-2-main .slide2-img2 {
+    background-size: cover;
+    padding: 76% 0;
   }
   .shop-by{
     &.home-collection-list {
       .collection-grid-main {
         .collection-grid__text {
           h3{
-            font-size: 42px;
+            /* font-size: 42px; */
             margin-top: 12px;
           }
         }
@@ -3103,7 +3177,10 @@ $xxl: 1500px; */
   .wellness-quote h2:before {
     top: -10px;
   }
-
+  .topnews-slider .slick-next {
+    left: auto;
+    right: -5px;
+  }
   .wellness-quote{
     padding-left: 35px;
     padding-right: 35px;
@@ -3143,11 +3220,11 @@ $xxl: 1500px; */
     bottom: -54px;
   }
   .homestyle2-container .slide-2-main .slide2-img1 {
-    background-size: 36% 0;
-    margin-top: 70px;
+    background-size: cover;
+    margin-top: 0;
   }
   .homestyle2-container .slide-2-main .slide2-img2 {
-    margin-top: 65px;
+    margin-top: 0;
   }
   .homestyle2-container .slide-2-main .slide2-btn {
     position: relative;
@@ -3158,7 +3235,12 @@ $xxl: 1500px; */
     margin-top: -25px;
   }
   #shopify-section-slideshow-welness .slideshow-animation.slideshow--maintain_ratio .slideshow__slide {
-    padding: 66%;
+    padding: 0;
+    &:before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+    }
   }
   .style7-container .slideshow__text-wrap .slider-content {
     justify-content: flex-end;
@@ -3179,6 +3261,7 @@ $xxl: 1500px; */
       a {
         padding: 10px 45px;
         font-size: 13px;
+        margin-bottom: 50px;
       }
     }
     .section-header {
@@ -3190,17 +3273,20 @@ $xxl: 1500px; */
   }
   .wellness-quote {
     margin-top: 0px;
+    padding-top: 15px;
   }
 }
 @media screen and (max-width: 480px) {
   .welness-talks {
     position: relative;
+    background-position: 25% 0;
     .section-header {
       position: relative;
       z-index: 1;
     }
     .block-content {
       margin-left: 16%;
+      margin-top: 0;
     }
     .block-btn {
       margin-left: 16%;
@@ -3215,6 +3301,18 @@ $xxl: 1500px; */
       background-color: rgba(255,255,255,.5);
     }
   }
+  .shop-by.home-collection-list .collection-grid-main .collection-grid__text h3 {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .shop-by.home-collection-list .collection-grid-main .collection-grid__text h3 {
+      font-size: 16px;
+      margin-top: 0;
+  }
+  .homestyle4-container .slide-2-main .slide2-img2 {
+    top: -27px;
+  }
 }
 
 @media screen and (max-width: 1330px) {
@@ -3222,3 +3320,83 @@ $xxl: 1500px; */
      max-width: 1024px;
    }
  }
+ @media screen and (min-width: 1800px) {
+  .home-topnews {
+    .section-header {
+      h2 {
+        padding-left: 12%;
+      }
+    }
+    .col-xl-6 {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 20%;
+      -ms-flex: 0 0 20%;
+      flex: 0 0 20%;
+      max-width: 20%;
+    }
+    .col-xl-50 {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 80%;
+      -ms-flex: 0 0 80%;
+      flex: 0 0 80%;
+      max-width: 80%;
+    }
+
+  }
+  .topnews-slider .slick-next {
+    right: auto;
+    left: 97%;
+  } 
+ }
+
+.welness-talks .block-content {
+  text-align: right;
+  
+  p {
+    text-align: left;
+  }
+}
+
+.wellness-sidebar .sidebar-content .block {
+  
+  @include media-query($max,$lg) {
+    margin-bottom: 50px;
+
+    h3 {
+      margin-top: 0;
+    }
+  }
+}
+
+.megamenu .container-fluid.nopad .row>div.col-12.reduce-pad {
+  
+  @include media-query($max,$lg) {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+@include media-query($max,$lg) {
+  .footer-contact-container {
+    padding-right: 0;
+
+    .row {
+      -webkit-box-pack: center !important;
+      -webkit-justify-content: center !important;
+      -ms-flex-pack: center !important;
+      justify-content: center !important;
+
+      .col-15 {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        width: auto;
+        max-width: none;
+      }
+    }
+  }
+}

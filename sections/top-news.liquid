@@ -1,8 +1,8 @@
 <div class="home-topnews">
-    <div class="container-fluid">
+    <div class="container-fluid boxed-gapLeft">
     {% if section.settings.title != blank %}
       <div class="row">
-        <div class="col-lg-54 offset-lg-6">
+        <div class="col-60">
           <div class="section-header">
             <h2 data-aos="{{ section.settings.animation_title }}">{{ section.settings.title | escape }}</h2>
           </div>
@@ -10,8 +10,8 @@
       </div>
     {% endif %}
     <div class="row">
-      <div class="col-xl-12 d-none d-md-block"></div>
-        <div class="col-xl-48 col-60">
+      <div class="col-xl-6 d-none d-md-block"></div>
+        <div class="col-lg-50">
           <div class="top-news-content topnews-slider">
           {%- assign blog = blogs[section.settings.blog] -%}
           {% unless blog.articles_count < 1 %}
@@ -57,10 +57,11 @@
       }
     },
     {
-      breakpoint: 768,
+      breakpoint: 1023,
       settings: {
         centerPadding:'0',
-        dots: true
+        dots: true,
+        slidesToShow: 3
       }
     },
     {

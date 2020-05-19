@@ -768,7 +768,7 @@
               "image_2": "shopify:\/\/shop_images\/D-Converse-HP-1.2-Refresh-Remixed-Leather-CT70-Shoe-SP20_04841bb7-af3e-4f03-8ac7-f716fbe212a6.gif",
               "image_2_delay": "1s",
               "image_2_animation": "fadeInUpBig",
-              "image_3": "shopify:\/\/shop_images\/Image_Split_Flyease_heelv2_e85d693e-f8b8-4f2b-b5c9-439805fc3f33.jpg",
+              "image_3": "shopify:\/\/shop_images\/shop-small2.jpg",
               "image_3_delay": "1s",
               "image_3_animation": "fadeInUp",
               "title": "Comfort first",
@@ -1695,11 +1695,11 @@
         "type": "welness-talks",
         "settings": {
           "heading": "_JUNIPER <em>talks<\/em>",
-          "image": "",
-          "title": "Collection list",
+          "image": "shopify:\/\/shop_images\/talk-bg.png",
+          "title": "<h3> Grace Stratton <\/h3><br>\n<h3> X <\/h3><br>\n<h3> Ashton Applewhite <\/h3>",
           "text": "<p>This month’s Juniper Talks takes the conversation next level with disability  activist Grace Stratton and Anti-Ageist Ashton Applewhite<\/p>",
           "button_text": "read NOW",
-          "button_link": ""
+          "button_link": "https:\/\/juniperunltd.myshopify.com\/pages\/wellness"
         }
       },
       "1588061814071": {

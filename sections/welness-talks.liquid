@@ -1,27 +1,4 @@
-<div class="welness-talks" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/talk-bg.png?v=1588852544);">
-  <div class="container boxed-gapLeft">
-    <div class="section-header">
-      <h2>_JUNIPER <em>talks</em></h2>
-    </div>
-    <div class="row">
-      <div class="col-md-25 offset-md-35">
-        <div class="block-content">
-          <h3> Grace Stratton </h3><br>
-          <h3> X </h3><br>
-          <h3> Ashton Applewhite </h3>
-          <p>This month’s Juniper Talks takes
-            the conversation next level with
-            disability activist Grace Stratton
-            and Anti-Ageist Ashton Applewhite</p>
-        </div>
-        <div class="block-btn">
-          <a href="">read NOW</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% comment %} <div class="welness-talks" style="background-image: url({{ section.settings.image | img_url: '2000x' }});">
+<div class="welness-talks page-gapLeft" style="background-image: url({{ section.settings.image | img_url: '2000x' }});">
   <div class="container">
   {% if section.settings.heading != blank %}
     <div class="section-header">
@@ -42,7 +19,7 @@
       </div>
     </div>
   </div>
-</div> {% endcomment %}
+</div>
 {% schema %}
   {
     "name": "Welness Talks",

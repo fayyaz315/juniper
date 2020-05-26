@@ -1,0 +1,15 @@
+<div class="container-fluid Collection-page-container gapLeft">
+    <div class="section-header">
+        <h2>_JUNIPER <em>most</em> POPULAR</h2>
+      </div>
+    <div class="col-60 product-section">
+        <div class="row">
+            {% for product in collections.popular.products limit:3 %}
+                <div class="col-md-20 col-sm-30">
+                    {% include 'product-card-grid' %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+

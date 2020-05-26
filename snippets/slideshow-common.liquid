@@ -121,11 +121,12 @@
                       {% unless block.settings.subheading == blank %}
                         <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="mega-subtitle delay-3 slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
                           <span>{{ block.settings.subheading | escape }}</span>
-                        </span>
-                      {% endunless %}
-                        {% unless block.settings.subheading2 == blank %}
+                          {% unless block.settings.subheading2 == blank %}
+                          <br/>
                         <span data-animation="{{block.settings.subHeading2Animation}}" data-delay="{{block.settings.sub_heading2_delay}}" class="mega-subtitle delay-3 slideshow__subtitle-2{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
                           <span>{{ block.settings.subheading2 | escape }}</span>
+                        </span>
+                      {% endunless %}
                         </span>
                       {% endunless %}
                         <br/>
@@ -218,6 +219,11 @@
                           {{ block.settings.subheading_3 }}
                         </span>
                         {% endif %}
+                        <div class="slide-btn slide2-btn d-block d-sm-none">
+                          {% if block.settings.link != blank and block.settings.button != blank %}
+                            <span class="btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+                          {% endif %}
+                      </div>
               </div>
             </div>
           </div>
@@ -321,7 +327,90 @@
                 {{ block.settings.subheading_3 }}
               </span>
               {% endif %}
+              <div class="slide-btn slide2-btn d-block d-sm-none">
+                {% if block.settings.link != blank and block.settings.button != blank %}
+                  <span class="btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+                {% endif %}
+            </div>
     </div>
+  </div>
+</div>
+{% endif %}
+
+{% if block.type == "magnastyle" %}
+<div class="slide2-img1 d-block d-sm-none" data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')">
+</div>
+<div class="magnastyle d-none d-sm-block">
+  <div class="container">
+    <div class="row slide-2-main">
+      <div class="col-40 col-sm-30">
+        <div class="slide2-img1" data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')">
+        </div>
+        <div class="slide-btn slide2-btn">
+          {% if block.settings.link != blank and block.settings.button != blank %}
+            <span class="btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+          {% endif %}
+      </div>
+      </div>
+      <div class="col-20 col-sm-30">
+          <div class="slideshow__text-wrap slideshow__text--{{ block.id }} row{% if block.settings.overlay %} slideshow__overlay{% endif %}">
+            <div class="col-md-60{% if block.settings.text_layout == 'center' %} {% elsif block.settings.text_layout == 'right' %} offset-md-30{% endif %} text-{{ block.settings.text_align }} slideshow__text-content">                     
+              <div class="page-width">
+                  {% unless block.settings.title == blank %}
+                  <h2 data-animation="{{block.settings.headingAnimation}}" data-delay="{{block.settings.title_delay}}" class="h1 mega-title slideshow__title{% if settings.link != blank %} slideshow__title--has-link{% endif %}{% if section.settings.text_size == 'large' %} mega-title--large{% endif %}">
+                    <span>{{ block.settings.title | escape }}</span>
+                  </h2>
+                {% endunless %}
+                {% unless block.settings.subheading == blank %}
+                  <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="mega-subtitle slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
+                    <span>{{ block.settings.subheading | escape }}</span>
+                  </span>
+                {% endunless %}
+                <br/>
+                {% if block.settings.subheading_2 != blank %}
+                <span data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}" class="mega-subtitle slideshow__subtitle2 mega-subtitle-secondary">
+                  <span>{{ block.settings.subheading_2 }}</span>
+                </span>
+                {% endif %}
+                {% if block.settings.subheading_3 != blank %}
+                <span data-animation="{{block.settings.subHeading_3_Animation}}" data-delay="{{block.settings.sub_heading_3_delay}}" class="mega-subtitle slideshow__subtitle2 mega-subtitle-secondary">
+                  <span>{{ block.settings.subheading_3 }}</span>
+                </span>
+                {% endif %}
+              </div>
+              </div>
+          </div>
+      </div>     
+    </div>
+  </div>
+</div>
+<div class="d-block d-sm-none">
+  <div class="slideshow__text-wrap {% if block.settings.overlay %} slideshow__overlay{% endif %}">
+    <div class="text-{{ block.settings.text_align }} slideshow__text-content">                     
+      <div class="page-width">
+        {% unless block.settings.subheading == blank %}
+          <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="mega-subtitle slideshow__subtitle{% if section.settings.text_size == 'large' %} mega-subtitle--large{% endif %}">
+            <span>{{ block.settings.subheading | escape }}</span>
+          </span>
+        {% endunless %}
+        <br/>
+        {% if block.settings.subheading_2 != blank %}
+        <span data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}" class="mega-subtitle slideshow__subtitle2 mega-subtitle-secondary">
+          <span>{{ block.settings.subheading_2 }}</span>
+        </span>
+        {% endif %}
+        {% if block.settings.subheading_3 != blank %}
+        <span data-animation="{{block.settings.subHeading_3_Animation}}" data-delay="{{block.settings.sub_heading_3_delay}}" class="mega-subtitle slideshow__subtitle2 mega-subtitle-secondary">
+          <span>{{ block.settings.subheading_3 }}</span>
+        </span>
+        {% endif %}
+        <div class="slide-btn slide2-btn">
+          {% if block.settings.link != blank and block.settings.button != blank %}
+            <span class="btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+          {% endif %}
+      </div>
+      </div>
+      </div>
   </div>
 </div>
 {% endif %}
@@ -472,7 +561,7 @@
                 <div data-animation="{{block.settings.image_1_animation}}" data-delay="{{block.settings.image_1_delay}}" style="background-image:url('{{block.settings.image_1 | img_url: '1500x'}}')" class="col-25 slider-image1"></div>
                 <div class="col-35 pr-0 pl-0">
                   <div data-animation="{{block.settings.image_2_animation}}" data-delay="{{block.settings.image_2_delay}}" style="background-image:url('{{block.settings.image_2 | img_url: '1500x'}}')" class="slider-image2"></div>
-                  <div class="slider-right-side">
+                  <div class="slider-right-side d-none d-sm-block">
                     <div class="slider-content">
                     <div>
                       {% unless block.settings.title == blank %}
@@ -505,7 +594,43 @@
                   {% endif %}
                 </div>
                 </div>
-              </div>              
+              </div>  
+              <div class="slider-right-side d-block d-sm-none">
+                    <div class="slider-content">
+                    <div>
+                      {% unless block.settings.title == blank %}
+                                  <h2 data-animation="{{block.settings.headingAnimation}}" data-delay="{{block.settings.title_delay}}" class="slideshow-title">
+                                    {{ block.settings.title | escape }}
+                                  </h2>
+                                {% endunless %}
+                    <br>
+                    {% unless block.settings.subheading == blank %}
+                                  <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="slideshow-text">
+                                    {{ block.settings.subheading | escape }}
+                                  </span>
+                                {% endunless %}
+                    
+                    {% if block.settings.subheading_2 != blank %}
+                    <br>
+                                <span data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}" class="slideshow-text">
+                                  {{ block.settings.subheading_2 }}
+                                </span>
+                                {% endif %}
+                    
+                    {% if block.settings.subheading_3 != blank %}
+                    <br>
+                                <span data-animation="{{block.settings.subHeading_3_Animation}}" data-delay="{{block.settings.sub_heading_3_delay}}" class="slideshow-simple-btn">
+                                  {{ block.settings.subheading_3 }}
+                                </span>
+                                {% endif %}
+                                {% if block.settings.link != blank and block.settings.button != blank %}
+                                <br>
+                                <span class="slideshow-btn" data-animation="{{block.settings.buttonAnimation}}" data-delay="{{block.settings.button_delay}}">{{ block.settings.button }}</span>
+                  {% endif %} 
+                    </div> 
+                    
+                  </div>                  
+                </div>            
               </div>
               </div>
               {% endif%}
@@ -697,20 +822,23 @@
                                 {{ block.settings.title | escape }}
                               </h2>
                             {% endunless %}
-                <br>
+                
                 {% unless block.settings.subheading == blank %}
+                <br>
                               <span data-animation="{{block.settings.subHeadingAnimation}}" data-delay="{{block.settings.sub_heading_delay}}" class="slideshow-text">
                                 {{ block.settings.subheading | escape }}
                               </span>
                             {% endunless %}
-                <br>
+                
                 {% if block.settings.subheading_2 != blank %}
+                <br>
                             <span data-animation="{{block.settings.subHeading_2_Animation}}" data-delay="{{block.settings.sub_heading_2_delay}}" class="slideshow-text">
                               {{ block.settings.subheading_2 }}
                             </span>
                             {% endif %}
-                <br>
+                
                 {% if block.settings.subheading_3 != blank %}
+                <br>
                             <span data-animation="{{block.settings.subHeading_3_Animation}}" data-delay="{{block.settings.sub_heading_3_delay}}" class="slideshow-text">
                               {{ block.settings.subheading_3 }}
                             </span>
@@ -726,8 +854,18 @@
             </div>
             {% endif%}
             {% comment %} sllide 8 settings ends {% endcomment %}
-
-
+            {%- if block.type == "video_slide" -%}
+            {%- if block.settings.video_url != blank -%}
+            <div class="video-custom-wrapper">
+            <a href="#" class="sound-options">
+            <em class="fas fa-volume-mute"></em>
+            </a>
+              <video autoplay muted loop class="video-slide" id="video-slide--{{ block.id }}">
+                <source src="{{ block.settings.video_url }}" type="video/mp4">
+              </video>
+            </div>
+            {%- endif -%}
+            {%- endif -%}
               {% if block.settings.link != blank %}
                 </a>
               {% endif %}
@@ -745,11 +883,12 @@
     <div class="social-icons-main">
       <ul class="list--inline site-footer__social-icons social-icons">
           <li>
-            <a class="social-icons__link" href="https://facebook.com/shopify" title="juniperunltd on Facebook">
+            <a class="social-icons__link" href="{{ settings.social_facebook_link }}" title="juniperunltd on Facebook">
               <em class="fab fa-facebook-f"></em>
               <span class="icon__fallback-text">Facebook</span>
             </a>
           </li>
+          
           <li>
             <a class="social-icons__link" href="https://instagram.com/shopify" title="juniperunltd on Twitter">
               <em class="fab fa-instagram"></em>
@@ -757,15 +896,21 @@
             </a>
           </li>
           <li>
-            <a class="social-icons__link" href="#" title="juniperunltd on Pinterest">
-               <em class="fab fa-google-plus-g"></em>
-              <span class="icon__fallback-text">Google Plus</span>
+            <a class="social-icons__link" href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">  
+              <em class="fab fa-youtube"></em>
+              <span class="icon__fallback-text">YouTube</span>
             </a>
           </li>
           <li>
             <a class="social-icons__link" href="http://twitter.com/shopify" title="juniperunltd on Instagram">
               <em class="fab fa-twitter"></em>
               <span class="icon__fallback-text">Twitter</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-icons__link" href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+              <em class="fab fa-pinterest-p"></em>
+              <span class="icon__fallback-text">Pinterest</span>
             </a>
           </li>
           <li class="special-icons">
@@ -777,9 +922,9 @@
             </a>
           </li>
           <li class="special-icons icon-man">
-            <a href="https://www.essentialaccessibility.com/juniperunltd?utm_source=juniperltdhomepage&utm_medium=iconlarge&utm_term=eachannelpage&utm_content=header&utm_campaign=juniperunltd" target="_blank" class="social-icons__link" >
-              <!-- <img src="{{ 'icon9999.png' | asset_url }}"> -->
-              {{ 'ea-icon.png' | asset_img_url: 'x30' | img_tag: 'This icon serves as a link to download the eSSENTIAL Accessibility assistive technology app for individuals with physical disabilities. It is featured as part of our commitment to diversity and inclusion.', 'mb-3 mb-md-0' }}
+            <a href="#" target="_blank" class="social-icons__link" >
+              <img src="{{ 'icon-man.png' | asset_url }}" style="max-width: 33px;">
+              <!-- {{ 'ea-icon.png' | asset_img_url: 'x30' | img_tag: 'This icon serves as a link to download the eSSENTIAL Accessibility assistive technology app for individuals with physical disabilities. It is featured as part of our commitment to diversity and inclusion.', 'mb-3 mb-md-0' }} -->
       
               {% comment %}
               {% include 'icon-man' %}
@@ -950,4 +1095,17 @@ startProgressbar();
           });
       }
   });
+  </script>
+  <script>
+  $(document).ready(function(){
+    $('.sound-options').click(function(){
+      $(this).toggleClass('active');
+      $(this).find('.fas').toggleClass('fa-volume-up fa-volume-mute');
+      if($(this).hasClass('active')) {
+        $(this).next().prop('muted',false);
+      } else {
+        $(this).next().prop('muted',true);
+      }
+    })
+  })
   </script>

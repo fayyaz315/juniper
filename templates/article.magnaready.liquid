@@ -1,16 +1,9 @@
-{% comment %}
-  The contents of the blog.liquid template can be found in /sections/blog-template.liquid
-{% endcomment %}
-
-{% section 'blog-template' %}
-
-
-<!-- <div class="blog-detail-container">
+<div class="blog-detail-container">
   <div class="blog-ban" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/slide-1-bg_2000x.png?v=1590126530);">
     <div class="container">
       <div class="row">
         <div class="col-md-40 offset-md-10">
-          <div class="blog-ban-img" style="background-image: url(https://cdn.shopify.com/s/files/1/0363/6704/0647/files/d3e8b65a9d0e8e56c25e245f7e55e8fc_1500x.jpg?v=1590123802);"></div>
+          <div class="blog-ban-img" style="background-image: url({{ article.image.src | img_url: '1000x' }});"></div>
         </div>
       </div>
     </div>
@@ -24,12 +17,12 @@
 <div class="row">
   <div class="col-xl-40 offset-xl-10">
     <div class="loren-copy-heading">
-      <h2>Loren copy guest</h2>
+      <h2>{{ article.title  }}</h2>
       <p>Xero eum, qui dolesedipsus unt faccae nam</p>
     </div>
     <div class="row">
       <div class="col-md-30">
-        <div class="stories-sub-heading">by Alison Hessert, writer</div>
+        <div class="stories-sub-heading">by {{ article.author }}, writer</div>
       </div>
       <div class="col-md-30 stories-icons">
         <ul>
@@ -80,54 +73,61 @@
 </div>
 
 
-  </div>
-  <div class="family-gallery-container">
-    <div class="container">
+</div>
+{% if article.excerpt != blank %}
+{%- assign art_excerpts = article.excerpt | split: 'src="' -%}
+<div class="family-gallery-container">
+   <div class="container">
       <div class="col-lg-50 offset-lg-5">
-        <div class="family-gallery">
-          <div class="family-item">
-            <img src="{{ 'family-gallery.jpg' | asset_url}}" class="center-block">
-          </div>
-          <div class="family-item">
-            <img src="{{ 'family-gallery.jpg' | asset_url}}" class="center-block">
-          </div>
-          <div class="family-item">
-            <img src="{{ 'family-gallery.jpg' | asset_url}}" class="center-block">
-          </div>
-        </div>
+         <div class="family-gallery">
+         {% for art_excerpt in art_excerpts %}
+         {%- if forloop.index == 1 -%}
+            {%- continue -%}
+         {%- endif -%}
+         {%- assign img_parts = art_excerpt | split: '"' -%}
+         {%- assign img_url = img_parts[0] -%}
+         <div class="family-item">
+            <img src="{{ img_url }}" class="center-block">
+         </div>
+         {% endfor %}
+         </div>
       </div>
-    </div>
-  </div>
-
-
+   </div>
+</div>
+{% endif %}
 </div>
 
 
 <div class="article-detail">
   <div class="container">
-      
+  {%- for tag in article.tags -%}
+     {%- if tag contains 'shop--' -%}
+        {%- assign hasProducts = true -%}
+        {% break %}
+     {%- endif -%}
+  {%- endfor -%}
+{% if hasProducts %}
       <div class="brand-edit-text-wrap brand-detail-wrap" style="float: right;">
           <div id="brand-edit-slider" class="brand-detail-slider">
-              <div class="brand-edit-slider">
+             {% for tag in article.tags %}
+             {%- assign product = '' -%}
+                {% if tag contains 'shop--' %}
+                {%- assign product_handle = tag | remove: 'shop--' -%}
+                {%- assign product = all_products[product_handle] -%}
+                <div class="brand-edit-slider">
                   <h3>shop</h3>
                   <h2>The Story</h2>
-                  <div class="product-images" style="background-image:url('//cdn.shopify.com/s/files/1/0363/6704/0647/products/Screenshot_3_1100x.jpg?v=1590037255');"></div>
-                  <h4>NAME wears</h4>
+                  <div class="product-images" style="background-image:url('{{ product.featured_image.src | img_url: '1100x' }}');"></div>
+                  <h4>{{ product.title }}</h4>
                   <p>Glen Plaid Long Sleeve Shirt with
                       Magnetic Closures</p>
-                  <a href="">Shop Now</a>
+                  <a href="{{ product.url }}">Shop Now</a>
               </div>
-              <div class="brand-edit-slider">
-                  <h3>shop</h3>
-                  <h2>The Story</h2>
-                  <div class="product-images" style="background-image:url('//cdn.shopify.com/s/files/1/0363/6704/0647/products/Screenshot_3_1100x.jpg?v=1590037255');"></div>
-                  <h4>NAME wears</h4>
-                  <p>Glen Plaid Long Sleeve Shirt with
-                      Magnetic Closures</p>
-                  <a href="">Shop Now</a>
-              </div>
+                {% endif %}
+             {% endfor %}
           </div>
       </div>
+      {% endif %}
       <div class="article-heading">
           <h2>
               <span>loren doren</span>
@@ -148,9 +148,21 @@
           cum aceresectur sum quaturoritios mo officit exernatiis doluptas dole?</p>
       
       <div class="gallery-image" style="float: right;">
-          <img src="https://cdn.shopify.com/s/files/1/0363/6704/0647/files/article-gallery.png?v=1590131052" alt="" />
-          <p><span>FATHER 2</span> cuptiusda num que doluptiur, volore cus, iniam
-              aut et.</p>
+          <div class="gallery-image-item">
+            <img src="https://cdn.shopify.com/s/files/1/0363/6704/0647/files/article-gallery.png?v=1590131052" alt="" />
+            <p><span>FATHER 2</span> cuptiusda num que doluptiur, volore cus, iniam
+                aut et.</p>
+          </div>
+          <div class="gallery-image-item">
+            <img src="https://cdn.shopify.com/s/files/1/0363/6704/0647/files/article-gallery.png?v=1590131052" alt="" />
+            <p><span>FATHER 2</span> cuptiusda num que doluptiur, volore cus, iniam
+                aut et.</p>
+          </div>
+          <div class="gallery-image-item">
+            <img src="https://cdn.shopify.com/s/files/1/0363/6704/0647/files/article-gallery.png?v=1590131052" alt="" />
+            <p><span>FATHER 2</span> cuptiusda num que doluptiur, volore cus, iniam
+                aut et.</p>
+          </div>
       </div>
       <p>
           Qui susam etus nihicab oribusa pistota tionsequi
@@ -175,9 +187,21 @@
       <div class="clearfix"></div>
       <div class="blue-border"></div>
       <div class="gallery-image" style="float: left; margin: 0 30px 0 0;">
+        <div class="gallery-image-item">
           <img src="https://cdn.shopify.com/s/files/1/0363/6704/0647/files/article-gallery.png?v=1590131052" alt="" />
           <p><span>FATHER 2</span> cuptiusda num que doluptiur, volore cus, iniam
               aut et.</p>
+          </div>
+          <div class="gallery-image-item">
+            <img src="https://cdn.shopify.com/s/files/1/0363/6704/0647/files/article-gallery.png?v=1590131052" alt="" />
+            <p><span>FATHER 2</span> cuptiusda num que doluptiur, volore cus, iniam
+                aut et.</p>
+          </div>
+          <div class="gallery-image-item">
+            <img src="https://cdn.shopify.com/s/files/1/0363/6704/0647/files/article-gallery.png?v=1590131052" alt="" />
+            <p><span>FATHER 2</span> cuptiusda num que doluptiur, volore cus, iniam
+                aut et.</p>
+          </div>
       </div>
       <p>
           Epelictatem quam quo ommolorem quamend
@@ -240,4 +264,9 @@ $('.family-gallery').slick({
      slidesToShow: 1,
      slidesToScroll: 1,
   });
-</script> -->
+  $('.gallery-image').slick({
+     speed: 300,
+     slidesToShow: 1,
+     slidesToScroll: 1,
+  });
+</script>

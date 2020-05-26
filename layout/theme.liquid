@@ -126,7 +126,7 @@
       {% section 'header-bg' %}
     {% endif %} -->
 
-    <main class="main-content" id="MainContent" role="main">
+    <main class="main-content {{ template.name }} {{page.handle}}" id="MainContent" role="main">
       {{ content_for_layout }}
     </main>
 
@@ -143,7 +143,9 @@
           delay: 200,
           duration: 1000
         });
-      })
+      });
+
+      $('body').addClass('magnaready-site');
   </script>
 </body>
 </html>

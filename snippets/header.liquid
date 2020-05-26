@@ -1,5 +1,9 @@
 {% if settings.header_sticky %}
   <script>
+    $(document).ready(function(){
+    $('.slideshow-main').addClass('sticky-slideshow');
+        $('#shopify-section-header > div').addClass('sticky-header logo-change');
+      });
     function sticky_relocate() {
       var window_top = $(window).scrollTop();
       if($('#sticky-anchor').length) {
@@ -8,16 +12,18 @@
         var div_top = 5;
       }
       if (window_top > div_top) {
-        $('.slideshow-main').addClass('sticky-slideshow');
-        $('#shopify-section-header > div').addClass('sticky-header logo-change');
+        // $('.slideshow-main').addClass('sticky-slideshow');
+        // $('#shopify-section-header > div').addClass('sticky-header logo-change');
         $('#shopify-section-collection-template .Collection-page-container').addClass('gapLeft');
         $('.pdp-gapLeft').addClass('boxed-gapLeft');
+        $('.sticky-page-gapLeft').addClass('page-gapLeft');
         //$('.brands-love').addClass('gapLeft');
       } else {
-        $('.slideshow-main').removeClass('sticky-slideshow');
-        $('#shopify-section-header > div').removeClass('sticky-header logo-change');
+        // $('.slideshow-main').removeClass('sticky-slideshow');
+        // $('#shopify-section-header > div').removeClass('sticky-header logo-change');
         $('#shopify-section-collection-template .Collection-page-container').removeClass('gapLeft');
         $('.pdp-gapLeft').removeClass('boxed-gapLeft');
+        $('.sticky-page-gapLeft').removeClass('page-gapLeft');
         //$('.brands-love').addClass('gapLeft');
       }
     }

@@ -80,7 +80,7 @@
           <div class="article-content">
             <h2>{{ article.title }}</h2>
                 {% if article.excerpt.size > 0 %}
-                  {{ article.excerpt }}
+                  <p>{{ article.content | strip_html | truncatewords: 10, '' }}</p>
                 {% else %}
                   <p>{{ article.content | strip_html | truncatewords: 10, '' }}</p>
                 {% endif %}

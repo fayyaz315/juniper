@@ -54,77 +54,41 @@
 
 <div data-section-id="{{ section.id }}" data-section-type="collection-template">
   <div class="container-fluid Collection-page-container" id="Collection">
-    <header class="collection-header">
+    {% if collection.image %}
+    <div class="collec-banner" style="background-image: url({{ collection.image | img_url: 'master' }});">
+      <div class="brand-logo">
+        <img src="https://cdn.shopify.com/s/files/1/0363/6704/0647/files/magnaready.png?v=1589972241" alt="Brand Logo" />
+      </div>
+    </div>
+    {% endif %}
 
-      {% if section.settings.show_collection_image and collection.image %}
-        <style>
-        </style>
-        <div class="collection-hero">
-          <style>
-            .collection-hero__image {
-              background-image: url({{ collection.image | img_url: '1600x' }});
-            }
-  
-            @media only screen and (max-width: 1200px) {
-              .collection-hero__image {
-                background-image:url('{{ collection.image | img_url: '1280x' }}'); 
-              }
-            }
-            @media only screen and (max-width: 992px) {
-              .collection-hero__image {
-                background-image:url('{{ collection.image | img_url: '992x' }}'); 
-              }
-            }
-            @media only screen and (max-width: 768px) {
-              .collection-hero__image {
-                background-image:url('{{ collection.image | img_url: '768x' }}'); 
-              }
-            }
-            @media only screen and (max-width: 576px) {
-              .collection-hero__image {
-                background-image:url('{{ collection.image| img_url: '576x' }}'); 
-              }
-            }
-          </style>
-          <div class="collection-hero__image"></div>
-          <div class="collection-hero__title-wrapper">
-            <h1 class="collection-hero__title page-width" data-aos="{{ section.settings.animation_title }}">{{ collection.title }}</h1>
-          </div>
-        </div>
-  
-        {% if collection.description != blank %}
-          <div class="rte collection-description container" data-aos="{{ section.settings.animation_description }}">
-            {{ collection.description }}
-          </div>
-        {% endif %}
-      {% else %}
-          <div class="custom-page-heading">
-          <div class="section-header collection-page-header text-left">
-            <h1 data-aos="{{ section.settings.animation_title }}">{{ collection.title }}</h1>
-            {% if collection.description != blank %}
-              <div class="rte" data-aos="{{ section.settings.animation_description }}">
-                {{ collection.description }}
-              </div>
-            {% endif %}
-          </div>
-  
-          {% if section.settings.filter_settings == "top" %}
-            <ul class="pdp-top-links" data-aos="{{ section.settings.animation_filters }}">
-            <li><span>{{ collection.title }}</span></li>
-              {%- assign filters = section.settings.filters | split: ',' -%}
-              {% for filter in filters %}
-              {% if collection.all_tags contains filter %}
-              {% if current_tags contains filter %}
-              <li><a href="javascript:void(0);" class="active">{{ filter }}</a></li>
-                {% else %}
-              <li><a href="{{ collection.url }}/{{ filter | handleize }}">{{ filter }}</a></li>
-              {% endif %}
-              {% endif %}
-              {% endfor %}
-            </ul>
+    <header class="collection-header">
+      <div class="custom-page-heading">
+        <div class="section-header collection-page-header text-left">
+          <h1 data-aos="{{ section.settings.animation_title }}">{{ collection.title }}</h1>
+          {% if collection.description != blank %}
+            <div class="rte" data-aos="{{ section.settings.animation_description }}">
+              {{ collection.description }}
+            </div>
           {% endif %}
-          </div>
-      {% endif %}
+        </div>
+
+        {% if section.settings.filter_settings == "top" %}
+          <ul class="pdp-top-links" data-aos="{{ section.settings.animation_filters }}">
+          <li><span>{{ collection.title }}</span></li>
+            {%- assign filters = section.settings.filters | split: ',' -%}
+            {% for filter in filters %}
+            {% if collection.all_tags contains filter %}
+            {% if current_tags contains filter %}
+            <li><a href="javascript:void(0);" class="active">{{ filter }}</a></li>
+              {% else %}
+            <li><a href="{{ collection.url }}/{{ filter | handleize }}">{{ filter }}</a></li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+        </div>
   
       {% if section.settings.tags_enable or section.settings.sort_enable %}
         <div class="filters-toolbar-wrapper">
@@ -469,6 +433,46 @@
           {
             "value": "8",
             "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          },
+          {
+            "value": "11",
+            "label": "11"
+          },
+          {
+            "value": "12",
+            "label": "12"
+          },
+          {
+            "value": "13",
+            "label": "13"
+          },
+          {
+            "value": "14",
+            "label": "14"
+          },
+          {
+            "value": "15",
+            "label": "15"
+          },
+          {
+            "value": "16",
+            "label": "16"
+          },
+          {
+            "value": "17",
+            "label": "17"
+          },
+          {
+            "value": "18",
+            "label": "18"
           }
         ]
       },

@@ -1,0 +1,101 @@
+<div class="brand-edit-container">
+    <div class="container-fluid p-0">
+        <div class="container">
+            <div class="section-header">
+                <h2>_JUNIPER <em>edit</em></h2>
+            </div> 
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md-30">
+                <div class="brand-edit-image " style="background-image:url('https://cdn.shopify.com/s/files/1/0363/6704/0647/files/father-image.png?v=1590038320') "></div>
+            </div>
+            <div class="col-md-30">
+                <div class="brand-edit-text-wrap brand-edit-text-wrap-1">
+                    <div class="brand-edit-text">
+                        <div class="col-md-40 offset-md-10">
+                            <h2>THE FATHER'S DAY EDIT</h2>
+                            <P>great-looking, easy-to-wear shirts sure to have dad look his father's day best in no time.</P>
+                            <a class="brand-text-link" href="#">START HERE <img src="{{ 'button-arrow.png' | asset_url}}"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="brand-edit-text-wrap brand-edit-text-wrap-2" style="display: none;">
+                    <div id="brand-edit-slider">
+                        <div class="brand-edit-slider">
+                            <h3>01</h3>
+                            <h2>Summer Ready</h2>
+                            <div class="product-images" style="background-image:url('//cdn.shopify.com/s/files/1/0363/6704/0647/products/Screenshot_3_1100x.jpg?v=1590037255');"></div>
+                            <p>Blue and Green Glen Plaid Long Sleeve Shirt with Magnetic Closures</p>
+                            <h4>$100.00</h4>
+                            <a href="">Shop Now</a>
+                        </div>
+                        <div class="brand-edit-slider">
+                            <h3>01</h3>
+                            <h2>Summer Ready</h2>
+                            <div class="product-images" style="background-image:url('//cdn.shopify.com/s/files/1/0363/6704/0647/products/Screenshot_3_1100x.jpg?v=1590037255');"></div>
+                            <p>Blue and Green Glen Plaid Long Sleeve Shirt with Magnetic Closures</p>
+                            <h4>$100.00</h4>
+                            <a href="">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="brand-edit-container">
+    <div class="container-fluid p-0">
+        <div class="container">
+            <div class="section-header">
+                <h2>_JUNIPER <em>edit</em></h2>
+            </div> 
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md-30">
+                <div class="brand-edit-image" style="background-image:url('https://cdn.shopify.com/s/files/1/0363/6704/0647/files/father-image.png?v=1590038320') "></div>
+            </div>
+            <div class="col-md-30">
+                <div class="brand-edit-text-wrap">
+                    <div id="brand-edit-slider">
+                        <div class="brand-edit-slider">
+                            <h3>01</h3>
+                            <h2>Summer Ready</h2>
+                            <div class="product-images" style="background-image:url('//cdn.shopify.com/s/files/1/0363/6704/0647/products/Screenshot_3_1100x.jpg?v=1590037255');"></div>
+                            <p>Blue and Green Glen Plaid Long Sleeve Shirt with Magnetic Closures</p>
+                            <h4>$100.00</h4>
+                            <a href="">Shop Now</a>
+                        </div>
+                        <div class="brand-edit-slider">
+                            <h3>01</h3>
+                            <h2>Summer Ready</h2>
+                            <div class="product-images" style="background-image:url('//cdn.shopify.com/s/files/1/0363/6704/0647/products/Screenshot_3_1100x.jpg?v=1590037255');"></div>
+                            <p>Blue and Green Glen Plaid Long Sleeve Shirt with Magnetic Closures</p>
+                            <h4>$100.00</h4>
+                            <a href="">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<script>
+    $('#brand-edit-slider').slick({
+       speed: 300,
+       slidesToShow: 1,
+       slidesToScroll: 1,
+    });
+
+    $(document).ready(function(){
+        $(".brand-text-link").click(function(e){
+            e.preventDefault();
+
+            $('.brand-edit-text-wrap-1').hide('slow');
+            $('#brand-edit-slider').slick('slickGoTo', 0);
+            $('.brand-edit-text-wrap-2').fadeIn('slow');
+        });
+    });
+ </script>

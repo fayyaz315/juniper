@@ -46,15 +46,15 @@
     "align_logo": "center",
     "align_menu": "below",
     "align_menu_text": "center",
-    "logo": "shopify:\/\/shop_images\/logo_6d98f77a-9ba4-482e-891c-d3684735ae34.png",
-    "logo_inner_pages": "shopify:\/\/shop_images\/logo_6d98f77a-9ba4-482e-891c-d3684735ae34.png",
+    "logo": "shopify:\/\/shop_images\/logo_44de2632-dbb0-48ba-9f09-55c48a342eba.png",
+    "logo_inner_pages": "shopify:\/\/shop_images\/logo_44de2632-dbb0-48ba-9f09-55c48a342eba.png",
     "logo_scrolled": "",
     "logo_max_width": "450",
     "cartdropdown": true,
     "enablesearch": true,
     "searchwhat": "product",
-    "main_linklist": "main-menu",
-    "megamenu1": "Shop",
+    "main_linklist": "main-menu-magnaready",
+    "megamenu1": "",
     "megamenu2": "",
     "megamenu3": "",
     "megamenu4": "",
@@ -101,106 +101,6 @@
     "color_text_field": "#fff",
     "color_text_field_text": "#000",
     "sections": {
-      "hero": {
-        "type": "hero",
-        "disabled": true,
-        "settings": {
-          "image": "",
-          "mobile_image": "",
-          "contained": "container-fluid",
-          "overlay": true,
-          "parallax_me": false,
-          "parallax_sensitivity": "200",
-          "alignment": "center",
-          "title": "Image with text overlay",
-          "title_color": "",
-          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
-          "text_color": "",
-          "hero_size": "medium",
-          "text_size": "large",
-          "button_label": "",
-          "button_link": "",
-          "text_layout": "center",
-          "text_align": "center"
-        }
-      },
-      "slideshow": {
-        "type": "slideshow",
-        "disabled": true,
-        "blocks": {
-          "slideshow-0": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/banner-image1.png",
-              "overlay": false,
-              "textunderlay": false,
-              "alignment": "top",
-              "text_layout": "center",
-              "text_align": "center",
-              "title": "01",
-              "heading_color": "#000000",
-              "subheading": "Human-centered design",
-              "subheading_color": "#ffffff",
-              "button": "explore JUNIPERunltd.",
-              "link": "#"
-            }
-          },
-          "1585314047973": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/banner-image1.png",
-              "overlay": false,
-              "textunderlay": false,
-              "alignment": "top",
-              "text_layout": "center",
-              "text_align": "center",
-              "title": "02",
-              "heading_color": "#000000",
-              "subheading": "Human-centered design",
-              "subheading_color": "#ffffff",
-              "button": "explore JUNIPERunltd.",
-              "link": "#"
-            }
-          }
-        },
-        "block_order": [
-          "slideshow-0",
-          "1585314047973"
-        ],
-        "settings": {
-          "contained": "container-fluid",
-          "autoplay": true,
-          "autoplay_speed": "7000",
-          "dots": false,
-          "arrows": true,
-          "slideshow_height": "maintain_ratio",
-          "text_size": "medium"
-        }
-      },
-      "featured-collections": {
-        "type": "collection",
-        "disabled": true,
-        "settings": {
-          "title": "Featured collection",
-          "collection": "frontpage",
-          "grid": "3",
-          "rows": "2",
-          "show_vendor": false,
-          "show_view_all": false
-        }
-      },
-      "feature-row": {
-        "type": "feature-row",
-        "disabled": true,
-        "settings": {
-          "image": "",
-          "layout": "left",
-          "title": "Image with text",
-          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-          "button_label": "",
-          "button_link": ""
-        }
-      },
       "footer": {
         "type": "footer",
         "blocks": {
@@ -208,7 +108,7 @@
             "type": "menu",
             "settings": {
               "title": "SHOP",
-              "linklist": "shop"
+              "linklist": "shop1"
             }
           },
           "1586412799152": {
@@ -284,7 +184,7 @@
             "settings": {
               "main_title": "Shop",
               "main_link": "https:\/\/lpp7qf5z5xmqzvir-36367040647.shopifypreview.com\/pages\/shop",
-              "main_linklist": "shop",
+              "main_linklist": "shop1",
               "main_icon": "",
               "enable_icon": false
             }
@@ -381,102 +281,25 @@
         ],
         "settings": {}
       },
-      "1585293700695": {
-        "type": "home-collections",
-        "blocks": {
-          "1585293700695-0": {
-            "type": "featured_collection",
-            "settings": {
-              "collection": "footwear",
-              "title": "Footwear",
-              "collectionimage": "shopify:\/\/shop_images\/footwear.gif",
-              "link_override": "shopify:\/\/collections\/footwear",
-              "colwidth": "4",
-              "alignment": "center",
-              "animation_block": "flip-down"
-            }
-          },
-          "1585293700695-1": {
-            "type": "featured_collection",
-            "settings": {
-              "collection": "apparel",
-              "title": "Apparrel",
-              "collectionimage": "shopify:\/\/shop_images\/apparel.gif",
-              "link_override": "shopify:\/\/collections\/apparel",
-              "colwidth": "4",
-              "alignment": "center",
-              "animation_block": "flip-down"
-            }
-          },
-          "1585293700695-2": {
-            "type": "featured_collection",
-            "settings": {
-              "collection": "wellness",
-              "title": "Wellness",
-              "collectionimage": "shopify:\/\/shop_images\/wellness.gif",
-              "link_override": "shopify:\/\/collections\/wellness",
-              "colwidth": "4",
-              "alignment": "center",
-              "animation_block": "flip-down"
-            }
-          },
-          "1585293767784": {
-            "type": "featured_collection",
-            "settings": {
-              "collection": "tech-gear",
-              "title": "tech \/\/ gear",
-              "collectionimage": "shopify:\/\/shop_images\/gear.gif",
-              "link_override": "shopify:\/\/collections\/tech-gear",
-              "colwidth": "4",
-              "alignment": "center",
-              "animation_block": "flip-down"
-            }
-          }
-        },
-        "block_order": [
-          "1585293700695-0",
-          "1585293700695-1",
-          "1585293700695-2",
-          "1585293767784"
-        ],
-        "settings": {
-          "title": "_SHOP <em>by<\/em> CATEGORY",
-          "animation_title": "flip-down",
-          "full_width": false,
-          "no_gutters": false,
-          "remove_top_margin": false,
-          "move_text_below": true
-        }
-      },
-      "1585305670953": {
-        "type": "top-news",
-        "settings": {
-          "title": "_TOP news",
-          "animation_title": "flip-down",
-          "blog": "top-news",
-          "post_limit": "5",
-          "animation_blog": "zoom-in-up"
-        }
-      },
       "1585898969382": {
         "type": "explore-section",
         "settings": {
-          "title": "<h2>_Explore <em>with<\/em> JUNIPER<span>unltd<\/span>\n<\/h2>",
+          "title": "",
           "exploer_heading": "<h1>life<\/h1><br><h1>Unlimited<\/h1>",
           "image1": "shopify:\/\/shop_images\/ping_polo_creative_7931c680-d697-4aa5-a8a0-dc8d0ce16fc9.jpg",
           "animation_image1": "flip-down",
           "image_1_button": "JUNIPERunltd. marketplace",
-          "image_1_button_link": "shopify:\/\/pages\/shop",
+          "image_1_button_link": "shopify:\/\/pages\/brand-landing-page",
           "animation_button1": "flip-down",
-          "image2": "shopify:\/\/shop_images\/C7h7GAHW4AAUGWR_b7e49e21-83aa-41dc-b330-4e9b66ff3223.jpg",
+          "image2": "shopify:\/\/shop_images\/Untitled-1_d8a5e81f-67b2-428a-9533-0a14c11cbb39.jpg",
           "animation_image2": "flip-down",
-          "image_2_button": "explore STORIES",
+          "image_2_button": "discover BRAND",
           "image_2_button_link": "shopify:\/\/blogs\/news",
           "animation_button2": "flip-down",
-          "image3": "shopify:\/\/shop_images\/gettyimages-901670182-2048x2048_c7311064-1c96-4b77-8825-911528019e4f.jpg",
+          "image3": "shopify:\/\/shop_images\/JUNIPERunltd_web-MAKETPLACE-homepage_JUNE-6-1_01.png",
           "animation_image3": "flip-down",
-          "image_3_button": "discover CONNECTIONS",
-          "image_3_button_link": "shopify:\/\/pages\/connections",
+          "image_3_button": "shop FATHER’S DAY",
+          "image_3_button_link": "shopify:\/\/pages\/brand-landing-page",
           "animation_button3": "fade-right"
         }
       },
@@ -876,7 +699,7 @@
         "settings": {
           "layout": "grid",
           "grid": "3",
-          "rows": "6",
+          "rows": "16",
           "show_collection_image": true,
           "show_vendor": true,
           "sort_enable": false,
@@ -1258,115 +1081,43 @@
       "1586327689000": {
         "type": "slideshow-animation",
         "blocks": {
-          "1586327689000-0": {
-            "type": "style1",
+          "1589972682267": {
+            "type": "magnastyle",
             "settings": {
-              "image": "shopify:\/\/shop_images\/banner_2000x_19d4418e-53e7-49fd-941f-bff3c5a874c6.png",
+              "image": "shopify:\/\/shop_images\/slide-1-bg.png",
               "image_mobile": "",
-              "title": "01",
+              "image_1": "shopify:\/\/shop_images\/d3e8b65a9d0e8e56c25e245f7e55e8fc.jpg",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounce",
+              "title": "G",
               "title_delay": "1s",
-              "headingAnimation": "slideInRight",
+              "headingAnimation": "bounce",
               "heading_color": "#000000",
-              "subheading": "Welcome to JUNIPER unltd",
+              "subheading": "Intergeneration",
               "sub_heading_delay": "1s",
-              "subHeadingAnimation": "slideInDown",
-              "subheading_color": "",
-              "subheading2": "Inclusive. Accessible. Unlimited.",
-              "sub_heading2_delay": "1s",
-              "subHeading2Animation": "zoomInUp",
-              "button": "explore JUNIPERunltd.",
-              "link": "shopify:\/\/pages\/life-unltd",
-              "button_delay": "1s",
-              "buttonAnimation": "slideInRight"
-            }
-          },
-          "1588061239641": {
-            "type": "homestyle2",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/slide-2_4b232358-386d-46a3-8674-4e7c0cc9f5fb.png",
-              "image_mobile": "",
-              "image_1": "shopify:\/\/shop_images\/Magnaready_shirt_animation.gif",
-              "image_1_delay": "1s",
-              "image_1_animation": "zoomIn",
-              "image_2": "shopify:\/\/shop_images\/1140-magna-ready-adaptive-clothing-caregiving.imgcache_1500x_9db91e59-0386-4a80-bb0b-f2226191a176.jpg",
-              "image_2_delay": "0.8s",
-              "image_2_animation": "slideInUp",
-              "title": "02",
-              "title_delay": "1.6s",
-              "headingAnimation": "fadeInLeft",
-              "heading_color": "#000000",
-              "subheading": "powered by MagnaReady",
-              "sub_heading_delay": "1s",
-              "subHeadingAnimation": "fadeIn",
-              "subheading_2": "Patented technology at the forefront of",
+              "subHeadingAnimation": "bounce",
+              "subheading_2": "Inclusive. Accessible. Unlimited.",
               "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "fadeInUp",
-              "subheading_3": "Adaptive Fashion.",
-              "sub_heading_3_delay": "1s",
-              "subHeading_3_Animation": "rotateInUpLeft",
-              "button": "shop MAGNAREADY",
-              "link": "shopify:\/\/pages\/shop",
-              "button_delay": "1s",
-              "buttonAnimation": "zoomInUp"
-            }
-          },
-          "1588137035758": {
-            "type": "homestyle3",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/slider3_2000x_2000x_bc5b718f-1d0f-4ea9-bef4-8cdc3c668db4.png",
-              "image_mobile": "",
-              "title": "03",
-              "title_delay": "1s",
-              "headingAnimation": "slideInRight",
-              "heading_color": "#d2691e",
-              "subheading": "juniper talks",
-              "sub_heading_delay": "1s",
-              "subHeadingAnimation": "slideInUp",
-              "subheading2": "Grace Stratton X Ashton Applewhite",
-              "sub_heading2_delay": "1s",
-              "subHeading2Animation": "slideInLeft",
-              "button": "read JUNIPER talks",
-              "link": "shopify:\/\/pages\/life-unltd",
-              "button_delay": "1s",
-              "buttonAnimation": "zoomInRight"
-            }
-          },
-          "1588137946905": {
-            "type": "homestyle4",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/slide-4.png",
-              "image_mobile": "",
-              "image_1": "shopify:\/\/shop_images\/racingFORacure_1500x_f8420b1c-b5f1-4448-b928-0657bd8c5c60.png",
-              "image_1_delay": "0.8s",
-              "image_1_animation": "zoomInUp",
-              "image_2": "shopify:\/\/shop_images\/R4C-ColorRun-Small-min.jpg",
-              "image_2_delay": "0.8s",
-              "image_2_animation": "zoomInDown",
-              "title": "04",
-              "title_delay": "1s",
-              "headingAnimation": "zoomInRight",
-              "heading_color": "#000000",
-              "subheading": "racing for a cure",
-              "sub_heading_delay": "1s",
-              "subHeadingAnimation": "fadeInLeft",
-              "subheading_2": "Train, race and fundraise to find a cure for arthritis",
-              "sub_heading_2_delay": "1s",
-              "subHeading_2_Animation": "fadeInLeft",
+              "subHeading_2_Animation": "bounce",
               "subheading_3": "",
               "sub_heading_3_delay": "1s",
-              "subHeading_3_Animation": "rollIn",
-              "button": "discover RACING FOR A CURE",
-              "link": "shopify:\/\/pages\/shop",
+              "subHeading_3_Animation": "bounce",
+              "button": "read STORIES",
+              "link": "shopify:\/\/blogs\/news",
               "button_delay": "1s",
-              "buttonAnimation": "slideInUp"
+              "buttonAnimation": "bounce"
+            }
+          },
+          "1590134593315": {
+            "type": "video_slide",
+            "settings": {
+              "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0363\/6704\/0647\/files\/Gillete_Handle_With_Care_Gillette_s_New_Assisted_Shaving_Razor_online-video-cutter.com.mp4?v=1590474444"
             }
           }
         },
         "block_order": [
-          "1586327689000-0",
-          "1588061239641",
-          "1588137035758",
-          "1588137946905"
+          "1589972682267",
+          "1590134593315"
         ],
         "settings": {
           "contained": "container-fluid",
@@ -1443,13 +1194,13 @@
               "title": "the art of living well",
               "title_delay": "1s",
               "headingAnimation": "bounceInRight",
-              "subheading": "Adjusting to life with a disability is never easy, but there are",
+              "subheading": "How to make your home a sanctuary.",
               "sub_heading_delay": "0.9s",
               "subHeadingAnimation": "bounceInRight",
-              "subheading_2": "ways to help yourself cope with limitations",
+              "subheading_2": "",
               "sub_heading_2_delay": "0.8s",
               "subHeading_2_Animation": "zoomInUp",
-              "subheading_3": "overcome challenges, and build a rewarding life.",
+              "subheading_3": "",
               "sub_heading_3_delay": "0.8s",
               "subHeading_3_Animation": "zoomInDown",
               "button": "read STORY",
@@ -1621,76 +1372,6 @@
           "images_animation": "zoom-in-up"
         }
       },
-      "1588050765140": {
-        "type": "homepage-article",
-        "blocks": {
-          "1588050779048": {
-            "type": "article",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/yoga_0d47fca9-7c16-4975-ad8a-00230a52b3d4_1.jpg",
-              "title": "FITNESS",
-              "heading": "11- minunte yoga with Adriene for hands, fingers and wrists",
-              "text": "<p>Yoga stretches perfect after a day on the computer or for those with arthritis<\/p>",
-              "link_text": "WATCH VIDEO",
-              "link_url": "#"
-            }
-          },
-          "1588052085209": {
-            "type": "article",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/app_e75d66e0-f73c-42e4-966d-256a89efeb5d_1.jpg",
-              "title": "JUNIPER APPS + TECH",
-              "heading": "Top 5 apps for rheumatoid arthritis",
-              "text": "<p>Our favorite apps to make living with RA easier<\/p>",
-              "link_text": "DISCOVER APPS",
-              "link_url": "#"
-            }
-          },
-          "1588052299968": {
-            "type": "article",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/pet_80a231d9-3cbb-4546-985a-e20df93b9408_1.jpg",
-              "title": "MENTAL HEALTH + PET",
-              "heading": "How to be an animal foster parent",
-              "text": "<p>Now is the perfect time to give an animal a home as well feel good about it<\/p>",
-              "link_text": "READ MORE",
-              "link_url": "#"
-            }
-          },
-          "1588054423614": {
-            "type": "article",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/yoga_0d47fca9-7c16-4975-ad8a-00230a52b3d4_1.jpg",
-              "title": "JUNIPER APPS + TECH",
-              "heading": "Top 5 apps for rheumatoid arthritis",
-              "text": "<p>Our favorite apps to make living with RA easier from pain mana.<\/p>",
-              "link_text": "DISCOVER APPS",
-              "link_url": "#"
-            }
-          },
-          "1588054631678": {
-            "type": "article",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/app_e75d66e0-f73c-42e4-966d-256a89efeb5d_1.jpg",
-              "title": "JUNIPER APPS + TECH",
-              "heading": "Top 5 apps for rheumatoid arthritis",
-              "text": "<p>Our favorite apps to make living with RA easier from pain mana.<\/p>",
-              "link_text": "DISCOVER APPS",
-              "link_url": "#"
-            }
-          }
-        },
-        "block_order": [
-          "1588050779048",
-          "1588052085209",
-          "1588052299968",
-          "1588054423614",
-          "1588054631678"
-        ],
-        "settings": {
-          "animation_blog": "flip-down"
-        }
-      },
       "welness-talks": {
         "type": "welness-talks",
         "settings": {
@@ -1702,35 +1383,122 @@
           "button_link": "https:\/\/juniperunltd.myshopify.com\/pages\/wellness"
         }
       },
-      "1588061814071": {
-        "type": "your-voice",
-        "settings": {
-          "title": "_VOTING",
-          "heading": "Time to connect",
-          "text": "<p>We are inspired by you and want to hear from you. Click here to tell us what you think and vote for content, product and design.<\/p>",
-          "button_text": "vote NOW",
-          "button_link": "#"
-        }
-      },
       "page-template": {
         "type": "page-template",
         "settings": {
           "enable_sidebar": false,
           "sidebar_position": "sidebar-left"
         }
+      },
+      "brand-popular": {
+        "type": "brand-popular",
+        "settings": {}
+      },
+      "brand-featured": {
+        "type": "brand-featured",
+        "blocks": {
+          "1590038678426": {
+            "type": "featured_images",
+            "settings": {
+              "featured_image": "shopify:\/\/shop_images\/MagnaReady_shirt_howWorks-01_42a0343a-4b1b-4400-a9d7-a4d42c093191.png"
+            }
+          },
+          "1590039204384": {
+            "type": "featured_images",
+            "settings": {
+              "featured_image": "shopify:\/\/shop_images\/MagnaReady_shirt_howWorks-02.png"
+            }
+          },
+          "1590039314236": {
+            "type": "featured_images",
+            "settings": {
+              "featured_image": "shopify:\/\/shop_images\/MagnaReady_shirt_howWorks-03.png"
+            }
+          }
+        },
+        "block_order": [
+          "1590038678426",
+          "1590039204384",
+          "1590039314236"
+        ],
+        "settings": {
+          "title": "_SPOTLIGHT <em>on<\/em> <span>MagnaReady<\/span>",
+          "image1": "shopify:\/\/shop_images\/00horton3-superJumbo_915a2733-8033-41b6-8558-4bcbfe756edb.jpg",
+          "image1_title": "<p>Joe Horton<\/p>",
+          "image1_text": "<p>North Caroline State University coach<\/p>",
+          "image2": "shopify:\/\/shop_images\/00horton6-jumbo_ef2ab450-16b7-4f5b-b98f-c5bdc0c9a99c.png",
+          "image2_title": "<p>Meet Maura Horton, founder of MagnaReady<\/p>",
+          "image2_text": "<p>Inspired by her husband&rsquo;s struggle to button his shirt as a result of Parkinson&rsquo;s, <strong>Maura Horton<\/strong> came up with the brilliant idea to magnetically infuse the buttons on his shirts, creating a product that could restore order to his daily routine and confidence.<\/p>",
+          "image2_button_text": "shop MagnaReady",
+          "link_url2": "shopify:\/\/pages\/shop",
+          "middle_title": "<span>technology<\/span>\n<span>unlimited<\/span>",
+          "right_image": "shopify:\/\/shop_images\/Untitled-1_d8a5e81f-67b2-428a-9533-0a14c11cbb39.jpg",
+          "featured_text": "",
+          "video_id": "?v=ScMzIvxBSi4",
+          "video_image": "shopify:\/\/shop_images\/Screen_Shot_2020-01-23_at_8.52.52_PM.png",
+          "shop_button_text": "Shop",
+          "shop_url": "shopify:\/\/pages\/charity"
+        }
+      },
+      "brand-edit": {
+        "type": "brand-edit",
+        "settings": {}
+      },
+      "brand-slideshow": {
+        "type": "brand-slideshow",
+        "blocks": {
+          "1590039584498": {
+            "type": "magnastyle",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/slide-1-bg.png",
+              "image_mobile": "",
+              "image_1": "shopify:\/\/shop_images\/d3e8b65a9d0e8e56c25e245f7e55e8fc.jpg",
+              "image_1_delay": "0.5s",
+              "image_1_animation": "bounceIn",
+              "title": "G",
+              "title_delay": "1s",
+              "headingAnimation": "bounceInLeft",
+              "heading_color": "#000000",
+              "subheading": "Intergeneration",
+              "sub_heading_delay": "1s",
+              "subHeadingAnimation": "bounceInRight",
+              "subheading_2": "Inclusive. Accessible. Unlimited.",
+              "sub_heading_2_delay": "1s",
+              "subHeading_2_Animation": "zoomIn",
+              "subheading_3": "",
+              "sub_heading_3_delay": "1s",
+              "subHeading_3_Animation": "bounce",
+              "button": "read STORIES",
+              "link": "shopify:\/\/pages\/spotlights-on",
+              "button_delay": "1s",
+              "buttonAnimation": "zoomInRight"
+            }
+          },
+          "1590143598597": {
+            "type": "video_slide",
+            "settings": {
+              "video_url": "https:\/\/cdn.shopify.com\/s\/files\/1\/0363\/6704\/0647\/files\/Gillete_Handle_With_Care_Gillette_s_New_Assisted_Shaving_Razor_online-video-cutter.com.mp4?v=1590474444"
+            }
+          }
+        },
+        "block_order": [
+          "1590039584498",
+          "1590143598597"
+        ],
+        "settings": {
+          "contained": "container-fluid",
+          "autoplay": true,
+          "autoplay_speed": "7000",
+          "dots": false,
+          "arrows": true,
+          "slideshow_height": "maintain_ratio",
+          "text_size": "medium"
+        }
       }
     },
     "content_for_index": [
       "1586327689000",
-      "slideshow",
-      "1585305670953",
-      "1585293700695",
-      "feature-row",
-      "hero",
-      "featured-collections",
-      "1585898969382",
-      "1588050765140",
-      "1588061814071"
+      "1585898969382"
     ]
   },
   "presets": {
